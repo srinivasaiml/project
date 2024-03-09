@@ -1,0 +1,707 @@
+ 
+  /* preloader start here*/
+  #content {
+    display: none; /* Initially hide the content */
+     }
+     #loading-bar {
+   margin-left: 50%;
+   margin-top: 25vh;
+   position: relative;
+   width: 110px;
+   height: 110px;
+   background: transparent;
+   border: px solid #3c3c3c;
+   border-radius: 50%;
+   text-align: center;
+   line-height: 111px;
+   font-family: sans-serif;
+   font-size: 15px;
+   color: #fff000;
+   letter-spacing: 3px;
+   text-transform: uppercase;
+   text-shadow: 0 0 20px #fff000;
+   box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+ }
+ 
+ #loading-bar:before {
+   content: "";
+   position: absolute;
+   top: -3px;
+   left: -3px;
+   width: 100%;
+   height: 100%;
+   border: 3px solid transparent;
+   border-top: 5px solid #fff000;
+   border-right: 5px solid #fff000;
+   border-radius: 50%;
+   animation: animateC 2s linear infinite;
+ }
+ 
+ @keyframes animateC {
+   0% {
+     transform: rotate(0deg);
+   }
+ 
+   100% {
+     transform: rotate(360deg);
+   }
+ }
+ 
+ @keyframes animate {
+   0% {
+     transform: rotate(45deg);
+   }
+ 
+   100% {
+     transform: rotate(405deg);
+   }
+ }
+body {
+    width: 100%;
+    font-family: Arial, sans-serif;
+    overflow: auto;
+    scroll-behavior: smooth;
+  }
+  nav{
+    float: right;
+    margin-top: 10px;
+  }
+  .navbar a{
+    letter-spacing: 2px;
+    color:#fff;
+    text-decoration: none;
+    margin: 5px;
+    height: 20px;
+    }
+  .navbar a:hover{
+    color:#0ef;
+}
+  /* narbar end...*/
+.home{
+  overflow: hidden;
+  padding: 2%;
+  color: #fff;
+  }
+  .home-content{
+    overflow: hidden;
+   margin-top: 60px;
+  margin-left: 10px;
+  }
+  .home-content h1{
+   color:#0ef;
+   font-size: 25px;
+   letter-spacing: 8px;
+  }
+  .home-content h3{
+   font-size: 20px;
+  }
+  .home-content h3 span{
+    color:#0ef;
+  }
+  
+  .home-content p{
+   font-size: 16px;
+   letter-spacing: 1.2px;
+}
+
+  .about{
+    color: #0ed;
+    }
+    .about h1{
+     
+    font-size: 30px;
+    color: #0ef;
+    }
+    .about p{
+    margin-left: 8px;
+    font-size: 18px;
+    color: #fff;
+    font-family: sans-serif;
+    letter-spacing: 1.2px;
+   }
+  
+  ion-icon {
+    color: #0f0b0b;
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    margin: 10px;
+    padding: 9px;
+    border-radius: 50%;
+    border: 2px solid rgb(6, 7, 7);
+    color: #0ef;
+}
+  ion-icon:hover{
+    border:  2px solid #0ed;
+    box-shadow: 0px 0px 40px #0ef;
+    background: #0ef;
+    color:black;
+    cursor: pointer;
+    }
+
+  .edu p{
+    color: white;
+    letter-spacing: 2px;
+    line-height: 28px;
+  }
+  .edu ion-icon{
+    color:black;
+    background: #0ef;
+  }
+  
+        /*loading animation circle*/
+.pulse {
+     top: 25px;
+    margin-left: 185px;
+    width: 6em;
+    height: 6em;
+    font-size: 10px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .pulse .face {
+    position: absolute;
+    border-radius: 50%;
+    border-style: solid;
+    animation: animate023845 3s linear infinite;
+  }
+  
+  .pulse .face:nth-child(1) {
+    width: 100%;
+    height: 100%;
+    color: gold;
+    border-color: currentColor transparent transparent currentColor;
+    border-width: 0.2em 0.2em 0em 0em;
+    --deg: -45deg;
+    animation-direction: normal;
+  }
+  
+  .pulse .face:nth-child(2) {
+    width: 70%;
+    height: 70%;
+    color: lime;
+    border-color: currentColor currentColor transparent transparent;
+    border-width: 0.2em 0em 0em 0.2em;
+    --deg: -135deg;
+    animation-direction: reverse;
+  }
+  
+  .pulse .face .circle {
+    position: absolute;
+    width: 50%;
+    height: 0.1em;
+    top: 50%;
+    left: 50%;
+    background-color: transparent;
+    transform: rotate(var(--deg));
+    transform-origin: left;
+  }
+  
+  .pulse .face .circle::before {
+    position: absolute;
+    top: -0.5em;
+    right: -0.5em;
+    content: '';
+    width: 1em;
+    height: 1em;
+    background-color: currentColor;
+    border-radius: 50%;
+    box-shadow: 0 0 2em,
+                  0 0 4em,
+                  0 0 6em,
+                  0 0 8em,
+                  0 0 10em,
+                  0 0 0 0.5em rgba(255, 255, 0, 0.1);
+  }
+  
+  @keyframes animate023845 {
+    to {
+      transform: rotate(1turn);
+    }
+  } /* ...edu circle end ... */
+/* ...education bottom line animation  ... */
+
+  .cross {
+    height: 3px;
+    border-radius: 10px ;
+    width: 60%;
+    margin-left: 20%;
+    background: rgb(44, 44, 44);
+    position: relative;
+    overflow: hidden;
+  }
+  .cross .black_overlay {
+    background: linear-gradient(
+      87deg,
+      rgb(0, 0, 0) 0%,
+      rgba(0, 0, 0, 0.14) 30%,
+      rgba(0, 0, 0, 0.14) 70%,
+      rgb(0, 0, 0) 100%
+    );
+    position: absolute;
+    inset: 0px;
+  }
+  .cross .light {
+    width: 70px;
+    height: 100%;
+    position: absolute;
+    left: -20%;
+    top: 0px;
+    background: linear-gradient(
+      87deg,
+      rgba(0, 0, 0, 0) 0%,
+      rgb(15, 169, 207) 0%,
+      rgb(7, 171, 212) 60%,
+      rgba(0, 0, 0, 0) 100%
+    );
+    animation: light 2s infinite ease-in-out;
+  }
+  
+  @keyframes light {
+    from {
+      left: -30%;
+    }
+    to {
+      left: 100%;
+    }
+  }
+/* ...education bottom line animation  ... */
+  
+  /*  experience card animation */
+  .card-title {
+      color: #262626;
+      font-size: 1.5em;
+      line-height: normal;
+      font-weight: 700;
+      margin-bottom: 0.5em;
+    }
+    
+    .small-desc {
+      font-size: 1em;
+      font-weight: 400;
+      line-height: 1.5em;
+      color: #452c2c;
+    }
+    
+    .small-desc {
+      font-size: 1em;
+    }
+    
+    .go-corner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      width: 2em;
+      height: 2em;
+      overflow: hidden;
+      top: 0;
+      right: 0;
+      background: linear-gradient(135deg, #6293c8, #125dd6);
+      border-radius: 0 4px 0 32px;
+    }
+    
+    .go-arrow {
+      margin-top: -4px;
+      margin-right: -4px;
+      color: white;
+      font-family: courier, sans;
+    }
+    
+    .card {
+      display: block;
+      position: relative;
+      background-color: #f2f8f9;
+      border-radius: 10px;
+      padding: 2em 1.2em;
+      margin: 12px;
+      text-decoration: none;
+      z-index: 0;
+      overflow: hidden;
+      background: linear-gradient(to bottom,rgb(109, 228, 249),rgb(153, 236, 153));
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    
+    .card:before {
+      content: '';
+      position: absolute;
+      z-index: -1;
+      top: -16px;
+      right: -16px;
+      background: linear-gradient(15deg, #5fa5ef, #496799);
+      height: 36px;
+      width: 36px;
+      border-radius: 32px;
+      transform: scale(1);
+      transform-origin: 50% 50%;
+      transition: transform 1s ease-out;  
+    }
+    
+    .card:hover:before {
+      transform: scale(58);
+    }
+    
+    .card:hover .small-desc {
+      transition: all 0.5s ease-out;
+      color: rgba(242, 238, 238, 0.8);
+      
+    }
+    
+    .card:hover .card-title {
+      transition: all 0.5s ease-out;
+      color: white;
+      
+    }
+  
+    /* experinece card  close*/
+  
+    /* certifictes animation*/
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-size: 3em;
+      font-weight: 900;
+      color: #e10600;
+      position: relative;
+      transition: all 1s ease;
+      text-align: center;
+    }
+    
+    .container__star {
+      transition: all .7s ease-in-out;
+    }
+    
+    .first {
+      position: relative;
+      top: 20px;
+      left: 40px;
+      transition: all .7s ease-in-out;
+    }
+    
+    .svg-icon {
+      position: absolute;
+      fill: #4d22e9;
+      z-index: 1;
+    }
+    
+    .star-eight {
+      background: #efd510;
+      width: 120px;
+      height: 120px;
+      position: relative;
+      text-align: center;
+      animation: rot 3s  infinite;
+    }
+    
+    .star-eight::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 120px;
+      width: 120px;
+      background: #efd510;
+      transform: rotate(135deg);
+    }
+    
+    .container:hover .container__star {
+      transform: rotateX(70deg) translateY(250px);
+      box-shadow: 0px 0px 120px -100px #e4e727;
+    }
+    
+    .container:hover .svg-icon {
+      animation: grow 1s linear infinite;
+    }
+    
+    @keyframes rot {
+      0% {
+        transform: rotate(0deg);
+      }
+    
+      50% {
+        transform: rotate(340deg);
+      }
+    
+      100% {
+        transform: rotate(0deg);
+      }
+    }
+    
+    @keyframes grow {
+      0% {
+        transform: rotate(0deg);
+      }
+    
+      25% {
+        transform: rotate(-5deg);
+      }
+    
+      75% {
+        transform: rotate(5deg);
+      }
+    
+      100% {
+        transform: scale(1) rotate(0deg);
+      }
+    }
+     /* certifictes animation round end */
+
+    /* certifictes card*/
+     .box{
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .red-btn {
+      width:95%;
+      height: 150px;
+      margin: 15px;
+      background: rgb(255, 0, 0);
+      background: rgb(131, 58, 180);
+      background: linear-gradient(
+        90deg,
+        rgba(131, 58, 180, 1) 10%,
+        rgb(203, 130, 47) 50%,
+        rgb(139, 252, 69) 100%
+      );
+      color: white;
+      border: none;
+      border-radius: 0.625em;
+      font-size: 20px;
+      font-weight: bold;
+      cursor: pointer;
+      position: relative;
+      z-index: 1;
+      overflow: hidden;
+    }
+    .blue-btn {
+      width: 95%;
+      height: 150px;
+      margin: 15px;
+      background: linear-gradient(
+        90deg,
+        rgb(148, 198, 67) 0%,
+        rgb(110, 221, 149) 22%,
+        rgb(80, 191, 185) 100%
+      );
+      color: white;
+      border: none;
+      border-radius: 0.625em;
+      font-size: 20px;
+      font-weight: bold;
+      cursor: pointer;
+      position: relative;
+      z-index: 1;
+      overflow: hidden;
+    }
+    .b3-btn{
+      width: 95%;
+      height: 150px;
+      margin: 15px;
+      background: rgb(0, 8, 144);
+      background: linear-gradient(
+        90deg,
+        rgb(67, 167, 198) 0%,
+      
+        rgb(147, 191, 80) 100%
+      );
+      color: white;
+      border: none;
+      border-radius: 0.625em;
+      font-size: 20px;
+      font-weight: bold;
+      cursor: pointer;
+      position: relative;
+      z-index: 1;
+      overflow: hidden;
+  
+    }
+    .b4-btn{
+      width: 95%;
+      height: 150px;
+      margin: 15px;
+      background: rgb(0, 8, 144);
+      background: linear-gradient(
+        90deg,
+        rgb(138, 195, 212) 10%,
+        rgb(110, 221, 221) 22%,
+        rgb(156, 88, 153) 100%
+      );
+      color: white;
+      border: none;
+      border-radius: 0.625em;
+      font-size: 20px;
+      font-weight: bold;
+      cursor: pointer;
+      position: relative;
+      z-index: 1;
+      overflow: hidden;
+  
+    }
+    
+    button:hover {
+      color: rgb(0, 0, 0);
+    }
+    
+    button:after {
+      content: "";
+      background: white;
+      position: absolute;
+      z-index: -1;
+      left: -20%;
+      right: -20%;
+      top: 0;
+      bottom: 0;
+      transform: skewX(-45deg) scale(0, 1);
+      transition: all 0.5s;
+    }
+    
+    button:hover:after {
+      transform: skewX(-45deg) scale(1, 1);
+      -webkit-transition: all 0.5s;
+      transition: all 0.5s;
+    }
+    .b5-btn{
+      width: 95%;
+      height: 150px;
+      margin: 15px;
+      background: rgb(0, 8, 144);
+    background: linear-gradient(
+        90deg,
+        rgba(131, 58, 180, 1) 10%,
+        rgb(203, 130, 47) 50%,
+        rgb(139, 252, 69) 100%
+      );
+      color: white;
+      border: none;
+      border-radius: 0.625em;
+      font-size: 20px;
+      font-weight: bold;
+      cursor: pointer;
+      position: relative;
+      z-index: 1;
+      overflow: hidden;
+  
+    }
+    
+    button:hover {
+      color: rgb(0, 0, 0);
+    }
+    
+    button:after {
+      content: "";
+      background: white;
+      position: absolute;
+      z-index: -1;
+      left: -20%;
+      right: -20%;
+      top: 0;
+      bottom: 0;
+      transform: skewX(-45deg) scale(0, 1);
+      transition: all 0.5s;
+    }
+    
+    button:hover:after {
+      transform: skewX(-45deg) scale(1, 1);
+      -webkit-transition: all 0.5s;
+      transition: all 0.5s;
+    }
+    /* certifictes card end*/
+  
+  /* scroll*/
+  .ScrollTop{    
+  z-index: 9999;
+  transition: all 0.5s ease;
+  position: fixed;
+  bottom: 25px;
+  right: 5px;
+  border-radius:5px ;
+  cursor: pointer;
+  }
+  .ScrollTop:hover{
+  color: rgb(0, 0, 0);
+  }
+  /*  scroll top bar */
+  #top{
+    height: 20px;
+    width: 20px;
+    background:#0ed;
+    color: #9c4b22;
+  }
+
+/* img profile*/
+#srinivaspic{
+    border-radius: 50%;
+    box-shadow: 10px 10px 25px rgb(198, 19, 49);
+  }
+
+ #education{
+  background: url(s.jpg) no-repeat  fixed;
+ background-size: cover;
+ }
+
+ #contact{
+  background: url(bg.jpg) no-repeat  center;
+  background-size: cover;
+  height: 100%;
+ }
+ .or h1{
+  letter-spacing: 0.1rem;
+  font-size: xx-large;
+
+ }
+ .form {
+  position: relative;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 10px;
+  width: 65%;
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 30px 30px -30px rgba(27, 26, 26, 0.315);
+}
+.form h1{
+  color: blue;
+  text-decoration:overline;
+}
+
+.form input {
+  margin-bottom: 5px;
+  outline: 0;
+  border: 1px solid rgb(219, 213, 213);
+  padding: 8px 14px;
+  border-radius: 8px;
+  width: 100%;
+  height: 50px;
+}
+
+.form textarea {
+  margin-top: 3px;
+  border-radius: 8px;
+  height: 100px;
+  width: 100%;
+  resize: none;
+  outline: 0;
+  padding: 8px 14px;
+  border: 1px solid rgb(219, 213, 213);
+}
+
+.form button {
+  padding: 8px;
+  outline: 0;
+  border: 0;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  background-color: royalblue;
+  color: #fff;
+  cursor: pointer;
+}
+    
+ 
