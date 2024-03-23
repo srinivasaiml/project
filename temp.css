@@ -1,0 +1,84 @@
+
+body{
+  height: 92vh;
+    background-repeat: no-repeat;
+    background-image: linear-gradient(29deg, hsl(151,59%,76%),hsl(202.429,59%,76%),hsl(253.857,59%,76%),hsl(305.286,59%,76%),hsl(356.714,59%,76%),hsl(48.143,59%,76%),hsl(99.571,59%,76%));
+  }
+.circle {
+width: 100px;
+height: 100px;
+background: radial-gradient(#b0e633, #53ef7d);
+border-radius: 50%;
+position: absolute;
+animation: move-top 2s ease-in infinite;
+top:-10%;
+left: 35%;
+z-index: -1;
+}
+
+@keyframes move-top {
+0%{
+  transform: translateY(4px);
+}50%{
+  transform: translateY(-2px);
+} 100%{
+  transform: translateY(4px);
+}
+}
+
+.card{
+margin: 100px auto;
+height: 20em;
+width: 19em;
+padding: 4%;
+border-radius: 16px;
+background: #e8e8e8;
+box-shadow: 10px 12px 18px #bababa,
+            -2px -12px 18px #ffffff;
+display: flex;
+flex-direction: column;
+justify-content: space-evenly;
+}
+
+.content{
+height: 100%;
+text-align: center;
+font-size: 32px;
+letter-spacing: 3px;
+font-weight: 600;
+text-shadow: -2px -2px 3px #ffffff ,
+            2px 2px 3px #bababa;
+position: relative;
+top: -60px;
+}
+#Input ,#result {
+height: 16%;
+width: 100%;
+padding: 1px 4px;
+border: none;
+margin-left: -10px;
+font-size: 1em;
+letter-spacing: 2px;
+border-radius: 8px;
+background: #f3f3f3;
+box-shadow: inset -2px -2px 4px #ffffff,
+            inset 2px 2px 4px rgba(0, 0, 0, 0.356);
+background: linear-gradient(white, #3c282810, white);
+background-size: 200% 200%;
+}
+
+
+button {
+cursor: pointer;
+font-size: x-large;
+letter-spacing: 3px;
+color: white;
+font-weight: 600;
+height: 15%;
+width: 80%;
+background: #89f342;
+border-radius: 8px;
+border: none;
+box-shadow: inset 1px 3px 3px #ffffffbd,
+             inset -4px -4px 3px #00000046;
+}
