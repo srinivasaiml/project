@@ -4,9 +4,69 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>File Sharing Platform</title>
-  <link rel="stylesheet" href="sty.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .container {
+    max-width: 600px;
+    margin: 100px auto;
+    padding: 20px;
+    background: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+  }
+  
+  h1 {
+    color: #333;
+  }
+  
+  .upload-area {
+    margin: 20px 0;
+    padding: 20px;
+    border: 2px dashed #ccc;
+    border-radius: 8px;
+    background-color: #fafafa;
+  }
+  
+  .upload-area:hover {
+    background-color: #f0f0f0;
+  }
+  
+  button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  button:hover {
+    background-color: #218838;
+  }
+  
+  .hidden {
+    display: none;
+  }
+  
+  #shareLink {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-top: 10px;
+  }
+  
+    </style>
   <div class="container">
     <h1>Upload and Share Your Files</h1>
     <div class="upload-area" id="uploadArea">
@@ -20,6 +80,45 @@
       <input type="text" id="shareLink" readonly>
     </div>
   </div>
-  <script src="style.js"></script>
+  <script src="style.js">
+    document.getElementById("uploadForm").addEventListener("submit", async (e) => {
+    e.preventDefault();
+  
+    const fileInput = document.getElementById("fileInput");
+    const files = fileInput.files;
+  
+    if (files.length === 0) {
+      alert("Please select a file to upload.");
+      return;
+    }
+  
+    const formData = new FormData();
+    Array.from(files).forEach((file) => {
+      formData.append("files", file);
+    });
+  
+    try {
+      // Replace with your server upload URL
+      const response = await fetch("https://example.com/upload", {
+        method: "POST",
+        body: formData,
+      });
+  
+      if (!response.ok) {
+        throw new Error("Upload failed");
+      }
+  
+      const data = await response.json();
+      const shareLink = data.link; // Assuming server returns a shareable link
+  
+      document.getElementById("linkContainer").classList.remove("hidden");
+      document.getElementById("shareLink").value = shareLink;
+  
+    } catch (error) {
+      alert("Error uploading files: " + error.message);
+    }
+  });
+  
+  </script>
 </body>
 </html>
