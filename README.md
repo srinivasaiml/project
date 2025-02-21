@@ -1,7 +1,7 @@
-landingpage click : https://srinivasaiml.github.io/OIBSIP/landingpage.html
+landingpage click : https://srinivasaiml.github.io/project/landingpage.html
           
-portfolio click : https://srinivasaiml.github.io/OIBSIP/portfolio.html                                                               
+portfolio click : https://srinivasaiml.github.io/project/portfolio.html                                                               
 
-temperature click : https://srinivasaiml.github.io/OIBSIP/temperature.html
+temperature click : https://srinivasaiml.github.io/project/temperature.html
 
 
