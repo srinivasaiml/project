@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pixel Art Creator</title>
+    <link rel="stylesheet" href="grid.css">
+</head>
+<body>
+    <h1>🎨 Pixel Art Creator</h1>
+    <div class="controls">
+        <label>Grid Size: <span id="sizeValue">10</span></label>
+        <input type="range" id="gridSize" min="5" max="30" value="10">
+        <input type="color" id="colorPicker" value="#000000">
+        <button id="erase">Erase: Off</button>
+        <button id="restart">Restart</button>
+    </div>
+    <br><br>
+    <center><div id="grid" class="grid-container"></div></center>
+    <script src="grid.js">
+       
+    </script>
+</body>
+</html>
