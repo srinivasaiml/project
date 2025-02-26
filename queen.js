@@ -137,7 +137,7 @@ let queensPlaced = 0;
         function updateQueenCounter() {
             const queenCounterElement = document.getElementById('queenCounter');
             if (queenCounterElement) {
-                queenCounterElement.textContent = `Queens Placed: ${queensPlaced}`;
+                queenCounterElement.textContent = `Queens Placed: ${queensPlaced}/8`;
             }
         }
 
