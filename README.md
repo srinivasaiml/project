@@ -8,7 +8,7 @@ flames check : https://srinivasaiml.github.io/project/flames.html
 
 Grid check : https://srinivasaiml.github.io/project/grid.html                                   
 
-Grid check : https://srinivasaiml.github.io/project/queen.html
+Queen game : https://srinivasaiml.github.io/project/queen.html
 
 
 
