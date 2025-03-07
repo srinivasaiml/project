@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Analyzer Pro</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="Resumeats.css">
+    <style>
+      
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1><i class="fas fa-file-alt animated-icon"></i> Resume Analyzer Pro</h1>
+        <div class="analysis-count" id="analysisCount">Analyses: 0</div>
+        
+        <div class="file-input-container">
+            <label class="file-label" for="resumeFile">
+                <i class="fas fa-upload"></i> Upload Your Resume
+                <input type="file" id="resumeFile" class="file-input" accept=".pdf,.txt,.docx" onchange="displayFileName()">
+            </label>
+            <div class="file-name" id="fileName">
+                <i class="fas fa-file"></i> No file chosen
+            </div>
+        </div>
+        
+        <button class="analyze-btn" onclick="analyzeResume()">
+            <i class="fas fa-magic"></i> Analyze Resume
+        </button>
+
+        <center>
+            <div id="loader">Analyzing <i class="fas fa-spinner fa-spin"></i></div>
+        </center>
+
+        <div id="results" class="result-container">
+            <div class="score-card">
+                <div class="score-header">
+                    <i class="fas fa-star score-icon"></i>
+                    <div>
+                        <div class="score-value" id="overallScore">-</div>
+                        <div>Overall Score</div>
+                    </div>
+                </div>
+            </div>
+            <canvas id="scoreChart"></canvas>
+            <div class="score-card">
+                <div class="score-header">
+                    <i class="fas fa-chart-bar score-icon"></i>
+                    <div>Category Scores</div>
+                </div>
+                <div id="scoreDisplay"></div>
+            </div>
+            <div class="score-card">
+                <div class="score-header">
+                    <i class="fas fa-lightbulb score-icon"></i>
+                    <div>Recommendations</div>
+                </div>
+                <div id="tips" class="tips"></div>
+            </div>
+        </div>
+    </div>
+    <footer id="footer">@Design By Srinivas p</footer>
+
+    <script src="Resumeats.js"></script>
+</body>
+</html>
