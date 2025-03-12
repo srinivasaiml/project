@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neon Tic Tac Toe - AI vs Human</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(45deg, #0f0c29, #302b63);
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        .title {
+            font-size: 2.5rem;
+            margin: 1rem 0;
+            background: linear-gradient(45deg, #00ffcc, #ff0066);
+            text-shadow: 0 0 30px rgba(0, 255, 204, 0.3);
+        }
+
+        .status {
+            font-size: 1.5rem;
+            margin: 1rem 0;
+            padding: 0.8rem 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .board {
+            display: grid;
+            grid-template-columns: repeat(3, 100px);
+            grid-template-rows: repeat(3, 100px);
+            gap: 10px;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            box-shadow: 0 0 50px rgba(0, 255, 204, 0.1);
+        }
+
+        .cell {
+            width: 100px;
+            height: 100px;
+            background: rgba(42, 42, 42, 0.8);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            cursor: pointer;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .cell.x { color: #00ffcc !important; }
+        .cell.o { color: #ff0066 !important; }
+
+        .restart-btn {
+            padding: 0.8rem 2rem;
+            font-size: 1rem;
+            background: linear-gradient(45deg, #00ffcc, #ff0066);
+            color: #1a1a1a;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            margin-top: 1.5rem;
+        }
+
+        .result-modal {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.95);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            display: none;
+        }
+
+        .result-text {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #00ffcc;
+        }
+
+        @media (max-width: 600px) {
+            .title { font-size: 2rem; }
+            .status { font-size: 1.2rem; padding: 0.5rem 1.5rem; }
+            .board {
+                grid-template-columns: repeat(3, 80px);
+                grid-template-rows: repeat(3, 80px);
+            }
+            .cell { height: 80px; font-size: 2rem; }
+            .restart-btn { font-size: 0.9rem; padding: 0.6rem 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <h1 class="title">Neon Tic Tac Toe</h1>
+    <div class="status" id="status">Your Turn (X)</div>
+    <div class="board" id="board">
+        <div class="cell" data-index="0"></div>
+        <div class="cell" data-index="1"></div>
+        <div class="cell" data-index="2"></div>
+        <div class="cell" data-index="3"></div>
+        <div class="cell" data-index="4"></div>
+        <div class="cell" data-index="5"></div>
+        <div class="cell" data-index="6"></div>
+        <div class="cell" data-index="7"></div>
+        <div class="cell" data-index="8"></div>
+    </div>
+    <button class="restart-btn" id="restartButton">New Game</button>
+
+    <script>
+        const board = document.getElementById("board");
+        const statusText = document.getElementById("status");
+        const restartBtn = document.getElementById("restartButton");
+        let cells = document.querySelectorAll(".cell");
+
+        let boardState = ["", "", "", "", "", "", "", "", ""];
+        let currentPlayer = "x";
+        let gameActive = true;
+
+        const WIN_PATTERNS = [
+            [0, 1, 2], [3, 4, 5], [6, 7, 8],
+            [0, 3, 6], [1, 4, 7], [2, 5, 8],
+            [0, 4, 8], [2, 4, 6]
+        ];
+
+        function handleClick(e) {
+            const index = e.target.dataset.index;
+            if (!gameActive || boardState[index] !== "") return;
+            
+            boardState[index] = currentPlayer;
+            e.target.classList.add(currentPlayer);
+            e.target.textContent = currentPlayer.toUpperCase();
+            
+            if (checkWin(currentPlayer)) {
+                statusText.textContent = currentPlayer === "x" ? "You Win! 🎉" : "AI Wins! 🤖";
+                gameActive = false;
+                return;
+            }
+
+            if (boardState.every(cell => cell !== "")) {
+                statusText.textContent = "It's a Draw!";
+                gameActive = false;
+                return;
+            }
+
+            currentPlayer = currentPlayer === "x" ? "o" : "x";
+            statusText.textContent = currentPlayer === "x" ? "Your Turn (X)" : "AI Thinking...";
+
+            if (currentPlayer === "o") {
+                setTimeout(aiMove, 500);
+            }
+        }
+
+        function aiMove() {
+            let bestMove = minimax(boardState, "o").index;
+            boardState[bestMove] = "o";
+            cells[bestMove].classList.add("o");
+            cells[bestMove].textContent = "O";
+
+            if (checkWin("o")) {
+                statusText.textContent = "AI Wins! 🤖";
+                gameActive = false;
+                return;
+            }
+
+            if (boardState.every(cell => cell !== "")) {
+                statusText.textContent = "It's a Draw!";
+                gameActive = false;
+                return;
+            }
+
+            currentPlayer = "x";
+            statusText.textContent = "Your Turn (X)";
+        }
+
+        function minimax(board, player) {
+            if (checkWin("x")) return { score: -10 };
+            if (checkWin("o")) return { score: 10 };
+            if (!board.includes("")) return { score: 0 };
+
+            let bestMove = { score: player === "o" ? -Infinity : Infinity };
+            board.forEach((cell, i) => {
+                if (cell === "") {
+                    board[i] = player;
+                    let score = minimax(board, player === "o" ? "x" : "o").score;
+                    board[i] = "";
+                    if ((player === "o" && score > bestMove.score) || (player === "x" && score < bestMove.score)) {
+                        bestMove = { score, index: i };
+                    }
+                }
+            });
+            return bestMove;
+        }
+
+        function checkWin(player) {
+            return WIN_PATTERNS.some(pattern => pattern.every(i => boardState[i] === player));
+        }
+
+        cells.forEach(cell => cell.addEventListener("click", handleClick));
+        restartBtn.addEventListener("click", () => location.reload());
+    </script>
+</body>
+</html>
