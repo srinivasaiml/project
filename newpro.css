@@ -64,18 +64,27 @@ html, body {
 }
 
 /* Hero Section */
+/* Hero Section */
 .hero {
-
+  height: 98vh;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 110px;
   background-color: #d7e8fc;
 }
+.hero-text {/* edi typing ki */
+  color: #285da7;
+  font-size: 2rem;
+  white-space: pre-line;
+  overflow: hidden;
+  display: inline-block;
+  padding-right: 5px;
+  animation: typing 0.75s step-end infinite;
+}
 
-.hero-text {
-  font-size: 24px;
-  color: #1d5dbf;
+@keyframes typing{
+  50% { border-color: transparent; }
 }
 
 .hero img {
@@ -448,6 +457,12 @@ h2 {
     color: var(--primary-color);
     margin-bottom: 0.5rem;
 }
+.skils{
+  background: #ee9ca7;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #ffdde1, #ee9ca7);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #ffdde1, #ee9ca7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
 
 .skills-container {
     display: grid;
@@ -534,7 +549,8 @@ h2 {
 #slidecard {
   min-height: 100vh;
   width: 100%;
-  background-image: linear-gradient(179deg, rgb(68, 144, 190), rgb(251, 254, 241));
+  background: white;
+  background: radial-gradient(125% 125% at 50% 10%, #fff 40%, rgb(107, 61, 235) 100%);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -665,6 +681,18 @@ h2 {
 
 
   /* imp  project card   with response ------------------------------------------------------------------------------------*/
+#project{
+  --s: 37px; /* control the size */
+
+  --c: #0000, #282828 0.5deg 119.5deg, #0000 120deg;
+  --g1: conic-gradient(from 60deg at 56.25% calc(425% / 6), var(--c));
+  --g2: conic-gradient(from 180deg at 43.75% calc(425% / 6), var(--c));
+  --g3: conic-gradient(from -60deg at 50% calc(175% / 12), var(--c));
+  background: var(--g1), var(--g1) var(--s) calc(1.73 * var(--s)), var(--g2),
+    var(--g2) var(--s) calc(1.73 * var(--s)), var(--g3) var(--s) 0,
+    var(--g3) 0 calc(1.73 * var(--s)) #1e1e1e;
+  background-size: calc(2 * var(--s)) calc(3.46 * var(--s));
+}
 
   h2 {
     color: #007bff;
@@ -733,19 +761,77 @@ p.subtitle {
 
 
 /* img profile*/
-
-
+/* img profile*/
 .contact-section {
   padding: 50px 20px;
-  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  background: linear-gradient(135deg, #46f4e0, #82d9f6);
   display: flex;
   flex-wrap: wrap;
   gap: 30px;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  color: white;
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+ 
 }
+.contact-section .air{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background: url(https://1.bp.blogspot.com/-xQUc-TovqDk/XdxogmMqIRI/AAAAAAAACvI/AizpnE509UMGBcTiLJ58BC6iViPYGYQfQCLcBGAsYHQ/s1600/wave.png);
+  background-size: 1000px 100px
+}
+.contact-section  .air.air1{
+  color: red;
+  animation: wave 30s linear infinite;
+  z-index: 1000;
+  opacity: 1;
+  animation-delay: 0s;
+  bottom: 0;
+}
+.contact-section .air.air2{
+  animation: wave2 15s linear infinite;
+  z-index: 999;
+  opacity: 0.5;
+  animation-delay: -5s;
+  bottom: 10px;
+}
+.contact-section .air.air3{
+  animation: wave 30s linear infinite;
+  z-index: 998;
+  opacity: 0.2;
+  animation-delay: -2s;
+  bottom: 15px;
+}
+.contact-section  .air.air4{
+  animation: wave2 5s linear infinite;
+  z-index: 997;
+  opacity: 0.7;
+  animation-delay: -5s;
+  bottom: 20px;
+}
+@keyframes wave{
+  0%{
+    background-position-x: 0px; 
+  }
+  100%{
+    background-position-x: 1000px; 
+  }
+}
+@keyframes wave2{
+  0%{
+    background-position-x: 0px; 
+  }
+  100%{
+    background-position-x: -1000px; 
+  }
+}
+
+
 
 .contact-info {
   flex: 1;
