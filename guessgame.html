@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Memory Game</title>
+  <style>
+    /* General Page Styling */
+    body {
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1);
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    h1 {
+      text-align: center;
+      color: #fff;
+      margin-bottom: 20px;
+    }
+
+    .game-container {
+      width: 400px;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(10px);
+    }
+
+    .score-board {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #fff;
+      font-size: 18px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+
+    .card {
+      width: 80px;
+      height: 80px;
+      perspective: 1000px;
+      cursor: pointer;
+    }
+
+    .card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transform-style: preserve-3d;
+      transition: transform 0.6s ease;
+    }
+
+    .card.flipped .card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .card-front,
+    .card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 5px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 24px;
+      color: #fff;
+    }
+
+    .card-front {
+      background: #3498db;
+    }
+
+    .card-back {
+      background: #a1f1e6;
+      transform: rotateY(180deg);
+    }
+
+    .matched {
+      visibility: hidden;
+      opacity: 0;
+      animation: match-animation 0.5s ease-in-out forwards;
+    }
+
+    @keyframes match-animation {
+      0% {
+        transform: scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: scale(1.2);
+        opacity: 0;
+      }
+    }
+
+    .win-message {
+      text-align: center;
+      color: #fff;
+      font-size: 24px;
+      margin-top: 20px;
+      display: none;
+    }
+
+    .win-message.show {
+      display: block;
+    }
+    .floating-bg {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 20s infinite linear;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); }
+            100% { transform: translateY(-100vh) rotate(360deg); }
+        }
+  </style>
+</head>
+<body>
+    <div class="floating-bg" style="top: 10%; left: 20%"></div>
+    <div class="floating-bg" style="top: 70%; left: 80%"></div>
+    <div class="floating-bg" style="top: 40%; left: 60%"></div>
+  <div class="game-container">
+    <h1>Memory Game</h1>
+    <div class="score-board">Score: <span id="score">0</span></div>
+    <div class="grid" id="game-grid"></div>
+    <div class="win-message" id="win-message">You Win! 🎉</div>
+  </div>
+
+  <audio id="flip-sound">
+    <source src="https://www.soundjay.com/button/beep-07.wav" type="audio/wav">
+  </audio>
+  
+  <audio id="match-sound">
+    <source src="https://www.soundjay.com/misc/sounds/bell-ring-05.mp3" type="audio/mpeg">
+  </audio>
+  <script>
+    // Card symbols or images
+    const symbols = ['😊', '😎', '🤩', '🥳', '❤️', '🌟', '🔥', '⚡'].flatMap((symbol) => [symbol, symbol]);
+
+    let score = 0;
+    let moves = 0;
+    let flippedCards = [];
+    let matchedPairs = 0;
+    const totalPairs = symbols.length / 2;
+
+    const gameGrid = document.getElementById('game-grid');
+    const scoreCounter = document.getElementById('score');
+    const winMessage = document.getElementById('win-message');
+    const flipSound = document.getElementById('flip-sound');
+    const matchSound = document.getElementById('match-sound');
+
+    // Shuffle the symbols array
+    function shuffle(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+    }
+
+    // Create the game grid
+    function createGameGrid() {
+      shuffle(symbols);
+      gameGrid.innerHTML = '';
+      symbols.forEach((symbol, index) => {
+        const card = document.createElement('div');
+        card.classList.add('card');
+        card.dataset.symbol = symbol;
+        card.dataset.index = index;
+
+        const cardInner = document.createElement('div');
+        cardInner.classList.add('card-inner');
+
+        const cardFront = document.createElement('div');
+        cardFront.classList.add('card-front');
+
+        const cardBack = document.createElement('div');
+        cardBack.classList.add('card-back');
+        cardBack.textContent = symbol;
+
+        cardInner.appendChild(cardFront);
+        cardInner.appendChild(cardBack);
+        card.appendChild(cardInner);
+
+        card.addEventListener('click', handleCardClick);
+        gameGrid.appendChild(card);
+      });
+
+      // Reveal all cards for 3 seconds at the start
+      setTimeout(() => {
+        document.querySelectorAll('.card').forEach((card) => card.classList.add('flipped'));
+      }, 500);
+
+      setTimeout(() => {
+        document.querySelectorAll('.card').forEach((card) => card.classList.remove('flipped'));
+      }, 3500); // 3 seconds reveal + 500ms delay
+    }
+
+    // Handle card click event
+    function handleCardClick(event) {
+      const card = event.currentTarget;
+
+      if (flippedCards.length < 2 && !card.classList.contains('flipped') && !card.classList.contains('matched')) {
+        flipSound.play();
+        card.classList.add('flipped');
+        flippedCards.push(card);
+
+        if (flippedCards.length === 2) {
+          moves++;
+          checkForMatch();
+        }
+      }
+    }
+
+    // Check if the two flipped cards match
+    function checkForMatch() {
+      const [card1, card2] = flippedCards;
+
+      if (card1.dataset.symbol === card2.dataset.symbol) {
+        matchSound.play();
+        card1.classList.add('matched');
+        card2.classList.add('matched');
+        matchedPairs++;
+        score += 5; // Add 10 points for a correct match
+
+        if (matchedPairs === totalPairs) {
+          setTimeout(() => {
+            winMessage.classList.add('show');
+          }, 500);
+        }
+      } else {
+        setTimeout(() => {
+          card1.classList.remove('flipped');
+          card2.classList.remove('flipped');
+          score -= 1; // Deduct 5 points for an incorrect guess
+        }, 1000);
+      }
+
+      scoreCounter.textContent = score;
+      flippedCards = [];
+    }
+
+    // Start the game
+    createGameGrid();
+  </script>
+</body>
+</html>
