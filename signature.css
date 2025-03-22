@@ -1,0 +1,244 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #b4afaf;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  overflow: hidden;
+  position: relative;
+}
+/* Background Effects */
+.bubble {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  filter: blur(2px);
+  animation: float-up 10s infinite ease-in-out;
+}
+@keyframes float-up {
+  0% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-100px) scale(1.1); }
+  100% { transform: translateY(-200px) scale(1); }
+}
+.bubble:nth-child(1) { width: 50px; height: 50px; top: 10%; left: 20%; animation-duration: 8s; }
+.bubble:nth-child(2) { width: 80px; height: 80px; top: 30%; left: 50%; animation-duration: 12s; }
+.bubble:nth-child(3) { width: 60px; height: 60px; top: 60%; left: 70%; animation-duration: 15s; }
+.bubble:nth-child(4) { width: 100px; height: 100px; top: 80%; left: 10%; animation-duration: 20s; }
+.particle {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  animation: glow 5s infinite alternate;
+}
+@keyframes glow {
+  0% { box-shadow: 0 0 5px rgba(255, 255, 255, 0.5); }
+  100% { box-shadow: 0 0 20px rgba(255, 255, 255, 1); }
+}
+.container {
+  text-align: center;
+  background: linear-gradient(135deg, rgb(151, 244, 244), #f6f8f8);
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 450px;
+  position: relative;
+  z-index: 2;
+  animation: fadeInUp 1.5s ease-in-out;
+  transform: translateY(0);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.container:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+h1 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #333;
+  animation: slideIn 1s ease-in-out;
+}
+h1 i {
+  color: #6e8efb;
+  margin-right: 10px;
+  animation: iconPulse 2s infinite;
+}
+@keyframes iconPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+.input-field {
+  width: 100%;
+  padding: 15px;
+  font-size: 16px;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  outline: none;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.input-field:focus {
+  border-color: #6e8efb;
+  transform: scale(1.02);
+  box-shadow: 0 4px 15px rgba(110, 142, 251, 0.3);
+}
+select {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  background: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+select:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+select:focus {
+  outline: none;
+  border-color: #6e8efb;
+  box-shadow: 0 0 8px rgba(110, 142, 251, 0.3);
+}
+button {
+  margin-top: 20px;
+  padding: 12px 25px;
+  font-size: 16px;
+  color: #fff;
+  background: linear-gradient(135deg, #6e8efb, #a777e3);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  letter-spacing: 1px;
+  position: relative;
+  overflow: hidden;
+}
+button:hover {
+  background: linear-gradient(135deg, #5a7de2, #8a55d7);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(90, 125, 226, 0.3);
+}
+button:active {
+  transform: translateY(0);
+}
+/* Ripple Effect */
+.ripple {
+  position: absolute;
+  background: rgba(255,255,255,0.4);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  border-radius: 50%;
+  animation: rippleEffect 0.6s linear;
+}
+@keyframes rippleEffect {
+  0% { width: 0; height: 0; opacity: 1; }
+  100% { width: 500px; height: 500px; opacity: 0; }
+}
+.signature {
+  margin-top: 30px;
+  font-size: 52px;
+  color: #2c3e50;
+  white-space: nowrap;
+  overflow: hidden;
+  position: relative;
+  padding: 10px 0;
+  animation: typing 2s steps(30, end), 
+             blink-caret 0.75s step-end infinite,
+             signature-fade 0.5s ease-in,
+             float 3s ease-in-out infinite;
+}
+/* Font Classes with !important */
+.font-great-vibes { font-family: 'Great Vibes', cursive !important; }
+.font-parisienne { font-family: 'Parisienne', cursive !important; }
+.font-allura { font-family: 'Allura', cursive !important; font-size: 58px !important; }
+.font-dancing-script { font-family: 'Dancing Script', cursive !important; }
+.font-mr-de-haviland { font-family: 'Mr De Haviland', cursive !important; font-size: 56px !important; }
+.font-petit-formal { font-family: 'Petit Formal Script', cursive !important; }
+.signature::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(to right, 
+    transparent 0%, 
+    rgba(44, 62, 80, 0.8) 30%, 
+    rgba(44, 62, 80, 0.5) 70%, 
+    transparent 100%);
+}
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+@keyframes blink-caret {
+  from, to { border-color: transparent; }
+  50% { border-color: #6e8efb; }
+}
+@keyframes signature-fade {
+  from { opacity: 0; transform: translateY(10px) rotate(-2deg); }
+  to { opacity: 1; transform: translateY(0) rotate(-2deg); }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+.signature.variation-1 { transform: rotate(1deg); }
+.signature.variation-2 { transform: rotate(-1deg); }
+.signature.variation-3 { transform: skewX(-3deg); }
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(50px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(-50px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+/* Loading Spinner */
+.loader {
+  width: 24px;
+  height: 24px;
+  border: 3px solid #fff;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  display: none;
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+/* Download Button Styling */
+.download-btn {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+  color: #fff;
+  background: linear-gradient(135deg, #ff7675, #ff5252);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: none; /* Hidden by default */
+}
+.download-btn:hover {
+  background: linear-gradient(135deg, #ff5252, #ff7675);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 82, 82, 0.3);
+}
+.download-btn:active {
+  transform: translateY(0);
+}
+.download-btn i {
+  margin-right: 10px;
+}
