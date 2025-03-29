@@ -33,10 +33,10 @@
   <ul class="nav-links">
       <li><a href="#home">Home</a></li>
       <li><a href="#about-section">About</a></li>
-      <li><a href="#education">Education</a></li>
+      <li><a href="#edu-section">Education</a></li>
       <li><a href="#tools">Skills</a></li>
-      <li><a href="#project">Projects</a></li>
-      <li><a href="#contact">Contact</a></li>
+      <li><a href="#proj-section">Projects</a></li>
+      <li><a href="#cnt-main-section">Contact</a></li>
   </ul>
 </nav>
 <section class="hero">
@@ -89,7 +89,7 @@
   </section>
     <hr>
 
-    <section id="edu-section">
+    <section id="edu-section reveal">
       <h2 style="text-align: center; margin-bottom: 2rem; color: #ccd6f6;">Education</h2>
      
       <div class="edu-particles" id="edu-particles"></div>
@@ -97,7 +97,7 @@
       <div class="edu-timeline">
          
           
-          <div class="edu-timeline-item">
+          <div class="edu-timeline-item reveal">
               <div class="edu-timeline-marker"></div>
               <div class="edu-timeline-card" style="margin-left: 55%;">
                   <h3>B.E in Computer Science</h3>
@@ -106,7 +106,7 @@
               </div>
           </div>
 
-          <div class="edu-timeline-item">
+          <div class="edu-timeline-item reveal">
               <div class="edu-timeline-marker"></div>
               <div class="edu-timeline-card" style="margin-right: 55%;">
                   <h3>Class 12th</h3>
@@ -115,7 +115,7 @@
               </div>
           </div>
 
-          <div class="edu-timeline-item">
+          <div class="edu-timeline-item reveal">
               <div class="edu-timeline-marker"></div>
               <div class="edu-timeline-card" style="margin-left: 55%;">
                   <h3>Class 10th</h3>
@@ -188,17 +188,21 @@
 
  <!--=================== section 3 end=========================== -->
  <br>
- <section class="skils reveal" >
-  <h2>Technical Skills</h2>
+
+ <section class="skils">
+    <h2>Technical Skills</h2>
     <p>A showcase of my proficiency levels in various technologies.</p>
     
-    <div class="skills-container reveal">
-        <!-- HTML Skill -->
-        <div class="skill" role="listitem" aria-label="HTML skill level 75%">
+    <div id="skills-animation"></div>
+    
+    <div class="skills-container">
+        <!-- HTML -->
+        <div class="skill reveal">
             <div class="progress-circle">
-                <svg viewBox="0 0 100 100" width="100" height="100">
-                    <circle class="circle-bg" cx="50" cy="50" r="40"></circle>
-                    <circle class="circle-fill" cx="50" cy="50" r="40" stroke="var(--primary-color)"></circle>
+                <svg viewBox="0 0 100 100">
+                    <circle class="circle-bg" cx="50" cy="50" r="40"/>
+                    <circle class="circle-fill" cx="50" cy="50" r="40" stroke="var(--primary-color)" 
+                            stroke-dasharray="251.2" stroke-dashoffset="62.8"/>
                     <text class="circle-text" x="50" y="50">75%</text>
                 </svg>
             </div>
@@ -206,12 +210,13 @@
             <p>Skilled in creating structured and semantic web pages using HTML.</p>
         </div>
 
-        <!-- CSS Skill -->
-        <div class="skill" role="listitem" aria-label="CSS skill level 70%">
+        <!-- CSS -->
+        <div class="skill reveal">
             <div class="progress-circle">
-                <svg viewBox="0 0 100 100" width="100" height="100">
-                    <circle class="circle-bg" cx="50" cy="50" r="40"></circle>
-                    <circle class="circle-fill" cx="50" cy="50" r="40" stroke="var(--secondary-color)"></circle>
+                <svg viewBox="0 0 100 100">
+                    <circle class="circle-bg" cx="50" cy="50" r="40"/>
+                    <circle class="circle-fill" cx="50" cy="50" r="40" stroke="var(--secondary-color)" 
+                            stroke-dasharray="251.2" stroke-dashoffset="75.36"/>
                     <text class="circle-text" x="50" y="50">70%</text>
                 </svg>
             </div>
@@ -219,12 +224,13 @@
             <p>Skilled in responsive design and modern CSS frameworks.</p>
         </div>
 
-        <!-- JavaScript Skill -->
-        <div class="skill" role="listitem" aria-label="JavaScript skill level 60%">
+        <!-- JavaScript -->
+        <div class="skill reveal">
             <div class="progress-circle">
-                <svg viewBox="0 0 100 100" width="100" height="100">
-                    <circle class="circle-bg" cx="50" cy="50" r="40"></circle>
-                    <circle class="circle-fill" cx="50" cy="50" r="40" stroke="var(--success-color)"></circle>
+                <svg viewBox="0 0 100 100">
+                    <circle class="circle-bg" cx="50" cy="50" r="40"/>
+                    <circle class="circle-fill" cx="50" cy="50" r="40" stroke="var(--success-color)" 
+                            stroke-dasharray="251.2" stroke-dashoffset="100.48"/>
                     <text class="circle-text" x="50" y="50">60%</text>
                 </svg>
             </div>
@@ -232,12 +238,13 @@
             <p>Fundamental understanding of JavaScript and ES6+ features.</p>
         </div>
 
-        <!-- React Skill -->
-        <div class="skill" role="listitem" aria-label="React skill level 55%">
+        <!-- React -->
+        <div class="skill reveal">
             <div class="progress-circle">
-                <svg viewBox="0 0 100 100" width="100" height="100">
-                    <circle class="circle-bg" cx="50" cy="50" r="40"></circle>
-                    <circle class="circle-fill" cx="50" cy="50" r="40" stroke="var(--react-color)"></circle>
+                <svg viewBox="0 0 100 100">
+                    <circle class="circle-bg" cx="50" cy="50" r="40"/>
+                    <circle class="circle-fill" cx="50" cy="50" r="40" stroke="var(--react-color)" 
+                            stroke-dasharray="251.2" stroke-dashoffset="113.04"/>
                     <text class="circle-text" x="50" y="50">55%</text>
                 </svg>
             </div>
@@ -245,77 +252,54 @@
             <p>Developing skills in React.js and component-based architecture.</p>
         </div>
 
-        <!-- SQL Skill -->
-        <div class="skill" role="listitem" aria-label="SQL skill level 50%">
+        <!-- SQL -->
+        <div class="skill reveal">
             <div class="progress-circle">
-                <svg viewBox="0 0 100 100" width="100" height="100">
-                    <circle class="circle-bg" cx="50" cy="50" r="40"></circle>
-                    <circle class="circle-fill" cx="50" cy="50" r="40" stroke="var(--sql-color)"></circle>
+                <svg viewBox="0 0 100 100">
+                    <circle class="circle-bg" cx="50" cy="50" r="40"/>
+                    <circle class="circle-fill" cx="50" cy="50" r="40" stroke="var(--sql-color)" 
+                            stroke-dasharray="251.2" stroke-dashoffset="125.6"/>
                     <text class="circle-text" x="50" y="50">50%</text>
                 </svg>
             </div>
             <h3>SQL</h3>
             <p>Knowledgeable in database management and SQL querying.</p>
         </div>
+        <div class="skill reveal">
+            <div class="progress-circle">
+                <svg viewBox="0 0 100 100">
+                    <circle class="circle-bg" cx="50" cy="50" r="40"/>
+                    <circle class="circle-fill" cx="50" cy="50" r="40" stroke="var(--success-color)" 
+                            stroke-dasharray="251.2" stroke-dashoffset="75.36"/>
+                    <text class="circle-text" x="50" y="50">80%</text>
+                </svg>
+            </div>
+            <h3>C-Language</h3>
+            <p>Proficient in C-lang for scripting and problem Solving..</p>
+        </div>
 
-    <!-- Python Skill -->
-    <div class="skill" role="listitem" aria-label="Python skill level 70%">
-      <div class="progress-circle">
-          <svg viewBox="0 0 100 100" width="100" height="100">
-              <circle class="circle-bg" cx="50" cy="50" r="40"></circle>
-              <circle class="circle-fill" cx="50" cy="50" r="40" stroke="var(--python-color)"></circle>
-              <text class="circle-text" x="50" y="50">70%</text>
-          </svg>
-      </div>
-      <h3>Python</h3>
-      <p>Proficient in Python for scripting and web development.</p>
-  </div>
-  <!-- Java Skill -->
-<div class="skill" role="listitem" aria-label="Java skill level 60%">
-  <div class="progress-circle">
-      <svg viewBox="0 0 100 100" width="100" height="100">
-          <circle class="circle-bg" cx="50" cy="50" r="40"></circle>
-          <circle class="circle-fill" cx="50" cy="50" r="40" stroke="var(--success-color)" stroke-dasharray="251.2" stroke-dashoffset="100"></circle>
-          <text class="circle-text" x="50" y="50">60%</text>
-      </svg>
-  </div>
-  <h3>Java</h3>
-  <p>Experienced in object-oriented programming and Java development.</p>
+        <!-- Python -->
+        <div class="skill reveal">
+            <div class="progress-circle">
+                <svg viewBox="0 0 100 100">
+                    <circle class="circle-bg" cx="50" cy="50" r="40"/>
+                    <circle class="circle-fill" cx="50" cy="50" r="40" stroke="var(--python-color)" 
+                            stroke-dasharray="251.2" stroke-dashoffset="75.36"/>
+                    <text class="circle-text" x="50" y="50">70%</text>
+                </svg>
+            </div>
+            <h3>Python</h3>
+            <p>Proficient in Python for scripting and web development.</p>
+        </div>
+    </div>
+    <!-- !c -->
 </div>
-
-<!-- C Skill -->
-<div class="skill" role="listitem" aria-label="C skill level 65%">
-  <div class="progress-circle">
-      <svg viewBox="0 0 100 100" width="100" height="100">
-          <circle class="circle-bg" cx="50" cy="50" r="40"></circle>
-          <circle class="circle-fill" cx="50" cy="50" r="40" stroke="var(--secondary-color)" stroke-dasharray="251.2" stroke-dashoffset="87.92"></circle>
-          <text class="circle-text" x="50" y="50">65%</text>
-      </svg>
-  </div>
-  <h3>C</h3>
-  <p>Strong understanding of system programming with C.</p>
-</div>
-
-<!-- C++ Skill -->
-<div class="skill" role="listitem" aria-label="C++ skill level 55%">
-  <div class="progress-circle">
-      <svg viewBox="0 0 100 100" width="100" height="100">
-          <circle class="circle-bg" cx="50" cy="50" r="40"></circle>
-          <circle class="circle-fill" cx="50" cy="50" r="40" stroke="var(--primary-color)" stroke-dasharray="251.2" stroke-dashoffset="112.8"></circle>
-          <text class="circle-text" x="50" y="50">55%</text>
-      </svg>
-  </div>
-  <h3>C++</h3>
-  <p>Familiar with C++ for competitive programming and OOP concepts.</p>
-</div>
-
-</div>
- </section>
+</section>
 
  <hr>
-    <center><h1>Certificates</h1></center><br>
+   
 <section id="slidecard">
-  
+    <center><h1>Certificates</h1></center><br>
      <div class="swiper mySwiper">
        <div class="swiper-wrapper">
          <div class="swiper-slide"><img src="hackerrank.png" alt="Image 1">
@@ -378,100 +362,103 @@
 
 <!-- ============================================project====================================================================== -->
 <section class="proj-section reveal">
-  <canvas class="proj-particle-canvas" id="proj-particle-canvas"></canvas>
+    <canvas id="proj-particle-canvas"></canvas>
+    
+    <div class="proj-content">
+        <div class="proj-header">
+            <h2 class="proj-title reveal">My Projects</h2>
+            <p class="proj-subtitle reveal">A showcase of my technical creations</p>
+        </div>
+
+        <div class="filters">
+            <button onclick="filterProjects('all')">All</button>
+            <button onclick="filterProjects('static')">2025</button>
+            <button onclick="filterProjects('responsive')">2024</button>
+            <button onclick="filterProjects('dynamic')">2023</button>
+        </div>
+        
+        <div class="proj-grid">
+            <!-- Project Cards -->
+            <div class="proj-card static">
+                <img src="flames.png" alt="Flames Calculator">
+                <h3>Flames Calculator</h3>
+                <p>Flames Calculator for Lovers <a href="https://srinivasaiml.github.io/project/flames.html">view</a></p>
+            </div>
+
+            <!-- Add all your other project cards here -->
   
-  <div class="proj-content">
-      <div class="proj-header">
-          <h2 class="proj-title">My Projects</h2>
-          <p class="proj-subtitle">A showcase of my technical creations</p>
-      </div>
-
-      <div class="filters">
-          <button onclick="filterProjects('all')">All</button>
-          <button onclick="filterProjects('static')">2025</button>
-          <button onclick="filterProjects('responsive')">2024</button>
-          <button onclick="filterProjects('dynamic')">2023</button>
-      </div>
-      
-      <div class="proj-grid">
-          <!-- Your projects -->
-          <div class="proj-card static">
-              <img src="flames.png" alt="Flames Calculator">
-              <h3>Flames Calculator</h3>
-              <p>Flames Calculator for Lovers <a href="https://srinivasaiml.github.io/project/flames.html">view</a></p>
-          </div>
-
-          <div class="proj-card static">
-              <img src="8queen.png" alt="8 Queen Game">
-              <h3>8 Queen Game</h3>
-              <p>Create a 8 queen game for Students <a href="https://srinivasaiml.github.io/project/queen.html">view</a></p>
-          </div>
-
-          <div class="proj-card static">
-              <img src="love.png" alt="Love Calculator">
-              <h3>Love Calculator Percentage</h3>
-              <p>Love Calculator Percentage for Lovers <a href="https://srinivasaiml.github.io/Codesoft/love2.html">view</a></p>
-          </div>
-
-          <div class="proj-card static">
-              <img src="bookingappoint.webp" alt="ChatWithAI">
-              <h3>ChatWithAI</h3>
-              <p>Book the Doctor Appointment Using AI <a href="https://srinivasaiml.github.io/Codesoft/hospitalpage.html">view</a></p>
-          </div>
-
-          <div class="proj-card static">
-              <img src="library.jpeg" alt="Library Management">
-              <h3>Library Management System</h3>
-              <p>Library Management System for Students <a href="#">view</a></p>
-          </div>
-
-          <div class="proj-card static">
-              <img src="calimg.jpg" alt="Calculator">
-              <h3>Calculator</h3>
-              <p>A calculator for arithmetic operations <a href="">view</a></p>
-          </div>
-
-          <div class="proj-card responsive">
-              <img src="TEMP.avif" alt="Temperature">
-              <h3>Temperature</h3>
-              <p>Temperature measurement converter <a href="">view</a></p>
-          </div>
-
-          <div class="proj-card dynamic">
-              <img src="atmcard.jpg" alt="ATM Card">
-              <h3>ATM Card</h3>
-              <p>ATM interface simulation <a href="">view</a></p>
-          </div>
-
-          <div class="proj-card responsive">
-              <img src="ageimg.jpg" alt="Age Calculator">
-              <h3>Age Calculator</h3>
-              <p>Calculate age based on birth date <a href="https://srinivasaiml.github.io/Codesoft/age.html">view</a></p>
-          </div>
-
-          <div class="proj-card dynamic">
-              <img src="ageimg.jpg" alt="Date Calculator">
-              <h3>Date of Birth Calculator</h3>
-              <p>Calculate date of birth from age <a href="https://srinivasaiml.github.io/Codesoft/yearcal.html">view</a></p>
-          </div>
-
-          <div class="proj-card dynamic">
-              <img src="buds.jpg" alt="Ear Buds">
-              <h3>Ear Buds</h3>
-              <p>Ear buds product page <a href="https://srinivasaiml.github.io/Codesoft/buds.html">view</a></p>
-          </div>
-      </div>
-  </div>
+            <div class="proj-card static">
+                <img src="8queen.png" alt="8 Queen Game">
+                <h3>8 Queen Game</h3>
+                <p>Create a 8 queen game for Students <a href="https://srinivasaiml.github.io/project/queen.html">view</a></p>
+            </div>
+  
+            <div class="proj-card static">
+                <img src="love.png" alt="Love Calculator">
+                <h3>Love Calculator Percentage</h3>
+                <p>Love Calculator Percentage for Lovers <a href="https://srinivasaiml.github.io/Codesoft/love2.html">view</a></p>
+            </div>
+  
+            <div class="proj-card static">
+                <img src="bookingappoint.webp" alt="ChatWithAI">
+                <h3>ChatWithAI</h3>
+                <p>Book the Doctor Appointment Using AI <a href="https://srinivasaiml.github.io/Codesoft/hospitalpage.html">view</a></p>
+            </div>
+  
+            <div class="proj-card static">
+                <img src="library.jpeg" alt="Library Management">
+                <h3>Library Management System</h3>
+                <p>Library Management System for Students <a href="#">view</a></p>
+            </div>
+  
+            <div class="proj-card static">
+                <img src="calimg.jpg" alt="Calculator">
+                <h3>Calculator</h3>
+                <p>A calculator for arithmetic operations <a href="">view</a></p>
+            </div>
+  
+            <div class="proj-card responsive">
+                <img src="TEMP.avif" alt="Temperature">
+                <h3>Temperature</h3>
+                <p>Temperature measurement converter <a href="">view</a></p>
+            </div>
+  
+            <div class="proj-card dynamic">
+                <img src="atmcard.jpg" alt="ATM Card">
+                <h3>ATM Card</h3>
+                <p>ATM interface simulation <a href="">view</a></p>
+            </div>
+  
+            <div class="proj-card responsive">
+                <img src="ageimg.jpg" alt="Age Calculator">
+                <h3>Age Calculator</h3>
+                <p>Calculate age based on birth date <a href="https://srinivasaiml.github.io/Codesoft/age.html">view</a></p>
+            </div>
+  
+            <div class="proj-card dynamic">
+                <img src="ageimg.jpg" alt="Date Calculator">
+                <h3>Date of Birth Calculator</h3>
+                <p>Calculate date of birth from age <a href="https://srinivasaiml.github.io/Codesoft/yearcal.html">view</a></p>
+            </div>
+  
+            <div class="proj-card dynamic">
+                <img src="buds.jpg" alt="Ear Buds">
+                <h3>Ear Buds</h3>
+                <p>Ear buds product page <a href="https://srinivasaiml.github.io/Codesoft/buds.html">view</a></p>
+            </div>
+            
+        </div>
+    </div>
 </section>
 
 <!-- ========================================================contact==================================================== -->
 
 <h1 style="color: #ff4d4d; text-align: center; padding: 3rem 0; font-size: 2.5rem;">Get in Touch</h1>
     
-    <section class="cnt-main-section">
+    <section class="cnt-main-section ">
         <canvas class="cnt-particle-canvas" id="cnt-particle-canvas"></canvas>
 
-        <div class="cnt-content-wrapper">
+        <div class="cnt-content-wrapper reveal">
             <div class="cnt-profile-section">
                 <img src="srinivaspic2.png" alt="Profile Image" class="cnt-profile-image">
                 <div class="cnt-social-container">
@@ -487,8 +474,8 @@
                 </div>
             </div>
             
-            <div class="cnt-form-wrapper">
-                <form id="cnt-contact-form">
+            <div class="cnt-form-wrapper reveal">
+                <form id="cnt-contact-form ">
                     <div class="cnt-form-group">
                         <label class="cnt-input-label" for="cnt-user-name">Your Name:</label>
                         <input class="cnt-form-field" type="text" id="cnt-user-name" required>
@@ -582,8 +569,6 @@ window.addEventListener('resize', () => {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
 });
-
-// Start animation when document loads
 document.addEventListener("DOMContentLoaded", () => {
     initParticles();
     animateParticles();
@@ -592,7 +577,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-<!-- edi name typing ki -->
+<!-- edi name typing ki --------------------------------------------------->
  <script>
         document.addEventListener("DOMContentLoaded", function () {
             const typingElement = document.getElementById("typing-animation");
@@ -635,7 +620,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-<!-- about animations ki -->
+<!-- about animations ki-------------------------------------------------------------------------------------- -->
 <script>
   // Scroll Reveal Animation
   const observers = new IntersectionObserver((entries) => {
@@ -662,7 +647,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
   });
 </script>
-<!-- education ki -->
+<!-- education ki --------------------------------------------------------------------------------------------------->
 <script>
   function createEduParticles() {
       const container = document.getElementById('edu-particles');
@@ -696,180 +681,180 @@ document.addEventListener("DOMContentLoaded", () => {
 
      
 
-<!-- skill circles ki-->
-<script>
+<!-- skill circles ki------------------------------------------------------------------------------------------------------------------------------------>   
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Three.js Setup
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            document.getElementById('skills-animation').appendChild(renderer.domElement);
 
-  function initializeProgressCircles() {
-      document.querySelectorAll('.circle-fill').forEach(circle => {
-          const percent = parseInt(circle.nextElementSibling.textContent);
-          const circumference = 2 * Math.PI * 40;
-          circle.style.strokeDashoffset = circumference * (1 - percent / 100);
-      });
-  }
+            // Particle System
+            const particlesGeometry = new THREE.BufferGeometry();
+            const particleCount = 2000;
+            const posArray = new Float32Array(particleCount * 3);
 
-  const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-          if (entry.isIntersecting) {
-              entry.target.style.transition = 'stroke-dashoffset 1s ease-in-out';
-          }
-      });
-  }, { threshold: 0.5 });
+            for(let i = 0; i < particleCount * 3; i++) {
+                posArray[i] = (Math.random() - 0.5) * 10;
+            }
 
-  // Initialize animations and observers
-  document.addEventListener('DOMContentLoaded', () => {
-      initializeProgressCircles();
-      document.querySelectorAll('.circle-fill').forEach(circle => {
-          observer.observe(circle);
-      });
-  });
+            particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
 
-  // Handle window resize
-  window.addEventListener('resize', () => {
-      initializeProgressCircles();
-  });
-</script>
+            const particlesMaterial = new THREE.PointsMaterial({
+                size: 0.02,
+                color: new THREE.Color(0x4a90e2),
+                transparent: true,
+                opacity: 0.8,
+                blending: THREE.AdditiveBlending
+            });
+
+            const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
+            scene.add(particlesMesh);
+
+            // Animated Light
+            const light = new THREE.PointLight(0x4a90e2, 1, 100);
+            light.position.set(0, 0, 10);
+            scene.add(light);
+
+            camera.position.z = 5;
+
+            // Animation Loop
+            function animate() {
+                requestAnimationFrame(animate);
+                
+                const time = Date.now() * 0.001;
+                const positions = particlesGeometry.attributes.position.array;
+
+                for(let i = 0; i < positions.length; i += 3) {
+                    positions[i] += Math.sin(time + positions[i]) * 0.01;
+                    positions[i+1] += Math.cos(time + positions[i+1]) * 0.01;
+                    positions[i+2] += Math.sin(time + positions[i+2]) * 0.01;
+                }
+
+                particlesGeometry.attributes.position.needsUpdate = true;
+                
+                light.position.x = Math.sin(time) * 5;
+                light.position.y = Math.cos(time * 0.5) * 5;
+                
+                renderer.render(scene, camera);
+            }
+
+            // Resize Handler
+            window.addEventListener('resize', () => {
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+            });
+
+            // Hover Effects
+            document.querySelectorAll('.skill').forEach(skill => {
+                skill.addEventListener('mouseenter', () => {
+                    particlesMaterial.color.set(new THREE.Color(
+                        `hsl(${Math.random() * 360}, 70%, 50%)`
+                    ));
+                });
+            });
+
+            animate();
+        });
+    </script>
 <!-- skill ending -->
 
-<!-- project ki -->
+<!-- project ki ------------------------------------------------------------------------------------------------------------------------------------->
 <script>
-  class ProjectParticles {
-      constructor(canvas) {
-          this.canvas = canvas;
-          this.ctx = canvas.getContext('2d');
-          this.particles = [];
-          this.mouse = { x: 0, y: 0, radius: 80 };
-          
-          this.init();
-          this.animate();
-          
-          window.addEventListener('mousemove', e => {
-              this.mouse.x = e.clientX;
-              this.mouse.y = e.clientY;
-          });
-          
-          window.addEventListener('resize', () => this.resize());
-      }
+    // Neural Network Animation
+    const neuralCanvas = document.getElementById('proj-particle-canvas');
+    const ctxs = neuralCanvas.getContext('2d');
+    let nodes = [];
 
-      init() {
-          this.resize();
-          for(let i = 0; i < 400; i++) {
-              this.particles.push({
-                  x: Math.random() * this.canvas.width,
-                  y: Math.random() * this.canvas.height,
-                  size: Math.random() * 2,
-                  baseX: 0,
-                  baseY: 0,
-                  density: Math.random() * 10 + 5
-              });
-          }
-      }
-
-      resize() {
-          this.canvas.width = window.innerWidth;
-          this.canvas.height = window.innerHeight;
-      }
-
-      animate() {
-          this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-          
-          this.particles.forEach(particle => {
-              const dx = this.mouse.x - particle.x;
-              const dy = this.mouse.y - particle.y;
-              const distance = Math.sqrt(dx * dx + dy * dy);
-              const forceDirectionX = dx / distance;
-              const forceDirectionY = dy / distance;
-              const maxDistance = this.mouse.radius;
-              const force = (maxDistance - distance) / maxDistance;
-              const directionX = forceDirectionX * force * particle.density;
-              const directionY = forceDirectionY * force * particle.density;
-
-              if(distance < this.mouse.radius) {
-                  particle.x -= directionX;
-                  particle.y -= directionY;
-              } else {
-                  if(particle.x !== particle.baseX) {
-                      particle.x -= (particle.x - particle.baseX) / 10;
-                  }
-                  if(particle.y !== particle.baseY) {
-                      particle.y -= (particle.y - particle.baseY) / 10;
-                  }
-              }
-
-              this.ctx.fillStyle = `rgba(138, 43, 226, ${particle.size/3})`;
-              this.ctx.beginPath();
-              this.ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
-              this.ctx.fill();
-          });
-
-          requestAnimationFrame(() => this.animate());
-      }
-  }
-
-  // Initialize particles
-  document.addEventListener('DOMContentLoaded', () => {
-      new ProjectParticles(document.getElementById('proj-particle-canvas'));
-  });
-
-  // Filter function
-  function filterProjects(category) {
-      const cards = document.querySelectorAll('.proj-card');
-      cards.forEach(card => {
-          card.style.display = category === 'all' || card.classList.contains(category) 
-              ? 'block' 
-              : 'none';
-      });
-  }
-</script>
- <!-- projec end -->
-
-
-<script>
-window.addEventListener('scroll', reveal);
-
-function reveal() {
-  var reveals = document.querySelectorAll('.reveal');
-  var windowHeight = window.innerHeight;
-  
-  reveals.forEach(function(reveal) {
-    var revealTop = reveal.getBoundingClientRect().top;
-    var revealPoint = 150;
-
-    if (revealTop < windowHeight - revealPoint) {
-      reveal.classList.add('active');
-    } else {
-      reveal.classList.remove('active');
-    }
-  });
-}
-</script>
-
-   <script>/* certificates slider ki*/
-    let currentIndex = 0;
-    const slidesContainer = document.querySelector('.slide-container');
-    const slides = document.querySelectorAll('.slide');
-    const totalSlides = slides.length;
-
-    function changeSlider(offset) {
-      currentIndex = (currentIndex + offset + totalSlides) % totalSlides;
-      const position = -currentIndex * slides[0].offsetWidth;
-      slidesContainer.style.transform = `translateX(${position}px)`;
-    }
-
-    function handleIntersection(entries) {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('animate__backRight');
+    class Node {
+        constructor(x, y) {
+            this.x = x;
+            this.y = y;
+            this.connections = [];
+            this.radius = 3;
+            this.vx = Math.random() * 2 - 1;
+            this.vy = Math.random() * 2 - 1;
         }
-      });
+        
+        draw() {
+            ctxs.beginPath();
+            ctxs.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+            ctxs.fillStyle = '#8A2BE2';
+            ctxs.fill();
+        }
+        
+        update() {
+            if(this.x < 0 || this.x > neuralCanvas.width) this.vx *= -1;
+            if(this.y < 0 || this.y > neuralCanvas.height) this.vy *= -1;
+            
+            this.x += this.vx;
+            this.y += this.vy;
+            
+            this.connections.forEach(connection => {
+                const dx = connection.node.x - this.x;
+                const dy = connection.node.y - this.y;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+                
+                if(dist < 150) {
+                    ctxs.beginPath();
+                    ctxs.moveTo(this.x, this.y);
+                    ctxs.lineTo(connection.node.x, connection.node.y);
+                    ctxs.strokeStyle = `rgba(138,43,226,${1 - dist/150})`;
+                    ctxs.lineWidth = 1;
+                    ctxs.stroke();
+                }
+            });
+        }
     }
 
-    const observerr = new IntersectionObserver(handleIntersection);
-    observerr.observe(document.getElementById('slider'));
+    function initNeural() {
+        neuralCanvas.width = window.innerWidth;
+        neuralCanvas.height = window.innerHeight;
+        
+        nodes = [];
+        for(let i = 0; i < 50; i++) {
+            nodes.push(new Node(
+                Math.random() * neuralCanvas.width,
+                Math.random() * neuralCanvas.height
+            ));
+        }
+        
+        nodes.forEach(node => {
+            node.connections = nodes
+                .filter(n => n !== node)
+                .map(n => ({ node: n }));
+        });
+        
+        function animate() {
+            ctxs.clearRect(0, 0, neuralCanvas.width, neuralCanvas.height);
+            
+            nodes.forEach(node => {
+                node.update();
+                node.draw();
+            });
+            
+            requestAnimationFrame(animate);
+        }
+        
+        animate();
+    }
 
-  </script>
+    window.addEventListener('resize', initNeural);
+    document.addEventListener('DOMContentLoaded', initNeural);
 
-  
-<!--  -->
+    function filterProjects(category) {
+        const cards = document.querySelectorAll('.proj-card');
+        cards.forEach(card => {
+            card.style.display = category === 'all' || card.classList.contains(category) 
+                ? 'block' 
+                : 'none';
+        });
+    }
+</script>
 
 <!-- contact kiand form ki edi  -->
 
@@ -968,8 +953,50 @@ function reveal() {
       grabCursor: true
     });
   </script>
+  <script>/* certificates slider ki*/
+    let currentIndex = 0;
+    const slidesContainer = document.querySelector('.slide-container');
+    const slides = document.querySelectorAll('.slide');
+    const totalSlides = slides.length;
+
+    function changeSlider(offset) {
+      currentIndex = (currentIndex + offset + totalSlides) % totalSlides;
+      const position = -currentIndex * slides[0].offsetWidth;
+      slidesContainer.style.transform = `translateX(${position}px)`;
+    }
+
+    function handleIntersection(entries) {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate__backRight');
+        }
+      });
+    }
+
+    const observerr = new IntersectionObserver(handleIntersection);
+    observerr.observe(document.getElementById('slider'));
+
+  </script>
 
 
-  
+<script>
+    window.addEventListener('scroll', reveal);
+    
+    function reveal() {
+      var reveals = document.querySelectorAll('.reveal');
+      var windowHeight = window.innerHeight;
+      
+      reveals.forEach(function(reveal) {
+        var revealTop = reveal.getBoundingClientRect().top;
+        var revealPoint = 150;
+    
+        if (revealTop < windowHeight - revealPoint) {
+          reveal.classList.add('active');
+        } else {
+          reveal.classList.remove('active');
+        }
+      });
+    }
+    </script>
 </body>
 </html>
