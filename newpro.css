@@ -38,7 +38,6 @@ canvas {
   position: relative;
   overflow: hidden;
 }
-canvas { position: absolute; top: 0; left: 0; }
 .overlay {
   position: relative;
   z-index: 2;
