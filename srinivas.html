@@ -1060,5 +1060,15 @@
       });
     }
     </script>
+
+    <script>
+      document.addEventListener("contextmenu", (event) => event.preventDefault()); // Disable Right-Click
+
+document.addEventListener("keydown", (event) => {
+    if (event.ctrlKey && (event.key === "u" || event.key === "U" || event.key === "i" || event.key === "I" || event.key === "s" || event.key === "S")) {
+        event.preventDefault();
+    }
+});
+    </script>
 </body>
 </html>
