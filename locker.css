@@ -1,0 +1,357 @@
+:root {
+    --background-dark: #071017;
+    --primary-color: #00ffff;
+    --error-color: #ff4d4d;
+    --success-color: #00ff88;
+    --font-main: 'Orbitron', sans-serif;
+    --pin-size: 1.5rem;
+    --transition-speed: 0.3s;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--background-dark);
+    color: var(--primary-color);
+    font-family: var(--font-main);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.lock-container {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(2, auto);
+    padding: 1.5rem;
+}
+
+.lock-interface {
+    background: linear-gradient(145deg, #0e1b28 0%, #0a1219 100%);
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 0 2rem rgba(0, 255, 255, 0.1);
+    min-width: 320px;
+}
+
+.pin-display {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.pin-dot {
+    width: var(--pin-size);
+    height: var(--pin-size);
+    border-radius: 50%;
+    background: #1a2a3a;
+    transition: all var(--transition-speed) ease;
+    position: relative;
+}
+
+.pin-dot.active {
+    background: var(--primary-color);
+    box-shadow: 0 0 1rem rgba(0, 255, 255, 0.4);
+}
+
+.keypad {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+}
+
+.key {
+    padding: 1rem;
+    border: none;
+    border-radius: 0.5rem;
+    background: rgba(18, 32, 48, 0.8);
+    color: var(--primary-color);
+    font-family: inherit;
+    font-size: 1.25rem;
+    cursor: pointer;
+    transition: all var(--transition-speed) ease;
+    backdrop-filter: blur(4px);
+}
+
+.key:hover {
+    background: rgba(31, 58, 79, 0.8);
+    transform: translateY(-2px);
+}
+
+.key:active {
+    transform: translateY(0);
+}
+
+.key--danger {
+    color: var(--error-color);
+}
+
+.key--success {
+    color: var(--success-color);
+}
+
+.log-panel {
+    background: linear-gradient(145deg, #0e1b28 0%, #0a1219 100%);
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 0 2rem rgba(0, 255, 255, 0.1);
+    width: 300px;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.log-header {
+    margin: 0 0 1.5rem;
+    font-size: 1.1rem;
+}
+
+.attempts-counter {
+    color: var(--success-color);
+    font-weight: 700;
+}
+
+.log-entries {
+    display: grid;
+    gap: 1rem;
+}
+
+.log-entry {
+    padding: 0.75rem;
+    background: rgba(18, 32, 48, 0.4);
+    border-radius: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.log-entry.error {
+    border-left: 3px solid #ff4d4d;
+    background: linear-gradient(90deg, rgba(255,77,77,0.1) 0%, transparent 100%);
+}
+
+.log-entry.error::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(transparent 50%, rgba(255,77,77,0.05) 50%);
+    background-size: 100% 4px;
+    pointer-events: none;
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(7, 16, 23, 0.95);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: #0e1b28;
+    padding: 2rem;
+    border-radius: 1rem;
+    text-align: center;
+    box-shadow: 0 0 2rem rgba(0, 255, 255, 0.2);
+}
+
+.modal-message {
+    color: var(--success-color);
+    font-size: 1.5rem;
+    margin: 1rem 0;
+}
+
+@keyframes hologram-pulse {
+    0% { filter: drop-shadow(0 0 2px #ff4d4d); }
+    50% { filter: drop-shadow(0 0 8px #ff4d4d) hue-rotate(90deg); }
+    100% { filter: drop-shadow(0 0 2px #ff4d4d); }
+}
+
+@keyframes glitch {
+    2% { clip-path: inset(10% 0 30% 0); transform: skew(0.5deg); }
+    4% { clip-path: inset(20% 0 15% 0); transform: skew(-0.5deg); }
+    6% { clip-path: inset(5% 0 25% 0); }
+    8% { clip-path: inset(25% 0 5% 0); transform: skew(0.5deg); }
+    100% { clip-path: inset(0 0 0 0); transform: skew(0); }
+}
+
+@keyframes shockwave {
+    0% { transform: scale(1); opacity: 1; }
+    100% { transform: scale(2); opacity: 0; }
+}
+
+@keyframes particle-burst {
+    0% { transform: translate(0, 0) scale(0); opacity: 1; }
+    100% { transform: translate(var(--tx), var(--ty)) scale(1); opacity: 0; }
+}
+
+.error-effect {
+    animation: hologram-pulse 1s ease infinite;
+}
+
+.glitch-text {
+    position: relative;
+    color: #ff4d4d;
+}
+
+.glitch-text::before,
+.glitch-text::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.glitch-text::before {
+    animation: glitch 2s infinite;
+    color: #00ffff;
+    clip-path: inset(30% 0 10% 0);
+}
+
+.glitch-text::after {
+    animation: glitch 3s infinite reverse;
+    color: #ff4d4d;
+    clip-path: inset(10% 0 30% 0);
+}
+
+.shockwave {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #ff4d4d;
+    border-radius: 50%;
+    animation: shockwave 0.5s ease-out;
+}
+
+.particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: #ff4d4d;
+    border-radius: 50%;
+    animation: particle-burst 0.6s ease-out;
+}
+
+@keyframes pin-error {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(10px); }
+    50% { transform: translateX(-10px); }
+    75% { transform: translateX(5px); }
+    100% { transform: translateX(0); }
+}
+
+.pin-dot.error {
+    animation: pin-error 0.5s ease;
+}
+@media (max-width: 1200px) {
+    .lock-container {
+        gap: 1rem;
+        padding: 1rem;
+    }
+    
+    .lock-interface {
+        padding: 1.5rem;
+        min-width: 280px;
+    }
+    
+    .key {
+        padding: 0.75rem;
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .lock-container {
+        grid-template-columns: 1fr;
+        width: 100%;
+        max-width: 500px;
+        padding: 0.5rem;
+    }
+    
+    .lock-interface {
+        width: 100%;
+        min-width: auto;
+        padding: 1rem;
+    }
+    
+    .log-panel {
+        width: 100%;
+        max-height: 300px;
+    }
+    
+    .pin-display {
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .keypad {
+        gap: 0.5rem;
+    }
+    
+    .key {
+        padding: 0.8rem;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    :root {
+        --pin-size: 1.2rem;
+    }
+    
+    body {
+        padding: 30px;
+        font-size: 14px;
+    }
+    
+    .lock-interface {
+        padding: 0.75rem;
+        border-radius: 0.75rem;
+    }
+    
+    .pin-display {
+        gap: 0.75rem;
+    }
+    
+    .key {
+        padding: 0.6rem;
+        border-radius: 0.35rem;
+    }
+    
+    .log-panel {
+        padding: 1rem;
+    }
+    
+    .modal-content {
+        padding: 1rem;
+        margin: 0.5rem;
+    }
+    
+    .modal-message {
+        font-size: 1.2rem;
+    }
+}
+
+/* Add orientation handling */
+@media (max-height: 500px) and (orientation: landscape) {
+    .lock-container {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 100%;
+        padding: 0.5rem;
+    }
+    
+    .log-panel {
+        max-height: 200px;
+    }
+}
