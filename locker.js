@@ -184,15 +184,36 @@ document.addEventListener('keydown', (e) => {
 });
 
 
-document.addEventListener('contextmenu', e => e.preventDefault());
-      
-        // Disable F12, Ctrl+Shift+I, Ctrl+U, Ctrl+Shift+C, etc.
-        document.addEventListener('keydown', e => {
-          if (
-            e.key === 'F12' ||
-            (e.ctrlKey && e.shiftKey && ['I', 'J', 'C'].includes(e.key)) ||
-            (e.ctrlKey && e.key === 'U')
-          ) {
-            e.preventDefault();
-          }
-        });
+  // Disable right-click
+  document.addEventListener('contextmenu', e => e.preventDefault());
+
+  // Disable specific key combinations
+  document.addEventListener('keydown', function(e) {
+    // Prevent F12
+    if (e.key === 'F12') {
+      e.preventDefault();
+      return false;
+    }
+
+    // Prevent Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+Shift+C
+    if (e.ctrlKey && e.shiftKey && ['I', 'J', 'C'].includes(e.key.toUpperCase())) {
+      e.preventDefault();
+      return false;
+    }
+
+    // Prevent Ctrl+U
+    if (e.ctrlKey && e.key.toUpperCase() === 'U') {
+      e.preventDefault();
+      return false;
+    }
+
+    // Prevent Ctrl+S (optional)
+    if (e.ctrlKey && e.key.toUpperCase() === 'S') {
+      e.preventDefault();
+      return false;
+    }
+  });
+
+  // Prevent drag to new tab (source code view)
+  document.addEventListener('dragstart', e => e.preventDefault());
+
