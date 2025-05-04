@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cosmic Typing Adventure</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Press+Start+2P&display=swap');
+    
+    :root {
+      --primary: #6e45e2;
+      --secondary: #88d3ce;
+      --accent: #ff7e5f;
+      --dark: #0f0c29;
+      --light: #f8f9fa;
+    }
+    
+    body {
+      font-family: 'Orbitron', sans-serif;
+      background: linear-gradient(135deg, var(--dark), #24243e);
+      color: var(--light);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+      padding: 20px;
+      overflow-x: hidden;
+      perspective: 1000px;
+    }
+
+    .game-container {
+      width: 100%;
+      max-width: 900px;
+      text-align: center;
+      position: relative;
+      transform-style: preserve-3d;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotateX(0deg); }
+      50% { transform: translateY(-20px) rotateX(5deg); }
+    }
+
+    .text-display {
+      font-size: clamp(16px, 4vw, 26px);
+      line-height: 1.6;
+      margin-bottom: 30px;
+      position: relative;
+      background: rgba(15, 12, 41, 0.7);
+      padding: 20px;
+      border-radius: 15px;
+      min-height: 120px;
+      border: 2px solid var(--primary);
+      box-shadow: 0 0 20px rgba(110, 69, 226, 0.4),
+                  inset 0 0 15px rgba(110, 69, 226, 0.2);
+      backdrop-filter: blur(5px);
+      transform-style: preserve-3d;
+      transition: all 0.3s ease;
+      overflow: hidden;
+    }
+
+    @media (max-width: 600px) {
+      .text-display {
+        padding: 15px;
+        min-height: 100px;
+      }
+    }
+
+    .runner {
+      position: absolute;
+      bottom: 0px;
+      left: 0;
+      width: 50px;
+      height: 70px;
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 70 90"><rect x="25" y="35" width="20" height="35" fill="%23ff7e5f" stroke="%23000" stroke-width="1.5"/><circle cx="35" cy="25" r="17" fill="%23ff7e5f" stroke="%23000" stroke-width="1.5"/><rect x="20" y="70" width="12" height="17" fill="%234a4a4a" stroke="%23000" stroke-width="1.5"/><rect x="38" y="70" width="12" height="17" fill="%234a4a4a" stroke="%23000" stroke-width="1.5"/><circle cx="25" cy="20" r="4" fill="%23000"/><circle cx="45" cy="20" r="4" fill="%23000"/><path d="M30 30 Q35 33 40 30" stroke="%23000" stroke-width="2.5" fill="none"/></svg>');
+      background-size: contain;
+      background-repeat: no-repeat;
+      transition: left 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+      transform-origin: bottom;
+      z-index: 10;
+      filter: drop-shadow(0 5px 10px rgba(255, 126, 95, 0.6));
+    }
+
+    @media (max-width: 600px) {
+      .runner {
+        width: 40px;
+        height: 60px;
+        bottom: -30px;
+      }
+    }
+
+    .jump {
+      animation: superJump 0.9s cubic-bezier(0.5, 0, 0.5, 1);
+    }
+
+    @keyframes superJump {
+      0%, 100% { 
+        transform: translateY(0) scale(1, 1); 
+      }
+      30% { 
+        transform: translateY(-60px) scale(1.2, 0.8); 
+      }
+      50% { 
+        transform: translateY(-90px) rotate(8deg); 
+      }
+      70% { 
+        transform: translateY(-60px) scale(1.2, 0.8) rotate(-8deg); 
+      }
+    }
+
+    .typed-text {
+      color: var(--secondary);
+      text-shadow: 0 0 8px rgba(136, 211, 206, 0.7);
+      position: relative;
+      z-index: 2;
+    }
+
+    .current-char {
+      position: relative;
+      z-index: 3;
+    }
+
+    .current-char::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(transparent 60%, rgba(136, 211, 206, 0.3) 60%);
+      z-index: -1;
+      border-radius: 2px;
+    }
+
+    .current-char::after {
+      content: '';
+      position: absolute;
+      bottom: -3px;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: var(--accent);
+      animation: pulse 0.6s infinite alternate;
+      border-radius: 2px;
+      filter: drop-shadow(0 0 3px var(--accent));
+    }
+
+    @keyframes pulse {
+      0% { 
+        opacity: 0.8;
+        transform: scaleX(0.9);
+      }
+      100% { 
+        opacity: 1;
+        transform: scaleX(1.1);
+      }
+    }
+
+    .untyped-text {
+      color: rgba(255, 255, 255, 0.3);
+      position: relative;
+      z-index: 1;
+    }
+
+    .input-container {
+      position: relative;
+      width: 90%;
+      margin-bottom: 40px;
+      transform-style: preserve-3d;
+    }
+
+    .input-field {
+      width: 100%;
+      padding: 15px 20px;
+      font-size: clamp(16px, 4vw, 22px);
+      font-family: 'Orbitron', sans-serif;
+      border: none;
+      border-radius: 10px;
+      background: rgba(15, 12, 41, 0.8);
+      color: var(--light);
+      border: 2px solid var(--primary);
+      box-shadow: 0 0 15px rgba(110, 69, 226, 0.4),
+                  inset 0 0 10px rgba(110, 69, 226, 0.3);
+      backdrop-filter: blur(3px);
+      transition: all 0.3s ease;
+      letter-spacing: 1px;
+    }
+
+    @media (max-width: 600px) {
+      .input-field {
+        padding: 12px 15px;
+      }
+    }
+
+    .input-field:focus {
+      outline: none;
+      box-shadow: 0 0 25px rgba(110, 69, 226, 0.6),
+                  inset 0 0 15px rgba(110, 69, 226, 0.4);
+      transform: translateY(-3px);
+    }
+
+    .input-field::placeholder {
+      color: rgba(255, 255, 255, 0.3);
+      letter-spacing: normal;
+    }
+
+    .stats {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .stat-box {
+      background: rgba(15, 12, 41, 0.7);
+      padding: 12px;
+      border-radius: 12px;
+      min-width: 100px;
+      flex: 1;
+      border: 2px solid var(--accent);
+      box-shadow: 0 0 10px rgba(255, 126, 95, 0.3);
+      backdrop-filter: blur(3px);
+      transition: all 0.3s ease;
+      transform-style: preserve-3d;
+    }
+
+    @media (max-width: 480px) {
+      .stat-box {
+        min-width: 80px;
+        padding: 10px;
+      }
+    }
+
+    .stat-label {
+      font-size: 12px;
+      color: var(--secondary);
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    @media (max-width: 480px) {
+      .stat-label {
+        font-size: 11px;
+      }
+    }
+
+    .stat-value {
+      font-size: clamp(20px, 5vw, 28px);
+      color: var(--accent);
+      display: block;
+      font-weight: bold;
+      text-shadow: 0 0 8px rgba(255, 126, 95, 0.5);
+    }
+
+    .confetti {
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      background-color: var(--accent);
+      animation: confetti-fall 3s linear forwards;
+      z-index: 5;
+      border-radius: 50%;
+      filter: drop-shadow(0 0 3px currentColor);
+    }
+
+    @keyframes confetti-fall {
+      0% { 
+        transform: translateY(-100px) rotate(0deg) scale(1); 
+        opacity: 1;
+      }
+      100% { 
+        transform: translateY(100vh) rotate(720deg) scale(0); 
+        opacity: 0;
+      }
+    }
+
+    .progress-container {
+      width: 100%;
+      height: 15px;
+      background: rgba(15, 12, 41, 0.7);
+      border-radius: 10px;
+      margin-bottom: 20px;
+      overflow: hidden;
+      border: 2px solid var(--primary);
+      box-shadow: inset 0 0 8px rgba(110, 69, 226, 0.3);
+      position: relative;
+    }
+
+    @media (max-width: 600px) {
+      .progress-container {
+        height: 12px;
+      }
+    }
+
+    .progress-bar {
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent), var(--secondary));
+      width: 0%;
+      transition: width 0.5s cubic-bezier(0.65, 0, 0.35, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .progress-bar::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.4) 50%,
+        rgba(255, 255, 255, 0) 100%
+      );
+      animation: shine 1.5s infinite;
+      transform: translateX(-100%);
+    }
+
+    @keyframes shine {
+      100% { transform: translateX(100%); }
+    }
+
+    h1 {
+      color: var(--primary);
+      text-shadow: 0 0 10px rgba(110, 69, 226, 0.7),
+                   0 0 20px rgba(110, 69, 226, 0.4);
+      margin-bottom: 30px;
+      font-size: clamp(2rem, 8vw, 3rem);
+      letter-spacing: 2px;
+      font-weight: 700;
+      position: relative;
+      display: inline-block;
+      animation: titleGlow 4s infinite alternate;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        margin-bottom: 20px;
+        letter-spacing: 1px;
+      }
+    }
+
+    @keyframes titleGlow {
+      0% { text-shadow: 0 0 10px rgba(110, 69, 226, 0.7); }
+      100% { text-shadow: 0 0 20px rgba(110, 69, 226, 0.7),
+                         0 0 40px rgba(110, 69, 226, 0.4); }
+    }
+
+    h1::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      animation: titleUnderline 4s infinite;
+    }
+
+    @keyframes titleUnderline {
+      0% { transform: scaleX(0); opacity: 0; }
+      50% { transform: scaleX(1); opacity: 1; }
+      100% { transform: scaleX(0); opacity: 0; }
+    }
+
+    .ground {
+      position: absolute;
+      bottom: -20px;
+      left: 0;
+      width: 100%;
+      height: 20px;
+      background: linear-gradient(to right, #2a2a2a, #1a1a1a, #2a2a2a);
+      border-radius: 0 0 12px 12px;
+      z-index: 2;
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
+    }
+
+    .jump-shadow {
+      position: absolute;
+      bottom: -25px;
+      left: 50%;
+      width: 40px;
+      height: 12px;
+      background: rgba(0, 0, 0, 0.4);
+      border-radius: 50%;
+      transform: translateX(-50%) scale(0.8);
+      filter: blur(4px);
+      opacity: 0;
+      transition: all 0.4s ease;
+    }
+
+    .jump .jump-shadow {
+      animation: shadowPulse 0.9s cubic-bezier(0.5, 0, 0.5, 1);
+    }
+
+    @keyframes shadowPulse {
+      0%, 100% { 
+        transform: translateX(-50%) scale(0.8);
+        opacity: 0.6;
+      }
+      50% { 
+        transform: translateX(-50%) scale(1.6);
+        opacity: 0.1;
+      }
+    }
+
+    .stars {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+      overflow: hidden;
+    }
+
+    .star {
+      position: absolute;
+      background: white;
+      border-radius: 50%;
+      animation: twinkle var(--duration, 3s) infinite alternate;
+      opacity: var(--opacity, 0.3);
+      width: var(--size, 2px);
+      height: var(--size, 2px);
+      top: var(--top);
+      left: var(--left);
+      filter: drop-shadow(0 0 3px white);
+    }
+
+    @keyframes twinkle {
+      0% { opacity: 0.2; transform: scale(0.8); }
+      50% { opacity: 1; transform: scale(1.2); }
+      100% { opacity: 0.2; transform: scale(0.8); }
+    }
+
+    .particle {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 1;
+      animation: particle-float 2s ease-out forwards;
+      filter: drop-shadow(0 0 3px currentColor);
+    }
+
+    @keyframes particle-float {
+      0% { 
+        transform: translate(0, 0) scale(1); 
+        opacity: 1;
+      }
+      100% { 
+        transform: translate(var(--tx, 0), var(--ty, -80px)) scale(0); 
+        opacity: 0;
+      }
+    }
+
+    .completion-message {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0);
+      background: rgba(15, 12, 41, 0.95);
+      padding: 20px;
+      border-radius: 15px;
+      border: 2px solid var(--accent);
+      box-shadow: 0 0 30px rgba(255, 126, 95, 0.5);
+      text-align: center;
+      z-index: 100;
+      opacity: 0;
+      transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      backdrop-filter: blur(10px);
+      width: 90%;
+      max-width: 400px;
+    }
+
+    @media (max-width: 600px) {
+      .completion-message {
+        padding: 15px;
+      }
+    }
+
+    .completion-message.show {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 1;
+    }
+
+    .completion-message h2 {
+      color: var(--secondary);
+      font-size: clamp(1.5rem, 6vw, 2rem);
+      margin-bottom: 15px;
+      text-shadow: 0 0 8px rgba(136, 211, 206, 0.7);
+    }
+
+    .completion-stats {
+      font-size: clamp(1rem, 4vw, 1.2rem);
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+
+    .completion-stats span {
+      color: var(--accent);
+      font-weight: bold;
+    }
+
+    .next-button {
+      background: linear-gradient(135deg, var(--accent), #ff9a5f);
+      border: none;
+      padding: 10px 25px;
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(0.9rem, 4vw, 1.1rem);
+      color: white;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(255, 126, 95, 0.4);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      width: 100%;
+      max-width: 200px;
+      margin: 0 auto;
+    }
+
+    .next-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(255, 126, 95, 0.6);
+    }
+
+    .next-button:active {
+      transform: translateY(1px);
+    }
+
+    /* Mobile keyboard avoidance */
+    @media (max-height: 600px) {
+      body {
+        padding-top: 20px;
+        justify-content: flex-start;
+      }
+      
+      .game-container {
+        margin-top: 20px;
+      }
+      
+      .input-container {
+        margin-bottom: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="stars" id="stars"></div>
+  
+  <div class="game-container">
+    <h1>COSMIC TYPING</h1>
+    <div class="progress-container">
+      <div class="progress-bar" id="progress"></div>
+    </div>
+   
+    <div class="text-display" id="text-display">
+      <div class="runner" id="runner">
+        <div class="jump-shadow"></div>
+      </div>
+      <span id="text-content"></span>
+    </div>
+    
+    <div class="input-container">
+      <input type="text" class="input-field" id="input-field" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Start typing...">
+    </div>
+    
+    <div class="stats">
+      <div class="stat-box">
+        <div class="stat-label">Speed</div>
+        <span class="stat-value" id="wpm">0</span>
+      </div>
+      <div class="stat-box">
+        <div class="stat-label">Accuracy</div>
+        <span class="stat-value" id="accuracy">100%</span>
+      </div>
+      <div class="stat-box">
+        <div class="stat-label">Time</div>
+        <span class="stat-value" id="time">0</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="completion-message" id="completion-message">
+    <h2>Mission Complete!</h2>
+    <div class="completion-stats">
+      Your stats: <span id="final-wpm">0</span> WPM | 
+      <span id="final-accuracy">100%</span> Accuracy | 
+      <span id="final-time">0</span>s
+    </div>
+    <button class="next-button" id="next-button">Next Challenge</button>
+  </div>
+
+  <script>
+    // Sample texts with increasing difficulty
+    const sampleTexts = [
+      "The quick brown fox jumps over the lazy dog. Pack my box with five dozen liquor jugs.",
+      "How vexingly quick daft zebras jump! Bright vixens jump; dozy fowl quack.",
+      "Crazy Fredrick bought many very exquisite opal jewels. Sixty zippers were quickly picked from the woven jute bag.",
+      "Amazingly few discotheques provide jukeboxes. The five boxing wizards jump quickly.",
+      "Quick zephyrs blow, vexing daft Jim. Sphinx of black quartz, judge my vow.",
+      "The explorer was frozen in his big kayak just after making queer discoveries.",
+      "Jinxed wizards pluck ivy from the big quilt. Pack my red box with five dozen quality jugs."
+    ];
+
+    // DOM elements
+    const textDisplay = document.getElementById('text-content');
+    const inputField = document.getElementById('input-field');
+    const runner = document.getElementById('runner');
+    const wpmElement = document.getElementById('wpm');
+    const accuracyElement = document.getElementById('accuracy');
+    const timeElement = document.getElementById('time');
+    const progressBar = document.getElementById('progress');
+    const starsContainer = document.getElementById('stars');
+    const completionMessage = document.getElementById('completion-message');
+    const finalWpmElement = document.getElementById('final-wpm');
+    const finalAccuracyElement = document.getElementById('final-accuracy');
+    const finalTimeElement = document.getElementById('final-time');
+    const nextButton = document.getElementById('next-button');
+
+    // Game state
+    let currentText = '';
+    let typedText = '';
+    let startTime = null;
+    let timerInterval = null;
+    let correctChars = 0;
+    let totalChars = 0;
+    let currentPosition = 0;
+    let lastPosition = 0;
+
+    // Create starry background
+    function createStars() {
+      for (let i = 0; i < 100; i++) {
+        const star = document.createElement('div');
+        star.className = 'star';
+        star.style.setProperty('--top', `${Math.random() * 100}%`);
+        star.style.setProperty('--left', `${Math.random() * 100}%`);
+        star.style.setProperty('--size', `${Math.random() * 3 + 1}px`);
+        star.style.setProperty('--opacity', Math.random() * 0.7 + 0.3);
+        star.style.setProperty('--duration', `${2 + Math.random() * 4}s`);
+        starsContainer.appendChild(star);
+      }
+    }
+
+    // Create floating particles
+    function createParticles(x, y, color, count = 15) {
+      for (let i = 0; i < count; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        particle.style.left = `${x}px`;
+        particle.style.top = `${y}px`;
+        particle.style.backgroundColor = color;
+        particle.style.setProperty('--tx', `${Math.random() * 80 - 40}px`);
+        particle.style.setProperty('--ty', `${-Math.random() * 120 - 40}px`);
+        particle.style.animationDuration = `${1 + Math.random() * 2}s`;
+        document.body.appendChild(particle);
+        
+        // Remove particle after animation
+        setTimeout(() => particle.remove(), 2000);
+      }
+    }
+
+    // Initialize the game
+    function initGame() {
+      currentText = sampleTexts[Math.floor(Math.random() * sampleTexts.length)];
+      typedText = '';
+      correctChars = 0;
+      totalChars = 0;
+      currentPosition = 0;
+      lastPosition = 0;
+      startTime = null;
+      if (timerInterval) clearInterval(timerInterval);
+      
+      renderText();
+      updateRunnerPosition();
+
+      inputField.value = '';
+      inputField.focus();
+      completionMessage.classList.remove('show');
+      runner.style.left = '0px';
+    }
+
+    // Render the text with styling
+    function renderText() {
+      let html = '';
+      
+      // Already typed characters
+      html += `<span class="typed-text">${currentText.substring(0, typedText.length)}</span>`;
+      
+      // Current character
+      if (typedText.length < currentText.length) {
+        html += `<span class="current-char">${currentText[typedText.length]}</span>`;
+      }
+      
+      // Remaining characters
+      html += `<span class="untyped-text">${currentText.substring(typedText.length + 1)}</span>`;
+      
+      textDisplay.innerHTML = html;
+      
+      // Update progress
+      const progress = (typedText.length / currentText.length) * 100;
+      progressBar.style.width = `${progress}%`;
+    }
+
+    // Update runner position based on typing progress
+    function updateRunnerPosition() {
+      if (!textDisplay.firstChild) return;
+      
+      // Get position of current character
+      const textNode = textDisplay.querySelector('.current-char') || 
+                      textDisplay.querySelector('.typed-text:last-child');
+      
+      if (textNode) {
+        const rect = textNode.getBoundingClientRect();
+        const containerRect = textDisplay.getBoundingClientRect();
+        
+        // Calculate position relative to container
+        const leftPos = rect.left - containerRect.left + (rect.width / 2) - 25;
+        
+        // Only move forward, not backward
+        if (leftPos > parseInt(runner.style.left || 0)) {
+          runner.style.left = `${leftPos}px`;
+          
+          // Only jump if we've moved a significant distance
+          if (Math.abs(leftPos - lastPosition) > 20) {
+            runner.classList.add('jump');
+            setTimeout(() => runner.classList.remove('jump'), 900);
+            lastPosition = leftPos;
+            
+            // Create particles at jump position
+            createParticles(
+              rect.left + rect.width/2,
+              containerRect.bottom - 50,
+              '#ff7e5f'
+            );
+          }
+        }
+      }
+    }
+
+    // Create celebration effects
+    function createCelebration() {
+      // Big jump
+      runner.classList.add('jump');
+      setTimeout(() => runner.classList.remove('jump'), 1000);
+      
+      // Confetti explosion
+      for (let i = 0; i < 80; i++) {
+        setTimeout(() => {
+          const confetti = document.createElement('div');
+          confetti.className = 'confetti';
+          confetti.style.left = `${Math.random() * 100}%`;
+          confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 60%)`;
+          confetti.style.animationDuration = `${1 + Math.random() * 2}s`;
+          confetti.style.width = `${Math.random() * 10 + 4}px`;
+          confetti.style.height = confetti.style.width;
+          document.body.appendChild(confetti);
+          
+          // Remove confetti after animation
+          setTimeout(() => confetti.remove(), 3000);
+        }, i * 30);
+      }
+      
+      // Show completion message
+      finalWpmElement.textContent = wpmElement.textContent;
+      finalAccuracyElement.textContent = accuracyElement.textContent;
+      finalTimeElement.textContent = timeElement.textContent;
+      
+      setTimeout(() => {
+        completionMessage.classList.add('show');
+      }, 800);
+    }
+
+    // Calculate and update stats
+    function updateStats() {
+      if (!startTime) {
+        startTime = Date.now();
+        timerInterval = setInterval(updateStats, 1000);
+        return;
+      }
+      
+      const currentTime = Date.now();
+      const elapsedSeconds = (currentTime - startTime) / 1000;
+      timeElement.textContent = Math.floor(elapsedSeconds);
+      
+      if (typedText.length > 0) {
+        // Calculate WPM (5 characters = 1 word)
+        const words = typedText.length / 5;
+        const minutes = elapsedSeconds / 60;
+        const wpm = Math.floor(words / minutes);
+        wpmElement.textContent = wpm;
+        
+        // Calculate accuracy
+        const accuracy = Math.floor((correctChars / totalChars) * 100);
+        accuracyElement.textContent = `${accuracy}%`;
+      }
+    }
+
+    // Handle input events
+    inputField.addEventListener('input', (e) => {
+      const inputText = e.target.value;
+      
+      // Start timer on first input
+      if (!startTime) {
+        startTime = Date.now();
+        timerInterval = setInterval(updateStats, 1000);
+      }
+      
+      // Check if input matches current text
+      if (currentText.startsWith(inputText)) {
+        typedText = inputText;
+        correctChars = inputText.length;
+        
+        // Create typing particles for correct input
+        if (inputText.length > 0) {
+          const cursorPos = inputField.getBoundingClientRect();
+          createParticles(
+            cursorPos.left + cursorPos.width * (inputText.length / currentText.length),
+            cursorPos.top + cursorPos.height/2,
+            '#88d3ce',
+            3
+          );
+        }
+      } else {
+        // Allow backspace but don't count incorrect characters
+        if (inputText.length < typedText.length) {
+          typedText = inputText;
+        } else {
+          // Create red particles for incorrect input
+          const cursorPos = inputField.getBoundingClientRect();
+          createParticles(
+            cursorPos.left + cursorPos.width * (inputText.length / currentText.length),
+            cursorPos.top + cursorPos.height/2,
+            '#ff3a3a',
+            5
+          );
+        }
+      }
+      
+      totalChars = inputText.length;
+      renderText();
+      updateRunnerPosition();
+      updateStats();
+      
+      // Check if text is completed
+      if (typedText === currentText) {
+        createCelebration();
+      }
+    });
+
+    // Next button handler
+    nextButton.addEventListener('click', initGame);
+
+    // Initialize the game when page loads
+    window.addEventListener('load', () => {
+      createStars();
+      initGame();
+    });
+
+    // Focus input field when clicking anywhere
+    document.addEventListener('click', () => {
+      if (!completionMessage.classList.contains('show')) {
+        inputField.focus();
+      }
+    });
+
+    // Handle mobile keyboard appearance
+    window.addEventListener('resize', () => {
+      if (window.innerHeight < 600) {
+        document.body.style.paddingTop = '20px';
+        document.body.style.justifyContent = 'flex-start';
+      } else {
+        document.body.style.paddingTop = '';
+        document.body.style.justifyContent = 'center';
+      }
+    });
+
+
+        // Disable right click
+        document.addEventListener("contextmenu", (e) => e.preventDefault());
+
+// Disable key shortcuts like F12, Ctrl+U, Ctrl+Shift+I
+document.addEventListener("keydown", (e) => {
+  if (
+    e.key === "F12" ||
+    (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === "i") ||
+    (e.ctrlKey && e.key.toLowerCase() === "u") ||
+    (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === "j") ||
+    (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === "c")
+  ) {
+    e.preventDefault();
+    alert("Action blocked!");
+  }
+});
+
+// Optional: Try to block DevTools with loop (not reliable)
+setInterval(() => {
+  const before = new Date().getTime();
+  debugger;
+  const after = new Date().getTime();
+  if (after - before > 100) {
+    document.body.innerHTML = "<h1>DevTools Detected. Access Denied.</h1>";
+  }
+}, 1000);
+  </script>
+</body>
+</html>
