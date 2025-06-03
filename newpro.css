@@ -1,73 +1,140 @@
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #e3f2fd;
-
+/* Preloader Styles (Keeping this from my suggestion as it's self-contained) */
+#preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #0a192f; /* Dark theme preloader */
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.7s ease-out, visibility 0.7s ease-out 0.3s;
 }
+
+#preloader.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.loader-content {
+  text-align: center;
+  color: #64ffda; /* Accent color */
+}
+
+.fancy-spinner {
+  width: 70px;
+  height: 70px;
+  position: relative;
+  margin: 0 auto 25px auto;
+}
+.fancy-spinner div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 6px solid transparent;
+  border-radius: 50%;
+  animation: fancy-spin 1.5s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+}
+.fancy-spinner div:nth-child(1) { border-top-color: #64ffda; animation-delay: -0.45s; }
+.fancy-spinner div:nth-child(2) { border-right-color: #4d94ff; animation-delay: -0.3s; }
+.fancy-spinner div:nth-child(3) { border-bottom-color: #8A2BE2; animation-delay: -0.15s; }
+
+@keyframes fancy-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+/* Fallback spinner if fancy is not used */
+.spinner {
+  width: 60px;
+  height: 60px;
+  border: 5px solid rgba(100, 255, 218, 0.2);
+  border-top-color: #64ffda;
+  border-radius: 50%;
+  animation: spin 1.2s linear infinite;
+  margin: 0 auto 25px auto;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.loader-content p {
+  font-size: 1.3em;
+  letter-spacing: 1.5px;
+  font-weight: 300;
+}
+
+/* Global and Body Styles */
 html, body {
-  overflow-x: hidden;
+  overflow-x: hidden; /* Prevent horizontal scroll */
   width: 100%;
   margin: 0;
   padding: 0;
-  scroll-behavior: smooth; /* Smooth scrolling */
+  scroll-behavior: smooth;
 }
-/* Make sure all sections fit within the viewport */
+
+body {
+  font-family: 'Arial', sans-serif; /* Your preferred font */
+  /* Default background - sections can override this */
+  /* background-color: #e3f2fd; /* Light theme from your CSS */
+  background-color: #0a192f; /* Dark theme default, sections like About override it */
+  color: #333; /* Default text color, overridden by sections */
+  /* padding-top: 70px; /* Only if navbar is fixed and NOT sticky, and has a fixed height of 70px. 
+                           Your navbar is sticky, so body padding might not be needed or might interfere. 
+                           Test this carefully. */
+}
+
 * {
-  max-width: 100%;
+  max-width: 100%; /* Careful with this; it can constrain elements unexpectedly. Usually applied more selectively. */
   box-sizing: border-box;
 }
-canvas {
+
+/* Canvas Default Styling - specific canvases can have more specific styles */
+canvas { /* General canvas styling, could be for background effects not part of a specific particle system */
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: -1;
+  z-index: -1; /* Default to background */
 }
-.particles-canvas {
+
+.particles-canvas { /* For hero particle system - above general canvas default z-index */
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 0;
+  z-index: 0; /* Behind hero text but above absolute background */
 }
 
-.section {/* for galexy */
-  position: relative;
-  overflow: hidden;
-}
-.overlay {
-  position: relative;
-  z-index: 2;
-  color: white;
-  padding: 20px;
-  pointer-events: none;
-}
-
+/* Navbar Styling (Using your preferred sticky navbar) */
 .navbar {
   top: 0;
-  position: sticky; /* Ensure sticky positioning */
-  z-index: 1000; /* Ensure the navbar stays above other content */
-  background: transparent;
-  backdrop-filter: blur(10px); /* Optional: For frosted glass effect */
+  position: sticky;
+  z-index: 1000;
+  /* background: transparent; /* This will be overridden by background-color if both present */
+  backdrop-filter: blur(10px); /* Frosted glass effect */
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #1d5dbf;
+  background-color: #1d5dbf; /* Your blue navbar */
   padding: 15px 40px;
   color: white;
   animation: slideDown 0.5s ease-out;
+  /* height: auto; /* Or a fixed height if you prefer, e.g., height: 70px; */
 }
-
 
 .logo {
-  font-size: 22px;
+  font-size: 22px; /* Your logo size */
   font-weight: bold;
+  color: white; /* Ensure logo color matches navbar text */
+  text-decoration: none; /* Usually good for logos */
   transition: transform 0.3s ease;
 }
-
 .logo:hover {
   transform: scale(1.05);
 }
@@ -75,37 +142,47 @@ canvas {
 .nav-links {
   list-style: none;
   display: flex;
-  gap: 20px;
+  gap: 20px; /* Your preferred gap */
+  margin: 0; /* Reset margin */
+  padding: 0; /* Reset padding */
 }
-
 .nav-links li {
-  display: inline;
+  display: inline; /* Your preference */
 }
-
 .nav-links a {
   text-decoration: none;
-  color: white;
-  font-size: 16px;
+  color: white; /* Your nav link color */
+  font-size: 16px; /* Your nav link font size */
   position: relative;
+  padding: 0.5rem 0; /* Consistent padding for clickable area */
   transition: color 0.3s ease;
 }
-
-/* Hover underline animation */
-.nav-links a::after {
+.nav-links a::after { /* Underline effect */
   content: '';
   position: absolute;
-  bottom: -5px;
+  bottom: -5px; /* Your preferred position */
   left: 0;
   width: 0;
   height: 2px;
-  background-color: white;
+  background-color: white; /* Your underline color */
   transition: width 0.3s ease;
 }
-
+.nav-links a:hover {
+  color: white; /* Or a slightly different hover color if desired */
+}
 .nav-links a:hover::after {
   width: 100%;
 }
+/* .nav-links a.active-link { /* For JS to indicate current section */
+/*    color: #64ffda; /* Example active color */
+/* } */
+/* .nav-links a.active-link::after { */
+/*    width: 100%; */
+/*    background-color: #64ffda; /* Example active underline color */
+/* } */
 
+
+/* Menu Toggle Button (Your preferred style) */
 .menu-toggle {
   display: none;
   flex-direction: column;
@@ -113,70 +190,68 @@ canvas {
   background: transparent;
   border: none;
   padding: 5px;
+  z-index: 1001; /* Ensure it's above expanded nav links if they overlap */
 }
-
 .menu-toggle span {
-  background-color: white;
+  background-color: white; /* Color of hamburger lines */
   height: 3px;
   width: 25px;
   margin: 3px 0;
   transition: all 0.3s ease;
-  transform-origin: left center;
+  transform-origin: left center; /* Your animation origin */
+  border-radius: 2px; /* Optional: slightly rounded lines */
 }
-
-/* Hamburger to X animation */
+/* Hamburger to X animation (Your preferred style) */
 .menu-toggle.active span:nth-child(1) {
   transform: rotate(45deg) translate(4px, -1px);
 }
-
 .menu-toggle.active span:nth-child(2) {
   opacity: 0;
 }
-
 .menu-toggle.active span:nth-child(3) {
   transform: rotate(-45deg) translate(4px, 1px);
 }
 
-/* Responsive Design */
+/* Navbar Responsive Design (Your preferred style) */
 @media (max-width: 768px) {
   .menu-toggle {
       display: flex;
   }
-
   .nav-links {
-    border-radius: 50px;
-      position: absolute;
-     padding: 0;
-      top: 90px;
-      right: 0;
-      width: 80%;
-      margin-right: 30px;
-      background-color: black;
-      flex-direction: column;
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.3s ease-out;
-      z-index: 99;
+    border-radius: 50px; /* Your curved mobile menu */
+    position: absolute;
+    padding: 0; /* Initial padding before active */
+    top: 70px; /* Adjust based on your actual navbar height on mobile */
+               /* If navbar height is 60px (15+15 padding + content), then top: 60px; */
+    right: 20px; /* Adjust positioning as desired */
+    width: 80%; /* Your preferred width */
+    /* margin-right: 30px; /* If using right:20px, margin-right might not be needed */
+    background-color: black; /* Your mobile menu background */
+    flex-direction: column;
+    align-items: center; /* Center items in dropdown */
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out, padding 0.3s ease-out; /* Added padding transition */
+    z-index: 999; /* Below navbar but above content */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
   }
-
   .nav-links.active {
-      max-height: 500px;
-      padding: 20px;
+    max-height: 500px; /* Ample height for links */
+    padding: 20px 0; /* Vertical padding when active */
   }
-
   .nav-links li {
-      opacity: 0;
-      transform: translateX(20px);
-      transition: all 0.3s ease;
-      padding: 10px;
+    opacity: 0;
+    transform: translateX(20px);
+    transition: all 0.3s ease;
+    padding: 10px 0; /* Vertical padding for list items */
+    width: 100%; /* Make list items take full width for centering text */
+    text-align: center; /* Center text within li */
   }
-
   .nav-links.active li {
-      opacity: 1;
-      transform: translateX(0);
+    opacity: 1;
+    transform: translateX(0);
   }
-
-  /* Staggered animation delays */
+  /* Staggered animation delays (Your preferred style) */
   .nav-links.active li:nth-child(1) { transition-delay: 0.15s; }
   .nav-links.active li:nth-child(2) { transition-delay: 0.3s; }
   .nav-links.active li:nth-child(3) { transition-delay: 0.45s; }
@@ -185,1025 +260,569 @@ canvas {
   .nav-links.active li:nth-child(6) { transition-delay: 0.9s; }
 }
 
-@keyframes slideDown {
-  from {
-      opacity: 0;
-      transform: translateY(-20px);
-  }
-  to {
-      opacity: 1;
-      transform: translateY(0);
-  }
+@keyframes slideDown { /* Navbar intro animation */
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-/* Hero Section */
-/* Hero Section */
+/* General Reveal Animation (Your preferred version) */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px); /* Your preferred Y offset */
+  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out; /* Combined transitions */
+}
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Hero Section (Your Styles) */
 .hero {
   min-height: 100vh;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; /* Or center if image is also centered */
   align-items: center;
-  padding: 2rem;
-  background: #000;
+  padding: 2rem; /* Your padding */
+  background: #000; /* Your hero background */
   position: relative;
   overflow: hidden;
+  /* padding-top should consider navbar height if navbar is not sticky or transparent */
 }
-
 .hero-text {
   position: relative;
-  color: #285da7;
+  color: #285da7; /* Your hero text color */
   z-index: 1;
   max-width: 600px;
 }
-
-#typing-text {
+#typing-text { /* Main name typing */
   font-size: clamp(2rem, 5vw, 4rem);
   margin-bottom: 1rem;
   overflow: hidden;
   white-space: nowrap;
-  border-right: 3px solid #285da7;
-  animation: typing-name 2s steps(18, end) forwards,
-             blink-caret 0.75s step-end infinite;
+  border-right: 3px solid #285da7; /* Caret */
+  animation: typing-name 2s steps(18, end) forwards, blink-caret 0.75s step-end infinite;
 }
-
-.typing-animation {
+.typing-animation { /* Secondary role typing */
   color: #fff;
   font-size: clamp(1.5rem, 3vw, 2rem);
   margin-top: 1rem;
   white-space: nowrap;
   overflow: hidden;
-  display: inline-block;
+  display: inline-block; /* Important for JS typing simulation */
 }
-
-.hero img {
+.hero img { /* If you add a hero image */
   max-width: 400px;
   width: 100%;
   border-radius: 50%;
   animation: float 3s ease-in-out infinite;
   box-shadow: 0 0 30px rgba(40, 93, 167, 0.4);
+  z-index: 1; /* Ensure image is above particles-canvas if it has z-index:0 */
+}
+@keyframes typing-name { from { width: 0 } to { width: 100% } }
+@keyframes blink-caret { from, to { border-color: transparent } 50% { border-color: #285da7 } }
+@keyframes float { 0% { transform: translateY(0px) } 50% { transform: translateY(-20px) } 100% { transform: translateY(0px) } }
+
+@media (max-width: 1024px) { /* Hero Responsive */
+  .hero { flex-direction: column; text-align: center; padding: 4rem 2rem; }
+  #typing-text { animation: none; border-right: none; /* Name fully visible */ }
+  .hero img { max-width: 300px; margin-top: 2rem; }
+  .typing-animation { font-size: 1.2rem; }
 }
 
-/* Animations */
-@keyframes typing-name {
-  from { width: 0 }
-  to { width: 100% }
-}
-
-@keyframes blink-caret {
-  from, to { border-color: transparent }
-  50% { border-color: #285da7 }
-}
-
-@keyframes float {
-  0% { transform: translateY(0px) }
-  50% { transform: translateY(-20px) }
-  100% { transform: translateY(0px) }
-}
-
-/* Responsive Design */
-@media (max-width: 1024px) {
-  .hero {
-      flex-direction: column;
-      text-align: center;
-      padding: 4rem 2rem;
-  }
-
-  #typing-text {
-      animation: none;
-      border-right: none;
-  }
-
-  .hero img {
-      max-width: 300px;
-      margin-top: 2rem;
-  }
-
-  .typing-animation {
-      font-size: 1.2rem;
-  }
-}
-
-/*about222222222222222222222222222222222222222222222222222222222222222222222222222*/
-body {
-  font-family: 'Arial', sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #f8f9fa;
-  color: #333;
-}
-
-/* About Section Styles */
+/* About Section (Your Styles) */
+/* Note: This section uses a light theme background, contrasting with the default dark body */
 .about-section {
   max-width: 1300px;
   margin: 50px auto;
   padding: 40px 20px;
   position: relative;
   overflow: hidden;
-  background: linear-gradient(45deg, #f8f9fa 0%, #e9ecef 100%);
+  background: linear-gradient(45deg, #f8f9fa 0%, #e9ecef 100%); /* Light background */
+  color: #333; /* Text color for light background */
 }
-
 .about-section::before {
   content: '';
   position: absolute;
-  width: 200vw;
-  height: 200vh;
+  width: 200vw; height: 200vh;
   background: linear-gradient(45deg, transparent 50%, rgba(29,93,191,0.05) 50%);
   background-size: 60px 60px;
   animation: moveBG 120s linear infinite;
   z-index: 0;
 }
-
-h2 {
-  color: #1d5dbf;
+.about-section h2 { /* Section specific h2 */
+  color: #1d5dbf; /* Blue for this section */
   font-size: 2.5rem;
   margin-bottom: 1rem;
   text-align: center;
 }
-
-.subtitle {
+.about-section .subtitle {
   color: #6c757d;
   font-size: 1.1rem;
   text-align: center;
   margin-bottom: 40px;
 }
-
-.about-content {
-  display: flex;
-  justify-content: space-between;
-  gap: 40px;
-  position: relative;
-  z-index: 1;
-}
-
-.about-text {
-  flex: 1;
-  max-width: 600px;
-}
-
-.about-text p {
-  line-height: 1.8;
-  margin-bottom: 20px;
-  font-size: 1.1rem;
-}
-
+.about-content { display: flex; justify-content: space-between; gap: 40px; position: relative; z-index: 1; }
+.about-text { flex: 1; max-width: 600px; }
+.about-text p { line-height: 1.8; margin-bottom: 20px; font-size: 1.1rem; color: #333; /* Ensure text color for this section */}
 .resume-btn {
-  background-color: #1d5dbf;
-  color: white;
-  border: none;
-  padding: 12px 24px;
-  font-size: 1rem;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: all 0.3s ease;
+  background-color: #1d5dbf; color: white; border: none;
+  padding: 12px 24px; font-size: 1rem; border-radius: 5px;
+  cursor: pointer; transition: all 0.3s ease;
 }
-
-.resume-btn:hover {
-  background-color: #144a9f;
-  transform: translateY(-2px);
-}
-
-.about-skills {
-  flex: 1;
-  display: grid;
-  gap: 20px;
-  max-width: 500px;
-}
-
-.skill-card {
-  background: white;
-  padding: 25px;
-  border-radius: 10px;
+.resume-btn:hover { background-color: #144a9f; transform: translateY(-2px); }
+.about-skills { flex: 1; display: grid; gap: 20px; max-width: 500px; }
+.skill-card { /* About section skill cards */
+  background: white; padding: 25px; border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
   transform: perspective(1000px) rotateX(0) rotateY(0);
 }
-
 .skill-card:hover {
   transform: perspective(1000px) rotateX(2deg) rotateY(2deg) translateY(-5px);
   box-shadow: 0 8px 15px rgba(0,0,0,0.15);
 }
-
-.skill-card h3 {
-  color: #1d5dbf;
-  margin: 0 0 10px 0;
-  font-size: 1.3rem;
+.skill-card h3 { color: #1d5dbf; margin: 0 0 10px 0; font-size: 1.3rem; }
+@keyframes moveBG { from { transform: translate(0, 0) } to { transform: translate(-100px, -100px) } }
+@media (max-width: 768px) { /* About Responsive */
+  .about-content { flex-direction: column; }
+  .about-section::before { animation-duration: 60s; }
 }
 
-/* Animations */
-@keyframes moveBG {
-  from { transform: translate(0, 0) }
-  to { transform: translate(-100px, -100px) }
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-  .about-content {
-      flex-direction: column;
-  }
-
-  .about-section::before {
-      animation-duration: 60s;
-  }
-}
-
-
-/* education with response 333333333333333333333333333333333333333333333333333333333333333333*/
-
-/* Education Section Styles */
- /* Education Section */
- #edu-section {
-  min-height: 100vh;
+/* Education Section (Your Styles - Dark Theme) */
+#edu-section {
+  min-height: 100vh; /* Or auto if content dictates */
   padding: 4rem 2rem;
   position: relative;
   overflow: hidden;
-  background: #0a192f;
+  background: #0a192f; /* Dark background */
+  color: #ccd6f6; /* Light text for dark background */
 }
-
-/* Floating Particles */
-.edu-particles {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  pointer-events: none;
-  z-index: 0;
+#edu-section h2 { /* Section specific h2 */
+  color: #64ffda; /* Accent color for dark theme */
+  text-align: center; font-size: 2.5rem; margin-bottom: 2rem; /* More margin for title */
 }
-
+.edu-particles { position: absolute; width: 100%; height: 100%; top: 0; left: 0; pointer-events: none; z-index: 0; }
 .edu-particle {
-  position: absolute;
-  background: rgba(100, 255, 218, 0.5);
-  border-radius: 50%;
-  animation: edu-float 20s infinite linear;
+  position: absolute; background: rgba(100, 255, 218, 0.5); /* Teal particles */
+  border-radius: 50%; animation: edu-float 20s infinite linear;
 }
-
-/* Timeline Styles */
-.edu-timeline {
-  position: relative;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 40px 0;
-  z-index: 1;
-}
-
+.edu-timeline { position: relative; max-width: 1200px; margin: 0 auto; padding: 40px 0; z-index: 1; }
 .edu-timeline::before {
-  content: '';
-  position: absolute;
-  left: 50%;
-  width: 2px;
-  height: 100%;
-  background: #64ffda;
+  content: ''; position: absolute; left: 50%; width: 2px; height: 100%;
+  background: #64ffda; /* Teal timeline */
   transform: translateX(-50%);
 }
-
-.edu-timeline-item {
-  position: relative;
-  margin-bottom: 50px;
-  width: 100%;
-}
-
+.edu-timeline-item { position: relative; margin-bottom: 50px; width: 100%; }
 .edu-timeline-card {
-  width: 40%;
-  padding: 20px;
-  color:white;
-  background: rgba(17, 34, 64, 0.8);
-  border-radius: 8px;
-  backdrop-filter: blur(5px);
-  position: relative;
-  transition: transform 0.3s ease;
+  width: 40%; padding: 20px; color: #ccd6f6; /* Light text */
+  background: rgba(17, 34, 64, 0.8); /* Dark card background with blur */
+  border-radius: 8px; backdrop-filter: blur(5px);
+  position: relative; transition: transform 0.3s ease;
+  border: 1px solid rgba(100, 255, 218, 0.2); /* Subtle border */
 }
-
-.edu-timeline-card:hover {
-  transform: translateY(-5px);
-}
-
+.edu-timeline-card h3 { color: #64ffda; margin-bottom: 0.5rem;} /* Teal headings */
+.edu-timeline-card p { color: #fafbfd; margin-bottom: 0.3rem; font-size: 0.95rem; text-align: left;} /* Softer text, aligned left */
+.edu-timeline-card:hover { transform: translateY(-5px); }
 .edu-timeline-marker {
-  position: absolute;
-  left: 50%;
-  top: 25px;
-  width: 20px;
-  height: 20px;
-  background: #64ffda;
-  border-radius: 50%;
+  position: absolute; left: 50%; top: 25px; width: 20px; height: 20px;
+  background: #64ffda; border-radius: 50%;
   transform: translateX(-50%);
   box-shadow: 0 0 20px rgba(100, 255, 218, 0.3);
 }
-
-@keyframes edu-float {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  25% { transform: translateY(-20px) rotate(10deg); }
-  50% { transform: translateY(10px) rotate(-10deg); }
-  75% { transform: translateY(-10px) rotate(5deg); }
+@keyframes edu-float { /* edu-particle animation */
+  0%, 100% { transform: translateY(0) rotate(0deg) scale(1); opacity: 0.5; }
+  25% { transform: translateY(-20px) rotate(10deg) scale(1.2); opacity: 0.8; }
+  50% { transform: translateY(10px) rotate(-10deg) scale(0.8); opacity: 0.3; }
+  75% { transform: translateY(-10px) rotate(5deg) scale(1.1); opacity: 0.6; }
+}
+@media (max-width: 768px) { /* Education Responsive */
+  .edu-timeline::before { left: 20px; }
+  .edu-timeline-card { width: auto; margin-left: 40px !important; margin-right: 20px !important; }
+  .edu-timeline-marker { left: 20px; }
 }
 
-@media (max-width: 768px) {
-  .edu-timeline::before {
-      left: 20px;
-  }
-  
-  .edu-timeline-card {
-      width: auto;
-      margin-left: 40px !important;
-      margin-right: 20px !important;
-  }
-  
-  .edu-timeline-marker {
-      left: 20px;
-  }
-}
-
-
-
-
-.vision img{
-  height: 320px;
-}
-.vision p{
-  font-style: italic;
-  font-size: 1.5rem;
-}
-/*work exp*/
-
- .exp{
-  display: flex;
-}
-  /*  experience card animation44444444444444444444444444444444444444444444444444444444444444 */
-  .card-title {
-    color: #262626;
-    font-size: 1.5em;
-    line-height: normal;
-    font-weight: 700;
-    margin-bottom: 0.5em;
-  }
-  
-  .small-desc {
-    font-size: 1em;
-    font-weight: 400;
-    line-height: 1.5em;
-    color: #452c2c;
-  }
-  
-  
-  .go-corner {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    width: 2em;
-    height: 2em;
-    overflow: hidden;
-    top: 0;
-    right: 0;
-    background: linear-gradient(135deg, #6293c8, #125dd6);
-    border-radius: 0 4px 0 32px;
-  }
-  
-  .go-arrow {
-    margin-top: -4px;
-    margin-right: -4px;
-    color: white;
-    font-family: courier;
-  }
-  
-  .card {
-    display: block;
-    position: relative;
-    background-color: #80bac4;
-    border-radius: 10px;
-    padding: 2em 1.2em;
-    margin: 12px;
-    text-decoration: none;
-    z-index: 0;
-    overflow: hidden;
-    background: linear-gradient(to bottom,rgb(109, 228, 249),rgb(153, 236, 153));
-    font-family: Arial, Helvetica, sans-serif;
-  }
-  
-  .card:before {
-    content: '';
-    position: absolute;
-    z-index: -1;
-    top: -16px;
-    right: -16px;
-    background: linear-gradient(15deg, #5fa5ef, #496799);
-    height: 36px;
-    width: 36px;
-    border-radius: 32px;
-    transform: scale(1);
-    transform-origin: 50% 50%;
-    transition: transform 1s ease-out;  
-  }
-  
-  .card:hover:before {
-    transform: scale(58);
-  }
-  
-  .card:hover .small-desc {
-    transition: all 0.5s ease-out;
-    color: rgba(242, 238, 238, 0.8);
-    
-  }
-  
-  .card:hover .card-title {
-    transition: all 0.5s ease-out;
-    color: white;
-    
-  }
-  /*tolls skills here---*/
-  :root {
-    --primary-color: #007bff;
-    --secondary-color: #ff5733;
-    --success-color: #28a745;
-    --react-color: #e83e8c;
-    --python-color: #f39c12;
-    --sql-color: #8e44ad;
-    --circle-size: 100px;
-    --text-primary: #333;
-    --text-secondary: #666;
-}
-/* body for project text purpose skilllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll*/
-/* language skills tools icons end here*/
-:root {
-  --primary-color: #4a90e2;
-  --secondary-color: #50e3c2;
-  --success-color: #7ed321;
-  --react-color: #61dafb;
-  --sql-color: #f5a623;
-  --python-color: #3572A5;
-}
-
-body {
-  font-family: 'Arial', sans-serif;
-  background: #0a192f;
-}
-
-.skils {
-  position: relative;
+/* Experience Section (Your Styles - Vision and Cards) */
+#experience-section { /* Assuming this section uses the dark theme */
+  background-color: #0a192f; /* Dark theme */
   padding: 4rem 2rem;
-  min-height: 100vh;
-  overflow: hidden;
+  color: #ccd6f6;
+}
+#experience-section h2 { color: #64ffda; } /* Teal title for dark theme */
+.vision { display: flex; flex-direction: column; align-items: center; text-align: center; margin-bottom: 3rem;}
+.vision img{ height: auto; max-height: 320px; max-width: 100%; margin-bottom: 1rem;}
+.vision p{ font-style: italic; font-size: 1.5rem; color: #8892b0; }
+
+.exp{ display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem; } /* Use gap and wrap */
+.card { /* Experience Card */
+  display: block; position: relative;
+  border-radius: 10px; padding: 2em 1.2em;
+  /* margin: 12px; /* Replaced by gap */
+  text-decoration: none; z-index: 0; overflow: hidden;
+  background: linear-gradient(to bottom, rgb(20, 40, 70), rgb(15, 30, 55)); /* Darker gradient for dark theme */
+  font-family: Arial, Helvetica, sans-serif;
+  width: calc(50% - 2rem); /* Two cards per row on larger screens, accounts for gap */
+  min-width: 300px; /* Minimum card width */
+  border: 1px solid rgba(100, 255, 218, 0.2); /* Subtle border */
+}
+.card:before { /* Hover effect background */
+  content: ''; position: absolute; z-index: -1;
+  top: -16px; right: -16px;
+  background: linear-gradient(15deg, #64ffda, #4d94ff); /* Teal/Blue gradient */
+  height: 36px; width: 36px; border-radius: 32px;
+  transform: scale(1); transform-origin: 50% 50%;
+  transition: transform 0.7s ease-out;  /* Smoother transition */
+}
+.card:hover:before { transform: scale(65); } /* Larger scale */
+.card .card-title { /* Card Title */
+  color: #64ffda; /* Teal title */
+  font-size: 1.3em; line-height: normal; font-weight: 700;
+  margin-bottom: 0.7em; transition: color 0.5s ease-out;
+}
+.card .small-desc { /* Card Description */
+  font-size: 0.95em; font-weight: 400; line-height: 1.6em;
+  color: #8892b0; /* Softer text color */
+  transition: color 0.5s ease-out;
+}
+.card:hover .small-desc { color: #090909; } /* Lighter on hover */
+.card:hover .card-title { color: white; }
+.go-corner { /* Corner arrow */
+  display: flex; align-items: center; justify-content: center;
+  position: absolute; width: 2.2em; height: 2.2em; overflow: hidden;
+  top: 0; right: 0;
+  background: #64ffda; /* Teal corner */
+  border-radius: 0 10px 0 32px; /* Match card radius */
+}
+.go-arrow { margin-top: -4px; margin-right: -4px; color: #0a192f; font-family: courier; font-size: 1.2em; }
+
+/* CSS Variables - Merged :root */
+:root {
+  /* Theme Colors (Dark theme focused) */
+  --primary-color: #64ffda;   /* Teal accent */
+  --secondary-color: #8892b0; /* Light Slate - for text */
+  --tertiary-color: #ccd6f6;  /* Lighter Slate - for main text */
+  --background-main: #0a192f; /* Navy */
+  --background-light: #112240;/* Lighter Navy - for cards */
+  --highlight-blue: #4d94ff;
+  --highlight-purple: #8A2BE2;
+
+  /* Skill-specific colors (can be used directly or for progress circles) */
+  --html-color: #E34F26;
+  --css-color: #1572B6;
+  --js-color: #F7DF1E;
+  --react-color: #61DAFB;
+  --python-color: #3572A5; /* Your Python blue */
+  --sql-color: #f5a623; /* Your SQL orange */
+  --c-lang-color: #A8B9CC;
+
+  /* Sizes */
+  --circle-size: 150px; /* Updated from 100px to match your .progress-circle */
+
+  /* Text (can be overridden by section) */
+  --text-primary: #ccd6f6; /* Default primary text for dark theme */
+  --text-secondary: #8892b0;/* Default secondary text for dark theme */
+
+  /* My original variables if still needed, check for conflicts */
+  /* --primary-color: #007bff; /* Blue - This was my original, now using your teal above */
+  /* --secondary-color: #ff5733; /* Orange - This was my original */
+  /* --success-color: #28a745; /* Green - This was my original */
+  /* --react-color: #e83e8c; /* Pink - This was my original, now using your light blue */
 }
 
-#skills-animation {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
+/* Skills Section (Your Styles - Dark Theme) */
+.skils { /* Section container */
+  position: relative; padding: 4rem 2rem;
+  min-height: 100vh; overflow: hidden;
+  background: var(--background-main); /* Use CSS var */
+  color: var(--text-tertiary); /* Default text */
 }
-
+.skils h2 { color: var(--primary-color); text-align: center; font-size: 2.5rem; margin-bottom: 1rem; }
+.skils > p { /* Direct child p for subtitle */
+  color: var(--text-secondary); text-align: center;
+  margin-bottom: 3rem; opacity: 0.8;
+}
+#skills-animation { /* Canvas for Three.js */
+  position: absolute; top: 0; left: 0;
+  width: 100%; height: 100%; z-index: 0;
+}
 .skills-container {
-  
-  position: relative;
-  z-index: 1;
-  max-width: 1200px;
-  margin: 0 auto;
-  display: grid;
+  position: relative; z-index: 1; max-width: 1200px;
+  margin: 0 auto; display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
-  padding: 2rem;
+  gap: 2rem; padding: 2rem 0; /* Removed side padding to use section padding */
 }
-.skills-container ,.skils p{
-  color: white;
+.skill { /* Individual skill card */
+  background: var(--background-light); /* Use CSS var for card background */
+  padding: 2rem; border-radius: 15px;
+  backdrop-filter: blur(10px); /* If background has image/texture */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid rgba(100, 255, 218, 0.15); /* Subtle border */
 }
-.skill {
-  background: rgba(255, 255, 255, 0.05);
-  padding: 2rem;
-  border-radius: 15px;
-  backdrop-filter: blur(10px);
-  transition: transform 0.3s ease;
-}
-
-.skill:hover {
-  transform: translateY(-10px);
-}
-
+.skill:hover { transform: translateY(-10px); box-shadow: 0 10px 25px rgba(100,255,218,0.1); }
 .progress-circle {
-  position: relative;
-  width: 150px;
-  height: 150px;
-  margin: 0 auto 1rem;
+  position: relative; width: var(--circle-size); height: var(--circle-size);
+  margin: 0 auto 1.5rem; /* More space below circle */
 }
-
-.circle-bg {
-  fill: none;
-  stroke: rgba(255, 255, 255, 0.1);
-  stroke-width: 8;
-}
-
+.progress-circle svg { display: block; } /* Ensure SVG fits */
+.circle-bg { fill: none; stroke: rgba(255, 255, 255, 0.1); stroke-width: 8; }
 .circle-fill {
-  fill: none;
-  stroke-width: 8;
-  stroke-linecap: round;
-  transform: rotate(-90deg);
-  transform-origin: 50% 50%;
-  transition: stroke-dashoffset 1s ease;
+  fill: none; stroke-width: 8; stroke-linecap: round;
+  transform: rotate(-90deg); transform-origin: 50% 50%;
+  transition: stroke-dashoffset 1s ease-out;
 }
-
 .circle-text {
-  font-size: 24px;
-  font-weight: bold;
-  fill: #fff;
-  dominant-baseline: middle;
-  text-anchor: middle;
+  font-size: 1.5em; /* Relative to parent */
+  font-weight: bold; fill: var(--c-lang-color);
+  dominant-baseline: middle; text-anchor: middle;
 }
-
-h2 {
-  text-align: center;
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
+.skill h3 { /* Skill title */
+  text-align: center; margin: 1rem 0 0.5rem; /* Adjusted margin */
+  color: var(--primary-color); font-size: 1.25rem;
 }
-
-p {
-  text-align: center;
-  margin-bottom: 3rem;
-  opacity: 0.8;
-}
-
-h3 {
-  text-align: center;
-  margin: 1rem 0;
-  color: var(--primary-color);
-}
-
-.skill p {
-  text-align: center;
-  opacity: 0.9;
-  line-height: 1.6;
+.skill p { /* Skill description */
+  text-align: center; opacity: 0.9; line-height: 1.6;
+  font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 0; /* Remove default p margin */
 }
 
 
-
-  /* end cert*55555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555/
- /* Slide Card Container */
+/* Certificates Section (Slide Card - Your Styles) */
 #slidecard {
-  min-height: 100vh;
-  width: 100%;
-  background: white;
+  min-height: 100vh; width: 100%;
+  /* background: white; /* Overridden by radial gradient */
   background: radial-gradient(125% 125% at 50% 10%, #fff 40%, rgb(107, 61, 235) 100%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  padding: 4rem 1rem; /* Add some padding */
+  color: #333; /* Default text for light part of gradient */
 }
-
-/* Section Title */
-#slidecard h1 {
-  font-size: 30px;
-  text-decoration: underline;
-  text-align: center;
+#slidecard h1 { /* Section title */
+  font-size: 2.5rem; /* Consistent title size */
+  text-decoration: underline; text-align: center;
+  color: #333; /* Ensure title is visible on light part */
+  margin-bottom: 2rem;
 }
-
-/* Swiper Container */
-.swiper.mySwiper {
-  margin: 20px auto;
-  width: 90%;
-  max-width: 300px;
+.swiper.mySwiper { /* Swiper container */
+  margin: 20px auto; width: 90%;
+  max-width: 320px; /* Slightly wider max */
   height: auto;
 }
-
-/* Individual Slide */
-.swiper-slide {
-  background: #c7d5d5;
-  border: 1px solid #8fcbd4;
-  box-shadow: inset 10px 10px 20px rgb(200, 188, 188), inset -10px -10px 10px rgb(200, 188, 188);
-  border-radius: 10px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 10px;
+.swiper-slide { /* Individual certificate card */
+  background: #e9eef0; /* Lighter background */
+  border: 1px solid #bdcdd0;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1), inset 0 0 10px rgba(0,0,0,0.05);
+  border-radius: 10px; overflow: hidden;
+  display: flex; flex-direction: column; align-items: center;
+  /* padding: 10px; /* Handled by image and boxx padding */
 }
-
-/* Image inside slide */
 .swiper-slide img {
-  width: 100%;
-  max-height: 150px;
+  width: 100%; height: 180px; /* Taller image */
   object-fit: cover;
-  border-radius: 5px;
+  /* border-radius: 5px; /* Radius applied to card */
 }
-
-/* Text Box inside Slide */
-.boxx {
-  text-align: center;
-  padding: 15px;
+.boxx { /* Text content area in card */
+  text-align: center; padding: 15px; width: 100%;
+  background-color: #f8f9fa; /* Slightly off-white for text box */
 }
-
-/* Text inside Box */
-.boxx p {
-  font-size: 14px;
-  letter-spacing: 1px;
+.boxx h3 { /* Certificate title */
+  color: #e02424; /* Your red color */
+  text-decoration: underline; font-weight: 800;
+  font-size: 1.1rem; margin-bottom: 0.5rem;
 }
-
-/* Links inside Box */
-.boxx a {
-  display: inline-block;
-  margin-top: 10px;
-  padding: 5px 10px;
-  background: #e02424;
-  color: white;
-  text-decoration: none;
-  border-radius: 5px;
-  font-weight: bold;
+.boxx p { /* Certificate description */
+  font-size: 0.9rem; letter-spacing: 0.5px; /* Less spacing */
+  line-height: 1.5; color: #555; margin-bottom: 1rem;
 }
-
-/* Heading inside Box */
-.boxx h3 {
-  color: #e02424;
-  text-decoration: underline;
-  font-weight: 800;
+.boxx a { /* Visit link */
+  display: inline-block; margin-top: 10px;
+  padding: 8px 15px; /* Better padding */
+  background: #e02424; color: white;
+  text-decoration: none; border-radius: 5px; font-weight: bold;
+  transition: background-color 0.3s ease;
 }
+.boxx a:hover { background-color: #c01212; }
+/* .swiper-wrapper { width: 80%; /* Usually not needed to style wrapper width directly */  
 
-/* Swiper Wrapper */
-.swiper-wrapper {
-  width: 80%;
+/* Project Section (Your Styles - Dark Theme) */
+.proj-section {
+  position: relative; min-height: 100vh; padding: 4rem 2rem;
+  background: #1a1a1a; /* Very dark, almost black */
+  overflow: hidden; color: #ffffff;
 }
-
-/* Prevent Horizontal Scroll */
-
-
-/* Responsive Design */
-@media screen and (max-width: 768px) {
-  .swiper.mySwiper {
-      max-width: 90%;
-      height: auto;
-  }
-
-  .swiper-slide {
-      padding: 15px;
-  }
-
-  .boxx p {
-      font-size: 12px;
-  }
-
-  .boxx a {
-      font-size: 12px;
-      padding: 5px;
-  }
+.proj-section h2.proj-title { /* Section title */
+  color: var(--highlight-purple); /* Purple accent */
+  font-size: 2.5rem; margin-bottom: 1rem; text-align: center;
 }
-
-@media screen and (max-width: 480px) {
-  .swiper.mySwiper {
-      max-width: 70%;
-  }
-
-  .swiper-slide img {
-      max-height: 120px;
-  }
-
-  .boxx h3 {
-      font-size: 16px;
-  }
-
-  .boxx p {
-      font-size: 12px;
-      padding: 10px;
-  }
-
-  .boxx a {
-      font-size: 10px;
-      padding: 5px;
-  }
+.proj-section .proj-subtitle { /* Section subtitle */
+  color: #ffffff; opacity: 0.8; text-align: center; margin-bottom: 3rem;
 }
-
-/*slider end card here----------------66666666666666666666666666666666666666666666666666666666666666666666666666666666----*/
-
- /* Project Section Styles -----------------------------------------------------------------------------------*/
- .proj-section {
-  position: relative;
-  min-height: 100vh;
-  padding: 4rem 2rem;
-  background: #1a1a1a;
-  overflow: hidden;
+#proj-particle-canvas { position: absolute; top: 0; left: 0; pointer-events: none; z-index: 0; width: 100%; height: 100%; }
+.proj-content { position: relative; z-index: 1; max-width: 1200px; margin: 0 auto; }
+/* .proj-header { text-align: center; margin-bottom: 4rem; } /* Handled by title/subtitle styles */
+.filters { text-align: center; margin-bottom: 3rem; } /* More space after filters */
+.filters button {
+  background: rgba(138, 43, 226, 0.3); /* Semi-transparent purple */
+  color: white; border: none; padding: 0.8rem 1.5rem;
+  margin: 0 0.5rem; border-radius: 5px; cursor: pointer;
+  transition: all 0.3s ease; font-weight: 500;
 }
-
-#proj-particle-canvas {
-  position: absolute;
-  top: 0;
-  left: 0;
-  pointer-events: none;
-  z-index: 0;
+.filters button:hover, .filters button.active-filter { /* Added active state */
+  background: rgba(138, 43, 226, 0.6); transform: translateY(-2px);
 }
-
-.proj-content {
-  position: relative;
-  z-index: 1;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.proj-header {
-  text-align: center;
-  margin-bottom: 4rem;
-}
-
-.proj-title {
-  color: #8A2BE2;
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-}
-
-.proj-subtitle {
-  color: #ffffff;
-  opacity: 0.8;
-}
-
 .proj-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  padding: 2rem;
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2.5rem; /* Slightly more gap */
+  /* padding: 2rem; /* Use section padding */
 }
-
 .proj-card {
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 15px;
-  padding: 2rem;
+  background: rgba(255, 255, 255, 0.07); /* Slightly more visible card */
+  border-radius: 15px; padding: 2rem;
   backdrop-filter: blur(10px);
-  transition: transform 0.3s ease;
-  cursor: pointer;
-  border: 1px solid rgba(138, 43, 226, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer; border: 1px solid rgba(138, 43, 226, 0.2); /* Softer border */
 }
-
 .proj-card:hover {
   transform: translateY(-10px);
-  box-shadow: 0 10px 30px rgba(138, 43, 226, 0.2);
+  box-shadow: 0 10px 30px rgba(138, 43, 226, 0.15); /* Softer shadow */
 }
-
-.proj-card h3 {
-  color: #8A2BE2;
-  margin-bottom: 1rem;
-}
-
-.proj-card p {
-  color: #ffffff;
-  line-height: 1.6;
-}
-
 .proj-card img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  border-radius: 8px;
-  margin-bottom: 1rem;
+  width: 100%; height: 200px; object-fit: cover;
+  border-radius: 8px; margin-bottom: 1.5rem; /* More space after image */
 }
-
+.proj-card h3 { color: var(--highlight-purple); margin-bottom: 0.75rem; font-size: 1.25rem;}
+.proj-card p { color: #e0e0e0; line-height: 1.6; font-size: 0.95rem; margin-bottom: 1rem;}
 .proj-card a {
-  color: #64ffda;
-  text-decoration: none;
-  font-weight: bold;
-  display: inline-block;
-  margin-top: 1rem;
+  color: var(--primary-color); /* Teal for links */
+  text-decoration: none; font-weight: bold;
+  display: inline-block; margin-top: 1rem;
 }
+.proj-card a:hover { text-decoration: underline; }
 
-.proj-card a:hover {
-  text-decoration: underline;
-}
-
-.filters {
-  text-align: center;
-  margin-bottom: 2rem;
-}
-
-.filters button {
-  background: rgba(138, 43, 226, 0.3);
-  color: white;
-  border: none;
-  padding: 0.8rem 1.5rem;
-  margin: 0 0.5rem;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.filters button:hover {
-  background: rgba(138, 43, 226, 0.5);
-  transform: translateY(-2px);
-}
-
-/* Responsive Styles */
-@media (max-width: 768px) {
-  .proj-grid {
-      grid-template-columns: 1fr;
-      padding: 1rem;
-  }
-  
-  .proj-card {
-      padding: 1.5rem;
-  }
-  
-  .filters button {
-      margin: 0.25rem;
-      padding: 0.6rem 1rem;
-  }
-}
-
-
-/* Unique contact section styles88888888888888888888888888888888888888888888888888888888888888888888888888888888888888 */
+/* Contact Section (Your Styles - Dark Theme) */
 .cnt-main-section {
-  position: relative;
-  min-height: 100vh;
-  padding: 2rem;
-  background: #0a192f;
-  overflow: hidden;
+  position: relative; min-height: 100vh; padding: 4rem 2rem; /* Consistent padding */
+  background: var(--background-main); /* Dark navy */
+  overflow: hidden; color: var(--text-tertiary);
 }
-
-#cnt-particle-canvas {
-  position: absolute;
-  top: 0;
-  left: 0;
-  pointer-events: none;
-  z-index: 0;
+.cnt-main-section > h1 { /* "Get in Touch" title if it's direct child */
+    color: #ff4d4d; /* Your specified red */
+    text-align: center;
+    padding-bottom: 2rem; /* Space after this title */
+    font-size: 2.5rem;
 }
-
+#cnt-particle-canvas { position: absolute; top: 0; left: 0; pointer-events: none; z-index: 0; width:100%; height:100%;}
 .cnt-content-wrapper {
-  position: relative;
-  z-index: 1;
-  max-width: 1200px;
-  margin: 0 auto;
+  position: relative; z-index: 1; max-width: 1000px; /* Wider for two columns */
+  margin: 0 auto; display: flex; flex-wrap: wrap;
+  align-items: center; justify-content: center; gap: 3rem; /* More gap */
 }
-
-.cnt-profile-section {
-  text-align: center;
-  margin-bottom: 3rem;
-}
-
+.cnt-profile-section { text-align: center; flex: 1; min-width: 300px; } /* Flex item */
 .cnt-profile-image {
-  width: 160px;
-  height: 160px;
-  border-radius: 50%;
-  border: 3px solid #64ffda;
+  width: 180px; height: 180px; /* Larger image */
+  border-radius: 50%; border: 3px solid var(--primary-color);
   margin-bottom: 1.5rem;
-  box-shadow: 0 0 25px rgba(100, 255, 218, 0.3);
+  box-shadow: 0 0 30px rgba(100, 255, 218, 0.3);
 }
-
-.cnt-social-container {
-  display: flex;
-  justify-content: center;
-  gap: 2.5rem;
-  margin-top: 2rem;
-}
-
+.cnt-social-container { display: flex; justify-content: center; gap: 2rem; margin-top: 1.5rem; }
 .cnt-social-link {
-  color: #64ffda;
-  font-size: 2.8rem;
-  transition: all 0.3s ease;
-  position: relative;
+  color: var(--primary-color); font-size: 2.5rem; /* Slightly smaller for balance */
+  transition: all 0.3s ease; position: relative;
 }
-
-.cnt-social-link:hover {
-  transform: translateY(-5px);
-  filter: drop-shadow(0 0 8px rgba(100, 255, 218, 0.5));
-}
-
+.cnt-social-link:hover { transform: translateY(-5px) scale(1.1); filter: drop-shadow(0 0 10px rgba(100,255,218,0.5)); }
 .cnt-form-wrapper {
-  background: rgba(17, 34, 64, 0.85);
-  padding: 2.5rem;
-  border-radius: 15px;
-  backdrop-filter: blur(12px);
-  max-width: 650px;
-  margin: 0 auto;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  background: var(--background-light); /* Lighter navy card */
+  padding: 2.5rem; border-radius: 15px;
+  backdrop-filter: blur(12px); max-width: 550px; /* Slightly narrower form */
+  /* margin: 0 auto; /* Centered by flex parent */
+  box-shadow: 0 8px 32px rgba(0,0,0,0.15); /* Softer shadow */
+  flex: 1.5; min-width: 300px; /* Flex item, allows it to grow more */
+  border: 1px solid rgba(100, 255, 218, 0.1); /* Subtle border */
 }
-
-.cnt-form-group {
-  margin-bottom: 2rem;
-}
-
+.cnt-form-group { margin-bottom: 1.8rem; }
 .cnt-input-label {
-  display: block;
-  margin-bottom: 0.8rem;
-  color: #64ffda;
-  font-size: 1.1rem;
+  display: block; margin-bottom: 0.7rem; color: var(--primary-color);
+  font-size: 1rem; font-weight: 500;
 }
-
 .cnt-form-field {
-  width: 100%;
-  padding: 1rem;
-  border: 2px solid #233554;
-  border-radius: 6px;
-  background: #0a192f;
-  color: #ccd6f6;
-  transition: all 0.3s ease;
-  font-size: 1rem;
+  width: 100%; padding: 0.9rem;
+  border: 1px solid #233554; /* Darker border initially */
+  border-radius: 6px; background: var(--background-main); /* Match section bg */
+  color: var(--text-tertiary); transition: all 0.3s ease; font-size: 1rem;
 }
-
 .cnt-form-field:focus {
-  outline: none;
-  border-color: #64ffda;
-  box-shadow: 0 0 15px rgba(100, 255, 218, 0.2);
+  outline: none; border-color: var(--primary-color);
+  box-shadow: 0 0 12px rgba(100,255,218,0.15);
 }
-
 #cnt-submit-button {
-  background: linear-gradient(135deg, #64ffda, #1a73e8);
-  color: #0a192f;
-  padding: 1rem 2.5rem;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  font-weight: 700;
-  transition: all 0.3s ease;
-  width: 100%;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+  background: linear-gradient(135deg, var(--primary-color), var(--highlight-blue));
+  color: var(--background-main); /* Dark text on light button */
+  padding: 0.9rem 2rem; border: none; border-radius: 6px;
+  cursor: pointer; font-weight: 700; transition: all 0.3s ease;
+  width: 100%; text-transform: uppercase; letter-spacing: 1.2px;
+  font-size: 0.95rem;
 }
-
 #cnt-submit-button:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 5px 15px rgba(100, 255, 218, 0.3);
+  transform: translateY(-3px) scale(1.02); /* Add scale */
+  box-shadow: 0 6px 20px rgba(100,255,218,0.25);
+}
+#cnt-status-message { /* Form submission status */
+  margin-top: 1.5rem; padding: 1rem; border-radius: 6px;
+  background: rgba(100,255,218,0.1); color: var(--primary-color);
+  display: none; text-align: center;
+  border: 1px solid rgba(100,255,218,0.15);
 }
 
-#cnt-status-message {
-  margin-top: 1.5rem;
-  padding: 1.2rem;
-  border-radius: 6px;
-  background: rgba(100, 255, 218, 0.1);
-  color: #64ffda;
-  display: none;
-  text-align: center;
-  border: 1px solid rgba(100, 255, 218, 0.2);
-}
+/* Responsive Adjustments from your original CSS */
+@media (min-width:766px) and (max-width:1024px ) {
+  /* Experience Section Tablet */
+  #experience-section .vision { flex-direction: row; align-items: center; } /* Vision side-by-side */
+  #experience-section .vision img{ width: 350px; height: auto; margin-right: 2rem; margin-bottom: 0; }
+  #experience-section .vision p{ font-size: 1.8rem; /* Slightly smaller for tablet */ text-align: left; margin-top: 0; }
+  /* .exp .card { height: 300px; width: 100%; /* This would make cards full width, let flex-wrap handle it better */ } 
+  /* .card-title{ font-size: 20px; } */
+  /* .small-desc{ font-size: 13px; } */
 
 
+@media (max-width:767px ) { /* Max-width for general mobile */
+  /* Experience Section Mobile */
+  #experience-section .vision { flex-direction: column; }
+  #experience-section .vision p{ font-size: 1.2rem; padding: 0 10px; margin-top: 1rem; }
+  .exp .card{ width: 100%; /* Full width cards on mobile */ margin-bottom: 1.5rem; } /* Add bottom margin */
+  .card .card-title{ font-size: 1.1em; }
+  .card .small-desc{ font-size: 0.9em; }
 
+  /* Contact Section Mobile */
+  .cnt-content-wrapper { flex-direction: column; }
+  .cnt-profile-section { margin-bottom: 2rem; }
+  .cnt-form-wrapper { flex: none; width: 100%; max-width: 100%; }
 
- /*responsive ============================================*/
- @media (min-width:766px) and (max-width:1024px ) {
-   
-  /* language tools icons here*/
-
+  /* General heading adjustments for mobile */
+  h2, .proj-title, #slidecard h1, .cnt-main-section > h1 { font-size: 2rem; }
   
-  /* language tools icons end here*/
+  /* Skills Section Mobile */
+  .skills-container { padding: 1rem 0; }
+  .skill { padding: 1.5rem; }
+  .progress-circle { width: 120px; height: 120px; }
+  .circle-text { font-size: 1.2em; }
 
-
-
-#tools .vision {
-  display: flex;
- }
- .vision img{
-  height: 300px;
-  width: 350px;
-
- }
- .vision p{
-  margin-top: 60px;
-  font-style: italic;
-  font-size: 42px;
-  padding: 0px 50px;
- }
-.exp{
-  display: flex;
-  flex-grow: 1;
-}
-.card{
-  height: 300px;
-  width: 100%;
-}
-.card-title{
-  font-style: italic;
-  font-size: 20px;
-}
-.small-desc{
-  font-size: 13px;
-}
- }
-
-@media (min-width:320px) and (max-width:767px ) {
-
-.vision p{
-  margin-top: 60px;
-  font-style: italic;
-  font-size: 22px;
-  padding: 0px 10px;
- }
-
-.exp{
-  display: flex;
-  flex-wrap: wrap;
-}
-.card{
-  width: 100%;
-}
-.card-title{
-  font-size: 15px;
-}
-.small-desc{
-  font-size: 10px;
+  /* Project Section Mobile */
+   .proj-grid { grid-template-columns: 1fr; padding: 1rem 0; }
+  .proj-card { padding: 1.5rem; }
+  .filters button { margin: 0.25rem; padding: 0.6rem 1rem; font-size: 0.9rem; }
+  
+  /* Certificates Mobile */
+  #slidecard { padding: 2rem 1rem; }
+  .swiper.mySwiper { max-width: 90%; }
+  .swiper-slide img { max-height: 150px; }
+  .boxx h3 { font-size: 1rem; }
+  .boxx p { font-size: 0.85rem; }
+  .boxx a { font-size: 0.8rem; padding: 6px 12px; }
 }
 
-
-/* nav mobile view */
-
-/* scroll bar size animatiom*/
-.reveal {
-    opacity: 0;
-    transform: translateY(20px);
-  transition: 0.5s ease-in-out;
-  }
-  .reveal.active {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* Horizontal Rule (if you use <hr>) */
+hr {
+  border: 0;
+  height: 1px;
+  background-image: linear-gradient(to right, rgba(100, 255, 218, 0), rgba(100, 255, 218, 0.5), rgba(100, 255, 218, 0));
+  margin: 4rem auto; /* Center and provide good spacing */
+  width: 80%; /* Don't make it full width */
+  max-width: 800px; /* Max width for large screens */
 }
