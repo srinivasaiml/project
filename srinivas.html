@@ -1186,6 +1186,51 @@
                 });
             });
         });
+
+        document.addEventListener('contextmenu', event => event.preventDefault());
+
+  // Disable key shortcuts
+  document.onkeydown = function (e) {
+    // Disable F12
+    if (e.keyCode === 123) return false;
+
+    // Disable Ctrl+Shift+I/J/C
+    if (e.ctrlKey && e.shiftKey && ['I', 'J', 'C'].includes(e.key.toUpperCase())) {
+      return false;
+    }
+
+    // Disable Ctrl+U
+    if (e.ctrlKey && e.key.toUpperCase() === 'U') {
+      return false;
+    }
+
+    // Disable Ctrl+S (Save), Ctrl+P (Print)
+    if (e.ctrlKey && ['S', 'P'].includes(e.key.toUpperCase())) {
+      e.preventDefault();
+      return false;
+    }
+  };
+
+  // Prevent drag (e.g., dragging images)
+  document.addEventListener('dragstart', function (e) {
+    e.preventDefault();
+  });
+
+  // Try to detect opening of dev tools (console)
+  setInterval(function () {
+    const before = new Date().getTime();
+    debugger;
+    const after = new Date().getTime();
+    if (after - before > 100) {
+      document.body.innerHTML = '<h1 style="color:red;text-align:center;">Dev Tools Blocked</h1>';
+    }
+  }, 1000);
+
+  // Prevent printing the page (Ctrl+P or Print Dialog)
+  window.onbeforeprint = () => {
+    alert("Printing is disabled on this page.");
+    return false;
+  };
     </script>
 </body>
 </html>
