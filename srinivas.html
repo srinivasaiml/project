@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Patchipala Srinivas - Portfolio</title>
     <link rel="stylesheet" href="newpro.css"> <!-- animation -->
     <!-- cardscroll -->
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
@@ -14,39 +14,47 @@
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
+    <!-- 🚀  Google <model-viewer> LIBRARIES - Place this in the <head> -->
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
 
 </head>
 
 <body>
+<style>
+
+</style>
 
     <!-- Preloader -->
     <div id="preloader">
-        <div class="loader-content">
-            <div class="fancy-spinner"><div></div><div></div><div></div></div>
-            <p>Loading Portfolio...</p>
+        <div class="loading">
+            <div class="loading-wide">
+              <div class="l1 color"></div>
+              <div class="l2 color"></div>
+              <div class="e1 color animation-effect-light"></div>
+              <div class="e2 color animation-effect-light-d"></div>
+              <div class="e3 animation-effect-rot">X</div>
+              <div class="e4 color animation-effect-light"></div>
+              <div class="e5 color animation-effect-light-d"></div>
+              <div class="e6 animation-effect-scale">*</div>
+              <div class="e7 color"></div>
+              <div class="e8 color"></div>
+            </div>
         </div>
+        <p style="position: absolute; bottom: 20vh; color: #64ffda; font-size: 1.3em; letter-spacing: 1.5px; font-weight: 300;">Loading Portfolio...</p>
     </div>
 
+    <!-- SECTION 1: HOME / HERO -->
     <section id="home">
-        <!-- Snowflakes script commented out as it might be intensive; enable if desired -->
-        <!-- <script src="https://unpkg.com/magic-snowflakes/dist/snowflakes.min.js"></script>
-        <script>
-          new Snowflakes({ color: '#5E9DEB', count: 35, speed: 0.8, zIndex: 5 }); // Example customization
-        </script>   -->
-
         <nav class="navbar">
-            <a href="#home" class="logo">< PSrinivas ></a> <!-- Made logo a link to home -->
-            <button class="menu-toggle" aria-label="Toggle Menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
+            <a href="#home" class="logo">< PSrinivas ></a>
+            <button class="menu-toggle" aria-label="Toggle Menu"><span></span><span></span><span></span></button>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about-section">About</a></li>
-                <li><a href="#edu-section">Education</a></li>
-                <li><a href="#skills-section">Skills</a></li> <!-- CORRECTED: Was #tools -->
+                <li><a href="#skills-section">Skills</a></li>
                 <li><a href="#proj-section">Projects</a></li>
+                <li><a href="#tools">Experience</a></li>
+                <li><a href="#edu-section">Education</a></li>
                 <li><a href="#cnt-main-section">Contact</a></li>
             </ul>
         </nav>
@@ -56,534 +64,245 @@
                 <h1 id="typing-text">Patchipala Srinivas</h1>
                 <div id="typing-animation" class="typing-animation"></div>
             </div>
+            <div class="hero-model-viewer-container reveal">
+                <model-viewer
+                    src="https://modelviewer.dev/shared-assets/models/Astronaut.glb"
+                    alt="A 3D model of an astronaut"
+                    auto-rotate
+                    camera-controls
+                    disable-zoom
+                    interaction-prompt="auto"
+                    shadow-intensity="1"
+                    camera-orbit="15deg 75deg 1.3em"
+                    environment-image="neutral"
+                    style="background-color: transparent;">
+                </model-viewer>
+            </div>
         </section>
-    </section> <!-- home section end here -->
+    </section>
 
-    <!-- about-section -->
-    <section id="about-section" class="about-section"> <!-- Added ID for navigation -->
+    <!-- SECTION 2: ABOUT -->
+    <section id="about-section" class="about-section">
         <h2 class="reveal">About</h2>
         <p class="subtitle reveal">A showcase of my proficiency levels in various technologies.</p>
-
         <div class="about-content">
             <div class="about-text reveal">
-                <p>Hi, I’m Srinivas, a passionate and dedicated Frontend Developer with expertise in building
-                    user-centric, responsive web applications.
-                    With a strong foundation in modern web technologies like HTML, CSS, JavaScript, and frameworks like
-                    React.js,
-                    I strive to create visually appealing and highly functional digital experiences.</p>
-                <p>Currently, I’m on an exciting journey to master the MERN stack through a focused 180-day challenge,
-                    enhancing my skills in both frontend and backend development.
-                    My portfolio showcases a range of projects, from sleek portfolio websites to dynamic web
-                    applications,
-                    highlighting my ability to blend creativity with technical expertise.</p>
-
+                <p>Hi, I’m Srinivas, a passionate and dedicated Frontend Developer with a strong foundation in HTML, CSS, and JavaScript. My journey in web development began with a fascination for creating interactive and user-friendly digital experiences. I thrive on turning complex problems into elegant solutions and am constantly exploring new technologies to enhance my skill set.</p>
+                <p>Currently, I’m on an exciting journey to master the MERN stack (MongoDB, Express.js, React, Node.js) to build full-stack applications. I believe in the power of continuous learning and am committed to staying updated with the latest industry trends. My goal is to contribute to innovative projects that make a meaningful impact.</p>
                 <button class="resume-btn">Download Resume</button>
             </div>
-
+            <div class="about-model-wrapper reveal">
+                <model-viewer
+                    src="https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/Suzanne/glTF-Binary/Suzanne.glb"
+                    alt="A 3D model of a stylized monkey head representing creativity"
+                    auto-rotate
+                    camera-controls
+                    shadow-intensity="1"
+                    environment-image="neutral">
+                </model-viewer>
+            </div>
             <div class="about-skills">
-                <div class="skill-card reveal">
-                    <h3>Clean Code</h3>
-                    <p>Writing maintainable, scalable, and efficient code following best practices.</p>
-                </div>
-                <div class="skill-card reveal">
-                    <h3>Modern Design</h3>
-                    <p>Creating beautiful user interfaces with attention to detail and aesthetics.</p>
-                </div>
-                <div class="skill-card reveal">
-                    <h3>Problem Solving</h3>
-                    <p>Finding innovative solutions to complex technical challenges.</p>
-                </div>
+                <div class="skill-card reveal"><h3>Clean Code</h3><p>Writing maintainable, scalable, and efficient code following best practices.</p></div>
+                <div class="skill-card reveal"><h3>Modern Design</h3><p>Creating beautiful user interfaces with attention to detail and aesthetics.</p></div>
+                <div class="skill-card reveal"><h3>Problem Solving</h3><p>Finding innovative solutions to complex technical challenges.</p></div>
             </div>
         </div>
     </section>
     <hr>
 
-    <section id="edu-section"> <!-- Removed reveal from section, will apply to items -->
-        <h2 style="text-align: center; margin-bottom: 2rem; color: #ccd6f6;" class="reveal">Education</h2>
-
-        <div class="edu-particles" id="edu-particles"></div>
-
-        <div class="edu-timeline">
-            <div class="edu-timeline-item"> <!-- GSAP will animate these -->
-                <div class="edu-timeline-marker"></div>
-                <div class="edu-timeline-card" style="margin-left: 55%;">
-                    <h3>B.E in Computer Science</h3>
-                    <p>Aditya Engineering College • 2022-2026</p>
-                    <p>Current CGPA: 8.0</p>
-                </div>
-            </div>
-
-            <div class="edu-timeline-item">
-                <div class="edu-timeline-marker"></div>
-                <div class="edu-timeline-card" style="margin-right: 55%;">
-                    <h3>Class 12th</h3>
-                    <p>State Board • 2021-2022</p>
-                    <p>Score: 899/1000</p>
-                </div>
-            </div>
-
-            <div class="edu-timeline-item">
-                <div class="edu-timeline-marker"></div>
-                <div class="edu-timeline-card" style="margin-left: 55%;">
-                    <h3>Class 10th</h3>
-                    <p>State Board • 2019-2020</p>
-                    <p>CGPA: 9.7</p>
-                </div>
-            </div>
-        </div>
-    </section> <br><br>
-    <!-- second section end here -->
-    <!-- -------------------enddd---------------------------------------------------------------------------------------------------- -->
-    <section id="tools"> <!-- This is the Experience section based on content -->
-        <center>
-            <div class="vision reveal">
-                <img src="vision.png" alt="visionimg" class="animate__animated animate__fadeInLeft">
-                <p>Respect for ourselves guides our morals, respect for others guides our manners.</p>
-            </div>
-        </center> <br><br>
-        <center>
-            <h2 style="color: rgb(24, 211, 211)" class="reveal">Experience</h2>
-        </center>
-
-        <div class="exp">
-            <div class="card"> <!-- GSAP will animate these -->
-                <p class="card-title"> Artificial intelligence (AI) - From proTreX Technology re-Xplained.</p>
-                <p class="small-desc">
-                    Excited to share my journey delving into the vast realm of Artificial Intelligence at 'From proTreX
-                    Technology re-Xplained'! 🤖✨ This event was an immersive experience, providing deep insights into
-                    the latest AI advancements, trends, and real-world applications. Grateful for the opportunity to be
-                    part of such an enlightening event, and looking forward to applying these learnings to drive
-                    innovation in AI. Let's shape the future together! 🚀 <br>#AI #ArtificialIntelligence
-                    #TechInnovation #ProTreX #TechExploration
-                </p>
-                <div class="go-corner">
-                    <div class="go-arrow">→</div>
-                </div>
-            </div>
-            <div class="card">
-                <p class="card-title"> Techincal Treasure Hunt National Level Techincal Symposium in Veda 2023 on the
-                    occasion of Engineer's Day </p>
-                <p class="small-desc">
-                    "Thrilled to have participated in a challenging and exhilarating technical treasure hunt! 🚀🔍
-                    Engaging in mind-bending puzzles and collaborative problem-solving with fellow tech enthusiasts was
-                    an absolute blast. The experience not only tested my technical skills but also honed my teamwork and
-                    strategic thinking. Looking forward to more exciting challenges and learning experiences ahead!
-                    🧠#TechEnthusiast #TreasureHunt #ProblemSolving #TechChallenge"
-                </p>
-                <div class="go-corner">
-                    <div class="go-arrow">→</div>
-                </div>
-            </div>
-        </div> <br>
-        <div class="exp">
-            <div class="card">
-                <p class="card-title">Internet of Things and Machine Learning –From Appleton Innovations.</p>
-                <p class="small-desc">
-                    Thrilled to share that I recently took part in an incredible journey at the intersection of IoT and
-                    Machine Learning! 🌐🤖. Engaging with the latest advancements in both IoT and ML, Grateful for the
-                    opportunity to learn from experts, Excited to leverage these learnings in my work and contribute to
-                    the ever-evolving landscape of IoT and Machine Learning! 🚀🔍 <br>#IoT #MachineLearning
-                    #TechInnovation #TechConvergence #FutureTech
-                </p>
-                <div class="go-corner">
-                    <div class="go-arrow">→</div>
-                </div>
-            </div>
-            <div class="card">
-                <p class="card-title"> web-Developemnet using dJango</p>
-                <p class="small-desc">
-                    "Ecstatic to have been part of an invigorating web development journey with Django! 🚀🔍 Diving into
-                    complex coding puzzles and collaborating on solutions with fellow developers was incredibly
-                    fulfilling. This experience not only pushed my programming prowess but also sharpened my teamwork
-                    and strategic planning abilities. Eagerly anticipating more thrilling coding challenges and learning
-                    opportunities ahead! 🧠#WebDev #Django #CodingChallenge #Teamwork" </p>
-                <div class="go-corner">
-                    <div class="go-arrow">→</div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <hr>
-
-    <!--=================== section 3 end=========================== -->
-    <br>
-
-    <section id="skills-section" class="skils"> <!-- Added ID, assuming #tools in nav meant this -->
+    <!-- SECTION 3: SKILLS -->
+    <section id="skills-section" class="skils">
         <h2 class="reveal">Technical Skills</h2>
         <p class="reveal">A showcase of my proficiency levels in various technologies.</p>
-
         <div id="skills-animation"></div>
-
         <div class="skills-container">
-
-            <!-- HTML -->
-            <div class="skill"> <!-- GSAP will animate these -->
-                <div class="progress-circle">
-                    <svg viewBox="0 0 100 100">
-                        <circle class="circle-bg" cx="50" cy="50" r="40" />
-                        <circle class="circle-fill" cx="50" cy="50" r="40" stroke="var( --html-color)"
-                            stroke-dasharray="251.2" stroke-dashoffset="62.8" />
-                        <text class="circle-text" x="50" y="50">75%</text>
-                    </svg>
-                </div>
-                <h3>HTML</h3>
-                <p>Skilled in creating structured and semantic web pages using HTML.</p>
-            </div>
-
-            <!-- CSS -->
-            <div class="skill">
-                <div class="progress-circle">
-                    <svg viewBox="0 0 100 100">
-                        <circle class="circle-bg" cx="50" cy="50" r="40" />
-                        <circle class="circle-fill" cx="50" cy="50" r="40" stroke="var(--css-color)"
-                            stroke-dasharray="251.2" stroke-dashoffset="75.36" />
-                        <text class="circle-text" x="50" y="50">70%</text>
-                    </svg>
-                </div>
-                <h3>CSS</h3>
-                <p>Skilled in responsive design and modern CSS frameworks.</p>
-            </div>
-
-            <!-- JavaScript -->
-            <div class="skill">
-                <div class="progress-circle">
-                    <svg viewBox="0 0 100 100">
-                        <circle class="circle-bg" cx="50" cy="50" r="40" />
-                        <circle class="circle-fill" cx="50" cy="50" r="40" stroke="var(--js-color)"
-                            stroke-dasharray="251.2" stroke-dashoffset="100.48" />
-                        <text class="circle-text" x="50" y="50">60%</text>
-                    </svg>
-                </div>
-                <h3>JavaScript</h3>
-                <p>Fundamental understanding of JavaScript and ES6+ features.</p>
-            </div>
-
-            <!-- React -->
-            <div class="skill">
-                <div class="progress-circle">
-                    <svg viewBox="0 0 100 100">
-                        <circle class="circle-bg" cx="50" cy="50" r="40" />
-                        <circle class="circle-fill" cx="50" cy="50" r="40" stroke="var(--react-color)"
-                            stroke-dasharray="251.2" stroke-dashoffset="113.04" />
-                        <text class="circle-text" x="50" y="50">55%</text>
-                    </svg>
-                </div>
-                <h3>React</h3>
-                <p>Developing skills in React.js and component-based architecture.</p>
-            </div>
-
-            <!-- SQL -->
-            <div class="skill">
-                <div class="progress-circle">
-                    <svg viewBox="0 0 100 100">
-                        <circle class="circle-bg" cx="50" cy="50" r="40" />
-                        <circle class="circle-fill" cx="50" cy="50" r="40" stroke="var(--sql-color)"
-                            stroke-dasharray="251.2" stroke-dashoffset="125.6" />
-                        <text class="circle-text" x="50" y="50">50%</text>
-                    </svg>
-                </div>
-                <h3>SQL</h3>
-                <p>Knowledgeable in database management and SQL querying.</p>
-            </div>
-            <div class="skill">
-                <div class="progress-circle">
-                    <svg viewBox="0 0 100 100">
-                        <circle class="circle-bg" cx="50" cy="50" r="40" />
-                        <circle class="circle-fill" cx="50" cy="50" r="40" stroke="var(--c-lang-color)"
-                            stroke-dasharray="251.2" stroke-dashoffset="50.24" /> <!-- 80% -->
-                        <text class="circle-text" x="50" y="50">80%</text>
-                    </svg>
-                </div>
-                <h3>C-Language</h3>
-                <p>Proficient in C-lang for scripting and problem Solving..</p>
-            </div>
-
-            <!-- Python -->
-            <div class="skill">
-                <div class="progress-circle">
-                    <svg viewBox="0 0 100 100">
-                        <circle class="circle-bg" cx="50" cy="50" r="40" />
-                        <circle class="circle-fill" cx="50" cy="50" r="40" stroke="var(--python-color)"
-                            stroke-dasharray="251.2" stroke-dashoffset="75.36" />
-                        <text class="circle-text" x="50" y="50">70%</text>
-                    </svg>
-                </div>
-                <h3>Python</h3>
-                <p>Proficient in Python for scripting and web development.</p>
-            </div>
+            <div class="skill"><div class="progress-circle"><svg viewBox="0 0 100 100"><circle class="circle-bg" cx="50" cy="50" r="40" /><circle class="circle-fill" cx="50" cy="50" r="40" stroke="var( --html-color)" stroke-dasharray="251.2" stroke-dashoffset="62.8" /><text class="circle-text" x="50" y="50">75%</text></svg></div><h3>HTML</h3><p>Skilled...</p></div>
+            <div class="skill"><div class="progress-circle"><svg viewBox="0 0 100 100"><circle class="circle-bg" cx="50" cy="50" r="40" /><circle class="circle-fill" cx="50" cy="50" r="40" stroke="var(--css-color)" stroke-dasharray="251.2" stroke-dashoffset="75.36" /><text class="circle-text" x="50" y="50">70%</text></svg></div><h3>CSS</h3><p>Skilled...</p></div>
+            <div class="skill"><div class="progress-circle"><svg viewBox="0 0 100 100"><circle class="circle-bg" cx="50" cy="50" r="40" /><circle class="circle-fill" cx="50" cy="50" r="40" stroke="var(--js-color)" stroke-dasharray="251.2" stroke-dashoffset="100.48" /><text class="circle-text" x="50" y="50">60%</text></svg></div><h3>JavaScript</h3><p>Fundamental...</p></div>
+            <div class="skill"><div class="progress-circle"><svg viewBox="0 0 100 100"><circle class="circle-bg" cx="50" cy="50" r="40" /><circle class="circle-fill" cx="50" cy="50" r="40" stroke="var(--react-color)" stroke-dasharray="251.2" stroke-dashoffset="113.04" /><text class="circle-text" x="50" y="50">55%</text></svg></div><h3>React</h3><p>Developing...</p></div>
+            <div class="skill"><div class="progress-circle"><svg viewBox="0 0 100 100"><circle class="circle-bg" cx="50" cy="50" r="40" /><circle class="circle-fill" cx="50" cy="50" r="40" stroke="var(--sql-color)" stroke-dasharray="251.2" stroke-dashoffset="125.6" /><text class="circle-text" x="50" y="50">50%</text></svg></div><h3>SQL</h3><p>Knowledgeable...</p></div>
+            <div class="skill"><div class="progress-circle"><svg viewBox="0 0 100 100"><circle class="circle-bg" cx="50" cy="50" r="40" /><circle class="circle-fill" cx="50" cy="50" r="40" stroke="var(--c-lang-color)" stroke-dasharray="251.2" stroke-dashoffset="50.24" /><text class="circle-text" x="50" y="50">80%</text></svg></div><h3>C-Language</h3><p>Proficient...</p></div>
+            <div class="skill"><div class="progress-circle"><svg viewBox="0 0 100 100"><circle class="circle-bg" cx="50" cy="50" r="40" /><circle class="circle-fill" cx="50" cy="50" r="40" stroke="var(--python-color)" stroke-dasharray="251.2" stroke-dashoffset="75.36" /><text class="circle-text" x="50" y="50">70%</text></svg></div><h3>Python</h3><p>Proficient...</p></div>
         </div>
     </section>
-
     <hr>
 
-    <section id="slidecard">
-        <center>
-            <h1 class="reveal">Certificates</h1>
-        </center><br>
-        <div class="swiper mySwiper">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide"><img src="hackerrank.png" alt="Image 1">
-                    <div class="boxx">
-                        <center>
-                            <h3>Hacker Rank</h3>
-                        </center>
-                        <p>
-                            I earned certificates in CSS, HTML, and other web development technologies from HackerRank.
-                            These certifications highlight my skills, dedication to continuous learning, and ability to
-                            solve real-world coding challenges. <br>
-                            <a href="https://www.hackerrank.com/certificates/a67a507bbd1a" target="_blank">Visit</a>
-                        </p>
-                    </div>
-                </div>
-
-
-                <div class="swiper-slide"><img src="greatlearning.png" alt="Image 2">
-                    <div class="boxx">
-                        <center>
-                            <h3>Great Learning</h3>
-                        </center>
-                        <p>
-                            I earned certificates and web development technologies from Great Learning These credentials
-                            demonstrate my expertise, commitment to learning, and capability to tackle real-world
-                            coding challenges. <br>
-                            <a href="https://drive.google.com/file/d/1VMkkM0XFqum1I4sv552KuY4PzFNPlCMb/view?usp=sharing"
-                                target="_blank">Visit</a>
-                        </p>
-
-                    </div>
-                </div>
-
-                <div class="swiper-slide"><img src="codechef.jpeg" alt="Image 3">
-                    <div class="boxx">
-                        <center>
-                            <h3>Code Chef</h3>
-                        </center>
-                        <p>
-                            I earned certificates in C language certificate and web development technologies from
-                            CodeChef. These credentials demonstrate my expertise and commitment to continuous learning.
-                            <br>
-                            <a href="" target="_blank">Visit</a>
-                        </p>
-                    </div>
-                </div>
-
-                <div class="swiper-slide"><img src="infosys.png" alt="Image 4">
-                    <div class="boxx">
-                        <center>
-                            <h3>Infosys spring Board</h3>
-                        </center>
-                        <p>
-                            I earned certificates in JavaScript certificate from Infosys. These credentials demonstrate
-                            my expertise and dedication to continuous learning. <br>
-                            <a href="https://drive.google.com/file/d/1fQEyayq5imG44u7ht03QBnXhdr3Fa60y/view?usp=sharing"
-                                target="_blank">Visit</a>
-                        </p>
-                    </div>
-                </div>
-
-                <div class="swiper-slide"><img src="edx.png" alt="Image 5">
-                    <div class="boxx">
-                        <center>
-                            <h3>Edx</h3>
-                        </center>
-                        <p>
-                            I earned an Introduction to Data Science with Python certificate from edX. This course
-                            furthered my skills in data analysis and Python programming, enhancing my capabilities in
-                            the field.
-                            <br>
-                            <a href="https://drive.google.com/file/d/1JibIVO86o-5LLU3J5wcjbdEFQzdXG93H/view?usp=sharing"
-                                target="_blank">Visit</a>
-                        </p>
-                    </div>
-                </div>
-
-
-                <div class="swiper-slide"><img src="spolen.jpeg" alt="Image 6">
-                    <div class="boxx">
-                        <center>
-                            <h3>Spoken</h3>
-                        </center>
-                        <p>
-                            I earned a certificate in the C programming language from Spoken. This certification
-                            highlights my proficiency in coding fundamentals and problem-solving skills.
-
-                            <br>
-                            <a href="https://drive.google.com/file/d/16QDXWL7AHcyteuGSy_VfiMF3GtRjU-fw/view?usp=sharing"
-                                target="_blank">Visit</a>
-                        </p>
-                    </div>
-                </div>
-
-
-                <div class="swiper-slide"><img src="nptellogo.png" alt="Image 7">
-                    <div class="boxx">
-                        <center>
-                            <h3>Nptel</h3>
-                        </center>
-                        <p>
-                            I earned a certificate in the IOT (Internet of Things) from Nptel. This certification
-                            highlights my proficiency in IOT fundamentals and problem-solving skills.
-
-                            <br>
-                            <a href=" " target="_blank">Visit</a>
-                        </p>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- ============================================project====================================================================== -->
+    <!-- SECTION 4: PROJECTS -->
     <section id="proj-section" class="proj-section">
         <canvas id="proj-particle-canvas"></canvas>
-
         <div class="proj-content">
             <div class="proj-header">
                 <h2 class="proj-title reveal">My Projects</h2>
                 <p class="proj-subtitle reveal">A showcase of my technical creations</p>
+                <div class="projects-model-wrapper reveal">
+                    <model-viewer
+                        src="https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/ToyCar/glTF-Binary/ToyCar.glb"
+                        alt="A 3D model of a toy car, representing projects"
+                        auto-rotate
+                        camera-controls
+                        shadow-intensity="1"
+                        environment-image="neutral">
+                    </model-viewer>
+                </div>
             </div>
-
             <div class="filters reveal">
                 <button onclick="filterProjects('all')">All</button>
                 <button onclick="filterProjects('static')">2025</button>
                 <button onclick="filterProjects('responsive')">2024</button>
                 <button onclick="filterProjects('dynamic')">2023</button>
             </div>
-
             <div class="proj-grid">
-                <!-- Project Cards -->
-                <div class="proj-card static"> <!-- GSAP will animate these -->
-                    <img src="flames.png" alt="Flames Calculator">
-                    <h3>Flames Calculator</h3>
-                    <p>Flames Calculator for Lovers <a href="https://srinivasaiml.github.io/project/flames.html" target="_blank">view</a></p>
-                </div>
-
-                <div class="proj-card static">
-                    <img src="8queen.png" alt="8 Queen Game">
-                    <h3>8 Queen Game</h3>
-                    <p>Create a 8 queen game for Students <a href="https://srinivasaiml.github.io/project/queen.html" target="_blank">view</a></p>
-                </div>
-
-                <div class="proj-card static">
-                    <img src="love.png" alt="Love Calculator">
-                    <h3>Love Calculator Percentage</h3>
-                    <p>Love Calculator Percentage for Lovers <a href="https://srinivasaiml.github.io/Codesoft/love2.html" target="_blank">view</a></p>
-                </div>
-
-                <div class="proj-card static">
-                    <img src="bookingappoint.webp" alt="ChatWithAI">
-                    <h3>ChatWithAI</h3>
-                    <p>Book the Doctor Appointment Using AI <a href="https://srinivasaiml.github.io/Codesoft/hospitalpage.html" target="_blank">view</a></p>
-                </div>
-
-                <div class="proj-card static">
-                    <img src="library.jpeg" alt="Library Management">
-                    <h3>Library Management System</h3>
-                    <p>Library Management System for Students <a href="#">view</a></p>
-                </div>
-
-                <div class="proj-card static">
-                    <img src="calimg.jpg" alt="Calculator">
-                    <h3>Calculator</h3>
-                    <p>A calculator for arithmetic operations <a href="">view</a></p>
-                </div>
-
-                <div class="proj-card responsive">
-                    <img src="TEMP.avif" alt="Temperature">
-                    <h3>Temperature</h3>
-                    <p>Temperature measurement converter <a href="">view</a></p>
-                </div>
-
-                <div class="proj-card dynamic">
-                    <img src="atmcard.jpg" alt="ATM Card">
-                    <h3>ATM Card</h3>
-                    <p>ATM interface simulation <a href="">view</a></p>
-                </div>
-
-                <div class="proj-card responsive">
-                    <img src="ageimg.jpg" alt="Age Calculator">
-                    <h3>Age Calculator</h3>
-                    <p>Calculate age based on birth date <a href="https://srinivasaiml.github.io/Codesoft/age.html" target="_blank">view</a></p>
-                </div>
-
-                <div class="proj-card dynamic">
-                    <img src="ageimg.jpg" alt="Date Calculator"> <!-- Consider a different image if it's a different calculator -->
-                    <h3>Date of Birth Calculator</h3>
-                    <p>Calculate date of birth from age <a href="https://srinivasaiml.github.io/Codesoft/yearcal.html" target="_blank">view</a></p>
-                </div>
-
-                <div class="proj-card dynamic">
-                    <img src="buds.jpg" alt="Ear Buds">
-                    <h3>Ear Buds</h3>
-                    <p>Ear buds product page <a href="https://srinivasaiml.github.io/Codesoft/buds.html" target="_blank">view</a></p>
-                </div>
-
+                <div class="proj-card static"><img src="flames.png" alt="Flames Calculator"><h3>Flames Calculator</h3><p>Flames Calculator for Lovers <a href="https://srinivasaiml.github.io/project/flames.html" target="_blank">view</a></p></div>
+                <div class="proj-card static"><img src="8queen.png" alt="8 Queen Game"><h3>8 Queen Game</h3><p>Create a 8 queen game for Students <a href="https://srinivasaiml.github.io/project/queen.html" target="_blank">view</a></p></div>
+                <div class="proj-card static"><img src="love.png" alt="Love Calculator"><h3>Love Calculator Percentage</h3><p>Love Calculator Percentage for Lovers <a href="https://srinivasaiml.github.io/Codesoft/love2.html" target="_blank">view</a></p></div>
+                <div class="proj-card static"><img src="bookingappoint.webp" alt="ChatWithAI"><h3>ChatWithAI</h3><p>Book the Doctor Appointment Using AI <a href="https://srinivasaiml.github.io/Codesoft/hospitalpage.html" target="_blank">view</a></p></div>
+                <div class="proj-card static"><img src="library.jpeg" alt="Library Management"><h3>Library Management System</h3><p>Library Management System for Students <a href="#">view</a></p></div>
+                <div class="proj-card static"><img src="calimg.jpg" alt="Calculator"><h3>Calculator</h3><p>A calculator for arithmetic operations <a href="">view</a></p></div>
+                <div class="proj-card responsive"><img src="TEMP.avif" alt="Temperature"><h3>Temperature</h3><p>Temperature measurement converter <a href="">view</a></p></div>
+                <div class="proj-card dynamic"><img src="atmcard.jpg" alt="ATM Card"><h3>ATM Card</h3><p>ATM interface simulation <a href="">view</a></p></div>
+                <div class="proj-card responsive"><img src="ageimg.jpg" alt="Age Calculator"><h3>Age Calculator</h3><p>Calculate age based on birth date <a href="https://srinivasaiml.github.io/Codesoft/age.html" target="_blank">view</a></p></div>
+                <div class="proj-card dynamic"><img src="ageimg.jpg" alt="Date Calculator"><h3>Date of Birth Calculator</h3><p>Calculate date of birth from age <a href="https://srinivasaiml.github.io/Codesoft/yearcal.html" target="_blank">view</a></p></div>
+                <div class="proj-card dynamic"><img src="buds.jpg" alt="Ear Buds"><h3>Ear Buds</h3><p>Ear buds product page <a href="https://srinivasaiml.github.io/Codesoft/buds.html" target="_blank">view</a></p></div>
             </div>
         </div>
     </section>
+    <hr>
 
-    <!-- ========================================================contact==================================================== -->
+    <!-- SECTION 5: EXPERIENCE -->
+    <section id="tools"> <!-- ID for Experience section -->
+        <div class="vision reveal">
+            <img src="vision.png" alt="visionimg" class="animate__animated animate__fadeInLeft">
+            <p>Respect for ourselves guides our morals, respect for others guides our manners.</p>
+        </div>
+        <h2 style="color: rgb(24, 211, 211); margin-bottom:1rem;" class="reveal">Experience</h2>
+        <div class="experience-model-wrapper reveal">
+            <model-viewer
+                src="https://modelviewer.dev/shared-assets/models/RobotExpressive.glb"
+                alt="A 3D model of an expressive robot, representing technology and experience"
+                auto-rotate
+                camera-controls
+                shadow-intensity="1"
+                environment-image="neutral">
+            </model-viewer>
+        </div>
+        <div class="exp">
+            <div class="card">
+                <p class="card-title">Artificial intelligence (AI) - From proTreX Technology re-Xplained.</p>
+                <p class="small-desc">Excited to share my journey delving into the vast realm of Artificial Intelligence at 'From proTreX Technology re-Xplained'! 🤖✨ This event was an immersive experience, providing deep insights into the latest AI advancements, trends, and real-world applications. Grateful for the opportunity to be part of such an enlightening event, and looking forward to applying these learnings to drive innovation in AI. Let's shape the future together! 🚀<br>#AI #ArtificialIntelligence #TechInnovation #ProTreX #TechExploration</p>
+                <div class="go-corner"><div class="go-arrow">→</div></div>
+            </div>
+            <div class="card">
+                <p class="card-title">Techincal Treasure Hunt National Level Techincal Symposium in Veda 2023 on the occasion of Engineer's Day</p>
+                <p class="small-desc">"Thrilled to have participated in a challenging and exhilarating technical treasure hunt! 🚀🔍 Engaging in mind-bending puzzles and collaborative problem-solving with fellow tech enthusiasts was an absolute blast. The experience not only tested my technical skills but also honed my teamwork and strategic thinking. Looking forward to more exciting challenges and learning experiences ahead! 🧠<br>#TechEnthusiast #TreasureHunt #ProblemSolving #TechChallenge"</p>
+                <div class="go-corner"><div class="go-arrow">→</div></div>
+            </div>
+        </div> <br>
+        <div class="exp">
+            <div class="card">
+                <p class="card-title">Internet of Things and Machine Learning –From Appleton Innovations.</p>
+                <p class="small-desc">Thrilled to share that I recently took part in an incredible journey at the intersection of IoT and Machine Learning! 🌐🤖. Engaging with the latest advancements in both IoT and ML, Grateful for the opportunity to learn from experts, Excited to leverage these learnings in my work and contribute to the ever-evolving landscape of IoT and Machine Learning! 🚀🔍<br>#IoT #MachineLearning #TechInnovation #TechConvergence #FutureTech</p>
+                <div class="go-corner"><div class="go-arrow">→</div></div>
+            </div>
+            <div class="card">
+                <p class="card-title">Web-Developemnet using Django</p>
+                <p class="small-desc">"Ecstatic to have been part of an invigorating web development journey with Django! 🚀🔍 Diving into complex coding puzzles and collaborating on solutions with fellow developers was incredibly fulfilling. This experience not only pushed my programming prowess but also sharpened my teamwork and strategic planning abilities. Eagerly anticipating more thrilling coding challenges and learning opportunities ahead! 🧠<br>#WebDev #Django #CodingChallenge #Teamwork"</p>
+                <div class="go-corner"><div class="go-arrow">→</div></div>
+            </div>
+        </div>
+    </section>
+    <hr>
 
-    <h1 style="color: #ff4d4d; text-align: center; padding: 3rem 0; font-size: 2.5rem;" class="reveal">Get in Touch</h1>
+    <!-- SECTION 6: EDUCATION -->
+    <section id="edu-section">
+        <h2 style="text-align: center; margin-bottom: 1rem; color: #ccd6f6;" class="reveal">Education</h2>
+        <div class="education-model-wrapper reveal">
+            <model-viewer
+                src="https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/BrainStem/glTF-Binary/BrainStem.glb"
+                alt="A 3D model of a brain stem, symbolizing learning"
+                auto-rotate
+                camera-controls
+                shadow-intensity="1"
+                environment-image="neutral">
+            </model-viewer>
+        </div>
+        <div class="edu-particles" id="edu-particles"></div>
+        <div class="edu-timeline">
+            <div class="edu-timeline-item"><div class="edu-timeline-marker"></div><div class="edu-timeline-card" style="margin-left: 55%;"><h3>B.E in Computer Science</h3><p>Aditya Engineering College • 2022-2026</p><p>Current CGPA: 8.0</p></div></div>
+            <div class="edu-timeline-item"><div class="edu-timeline-marker"></div><div class="edu-timeline-card" style="margin-right: 55%;"><h3>Class 12th</h3><p>State Board • 2021-2022</p><p>Score: 899/1000</p></div></div>
+            <div class="edu-timeline-item"><div class="edu-timeline-marker"></div><div class="edu-timeline-card" style="margin-left: 55%;"><h3>Class 10th</h3><p>State Board • 2019-2020</p><p>CGPA: 9.7</p></div></div>
+        </div>
+    </section> <br><br>
 
+    <!-- SECTION 7: CERTIFICATES -->
+    <section id="slidecard">
+        <h1 class="reveal">Certificates</h1>
+        <div class="certificates-model-wrapper reveal">
+            <model-viewer
+                src="https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/Lantern/glTF-Binary/Lantern.glb"
+                alt="A 3D model of a lantern, symbolizing achievement"
+                auto-rotate
+                camera-controls
+                shadow-intensity="1"
+                environment-image="neutral">
+            </model-viewer>
+        </div>
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide"><img src="hackerrank.png" alt="HackerRank"><div class="boxx"><center><h3>Hacker Rank</h3></center><p>I earned certificates...<br><a href="https://www.hackerrank.com/certificates/a67a507bbd1a" target="_blank">Visit</a></p></div></div>
+                <div class="swiper-slide"><img src="greatlearning.png" alt="Great Learning"><div class="boxx"><center><h3>Great Learning</h3></center><p>I earned certificates...<br><a href="https://drive.google.com/file/d/1VMkkM0XFqum1I4sv552KuY4PzFNPlCMb/view?usp=sharing" target="_blank">Visit</a></p></div></div>
+                <div class="swiper-slide"><img src="codechef.jpeg" alt="CodeChef"><div class="boxx"><center><h3>Code Chef</h3></center><p>I earned certificates...<br><a href="" target="_blank">Visit</a></p></div></div>
+                <div class="swiper-slide"><img src="infosys.png" alt="Infosys"><div class="boxx"><center><h3>Infosys spring Board</h3></center><p>I earned certificates...<br><a href="https://drive.google.com/file/d/1fQEyayq5imG44u7ht03QBnXhdr3Fa60y/view?usp=sharing" target="_blank">Visit</a></p></div></div>
+                <div class="swiper-slide"><img src="edx.png" alt="EdX"><div class="boxx"><center><h3>Edx</h3></center><p>I earned an Introduction...<br><a href="https://drive.google.com/file/d/1JibIVO86o-5LLU3J5wcjbdEFQzdXG93H/view?usp=sharing" target="_blank">Visit</a></p></div></div>
+                <div class="swiper-slide"><img src="spolen.jpeg" alt="Spoken Tutorial"><div class="boxx"><center><h3>Spoken</h3></center><p>I earned a certificate...<br><a href="https://drive.google.com/file/d/16QDXWL7AHcyteuGSy_VfiMF3GtRjU-fw/view?usp=sharing" target="_blank">Visit</a></p></div></div>
+                <div class="swiper-slide"><img src="nptellogo.png" alt="NPTEL"><div class="boxx"><center><h3>Nptel</h3></center><p>I earned a certificate...<br><a href=" " target="_blank">Visit</a></p></div></div>
+            </div>
+            <!-- Add Pagination and Navigation elements -->
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+    </section>
+
+    <!-- SECTION 8: CONTACT -->
+    <h1 class="get-in-touch-title reveal">Get in Touch</h1>
     <section id="cnt-main-section" class="cnt-main-section ">
         <canvas class="cnt-particle-canvas" id="cnt-particle-canvas"></canvas>
-
         <div class="cnt-content-wrapper reveal">
             <div class="cnt-profile-section">
                 <img src="srinivaspic2.png" alt="Profile Image" class="cnt-profile-image">
                 <div class="cnt-social-container">
-                    <a href="https://github.com/srinivasaiml" target="_blank" class="cnt-social-link">
-                        <ion-icon name="logo-github"></ion-icon>
-                    </a>
-                    <a href="https://www.linkedin.com/in/patchipala-srinivas-524902256/" target="_blank"
-                        class="cnt-social-link">
-                        <ion-icon name="logo-linkedin"></ion-icon>
-                    </a>
-                    <a href="https://wa.me/qr/FIUCYWFM6DGNL1" target="_blank" class="cnt-social-link">
-                        <ion-icon name="logo-whatsapp"></ion-icon>
-                    </a>
+                    <a href="https://github.com/srinivasaiml" target="_blank" class="cnt-social-link"><ion-icon name="logo-github"></ion-icon></a>
+                    <a href="https://www.linkedin.com/in/patchipala-srinivas-524902256/" target="_blank" class="cnt-social-link"><ion-icon name="logo-linkedin"></ion-icon></a>
+                    <a href="https://wa.me/qr/FIUCYWFM6DGNL1" target="_blank" class="cnt-social-link"><ion-icon name="logo-whatsapp"></ion-icon></a>
+                </div>
+                <div class="contact-model-wrapper reveal">
+                    <model-viewer
+                        src="https://modelviewer.dev/shared-assets/models/Shishkebab.glb"
+                        alt="A 3D model of a shishkebab, for a distinct visual touch"
+                        auto-rotate
+                        camera-controls
+                        shadow-intensity="1"
+                        environment-image="neutral">
+                    </model-viewer>
                 </div>
             </div>
-
             <div class="cnt-form-wrapper reveal">
-                <form id="cnt-contact-form"> <!-- Removed space from ID -->
-                    <div class="cnt-form-group">
-                        <label class="cnt-input-label" for="cnt-user-name">Your Name:</label>
-                        <input class="cnt-form-field" type="text" id="cnt-user-name" required>
-                    </div>
-
-                    <div class="cnt-form-group">
-                        <label class="cnt-input-label" for="cnt-email">Email Address:</label>
-                        <input class="cnt-form-field" type="email" id="cnt-email" required>
-                    </div>
-
-                    <div class="cnt-form-group">
-                        <label class="cnt-input-label" for="cnt-user-message">Your Message:</label>
-                        <textarea class="cnt-form-field" id="cnt-user-message" rows="5" required></textarea>
-                    </div>
-
+                <form id="cnt-contact-form">
+                    <div class="cnt-form-group"><label class="cnt-input-label" for="cnt-user-name">Your Name:</label><input class="cnt-form-field" type="text" id="cnt-user-name" required></div>
+                    <div class="cnt-form-group"><label class="cnt-input-label" for="cnt-email">Email Address:</label><input class="cnt-form-field" type="email" id="cnt-email" required></div>
+                    <div class="cnt-form-group"><label class="cnt-input-label" for="cnt-user-message">Your Message:</label><textarea class="cnt-form-field" id="cnt-user-message" rows="5" required></textarea></div>
                     <button type="submit" id="cnt-submit-button">Send Message</button>
                 </form>
-
                 <div id="cnt-status-message"></div>
             </div>
         </div>
     </section>
 
-    <!-- GSAP Libraries -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script> <!-- Added for GSAP scrollTo -->
-
-
-    <!-- Three.js (already present for hero) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    
-    <!-- Swiper JS (already present) -->
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-
 
     <script>
         // Preloader Script
@@ -596,16 +315,15 @@
                        if (preloader.parentNode) {
                            preloader.parentNode.removeChild(preloader);
                        }
-                    }, 1000); 
-                }, 500); 
+                    }, 5000); // Ensure this duration matches or exceeds preloader transition
+                }, 5000); // Initial delay for preloader
             }
         });
 
         // Navbar Toggle
-        document.addEventListener('DOMContentLoaded', () => { // Ensure DOM is ready
+        document.addEventListener('DOMContentLoaded', () => {
             const menuToggle = document.querySelector('.menu-toggle');
             const navLinks = document.querySelector('.nav-links');
-
             if (menuToggle && navLinks) {
                 menuToggle.addEventListener('click', function () {
                     this.classList.toggle('active');
@@ -615,622 +333,285 @@
         });
 
 
-        // Hero Particles (Three.js)
+        // New Hero 2D Network Animation
         document.addEventListener('DOMContentLoaded', () => {
-            const heroCanvas = document.querySelector('.particles-canvas');
-            if (!heroCanvas) return; 
-            
-            const renderer = new THREE.WebGLRenderer({
-                canvas: heroCanvas,
-                antialias: true,
-                alpha: true
-            });
-            const scene = new THREE.Scene();
-            const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-
-            const PARTICLE_COUNT = 1500;
-            const centroid = new THREE.Vector3(0, 0, 0);
-            const particlesGeometry = new THREE.BufferGeometry();
-            const positions = new Float32Array(PARTICLE_COUNT * 3);
-            const colors = new Float32Array(PARTICLE_COUNT * 3);
-
-            for (let i = 0; i < PARTICLE_COUNT; i++) {
-                const i3 = i * 3;
-                const radius = 200 + Math.random() * 300;
-                const theta = Math.random() * Math.PI * 2;
-                const phi = Math.acos((Math.random() * 2) - 1);
-                positions[i3] = radius * Math.sin(phi) * Math.cos(theta);
-                positions[i3 + 1] = radius * Math.sin(phi) * Math.sin(theta);
-                positions[i3 + 2] = radius * Math.cos(phi);
-                colors[i3] = 0.4 + Math.random() * 0.2;
-                colors[i3 + 1] = 0.5 + Math.random() * 0.3;
-                colors[i3 + 2] = 0.9;
+            const canvas = document.querySelector('.hero .particles-canvas');
+            if (!canvas) { console.warn("Hero particles canvas not found"); return; }
+            const ctx = canvas.getContext('2d');
+            let width, height, particles, mouse;
+            const particleColor = '#64ffda', lineColorBase = '100, 255, 218', numParticlesDensity = 18000, particleBaseRadius = 0.5, particleRandomRadius = 1.5, particleVelocity = 0.3, connectionDistance = 120, mouseRepelRadius = 100, mouseRepelStrength = 0.8;
+            function init() {
+                width = canvas.width = window.innerWidth; height = canvas.height = window.innerHeight; particles = []; mouse = { x: null, y: null, radius: mouseRepelRadius };
+                const numParticles = Math.floor((width * height) / numParticlesDensity);
+                for (let i = 0; i < numParticles; i++) { particles.push({ x: Math.random() * width, y: Math.random() * height, vx: Math.random() * (2 * particleVelocity) - particleVelocity, vy: Math.random() * (2 * particleVelocity) - particleVelocity, radius: Math.random() * particleRandomRadius + particleBaseRadius, color: particleColor }); }
             }
-            particlesGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-            particlesGeometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
-            const particlesMaterial = new THREE.PointsMaterial({ size: 1.5, vertexColors: true, transparent: true, opacity: 0.8 });
-            const particles = new THREE.Points(particlesGeometry, particlesMaterial);
-            scene.add(particles);
-
-            const linesGeometry = new THREE.BufferGeometry();
-            const linePositions = new Float32Array(PARTICLE_COUNT * 6);
-            linesGeometry.setAttribute('position', new THREE.BufferAttribute(linePositions, 3));
-            const linesMaterial = new THREE.LineBasicMaterial({ color: 0x285da7, transparent: true, opacity: 0.2 });
-            const lines = new THREE.LineSegments(linesGeometry, linesMaterial);
-            scene.add(lines);
-
-            camera.position.z = 800;
-            let mouseX = 0, mouseY = 0;
-            let frame = 0;
-
-            const onMouseMove = (e) => {
-                mouseX = (e.clientX / window.innerWidth - 0.5) * 2;
-                mouseY = (e.clientY / window.innerHeight - 0.5) * 2;
-            };
-            document.addEventListener('mousemove', onMouseMove, { passive: true });
-
-            const animate = () => {
-                requestAnimationFrame(animate);
-                frame += 0.005;
-                const currentPositions = particlesGeometry.attributes.position.array;
-                const currentLinePositions = linesGeometry.attributes.position.array;
-                for (let i = 0; i < PARTICLE_COUNT; i++) {
-                    const i3 = i * 3;
-                    const i6 = i * 6;
-                    currentPositions[i3] += Math.sin(frame + i) * 0.1;
-                    currentPositions[i3 + 1] += Math.cos(frame + i) * 0.1;
-                    currentPositions[i3 + 2] += Math.sin(frame * 0.5 + i) * 0.1;
-                    currentLinePositions[i6] = currentPositions[i3];
-                    currentLinePositions[i6 + 1] = currentPositions[i3 + 1];
-                    currentLinePositions[i6 + 2] = currentPositions[i3 + 2];
-                    currentLinePositions[i6 + 3] = centroid.x;
-                    currentLinePositions[i6 + 4] = centroid.y;
-                    currentLinePositions[i6 + 5] = centroid.z;
-                }
-                particlesGeometry.attributes.position.needsUpdate = true;
-                linesGeometry.attributes.position.needsUpdate = true;
-                camera.position.x += (mouseX * 80 - camera.position.x) * 0.05;
-                camera.position.y += (-mouseY * 80 - camera.position.y) * 0.05;
-                camera.lookAt(centroid);
-                renderer.setSize(window.innerWidth, window.innerHeight); 
-                renderer.render(scene, camera);
-            };
-            const onResize = () => {
-                camera.aspect = window.innerWidth / window.innerHeight;
-                camera.updateProjectionMatrix();
-                renderer.setSize(window.innerWidth, window.innerHeight);
-            };
-            window.addEventListener('resize', onResize, { passive: true });
-            animate();
+            function animate() {
+                requestAnimationFrame(animate); ctx.clearRect(0, 0, width, height);
+                particles.forEach(p => {
+                    p.x += p.vx; p.y += p.vy;
+                    if (p.x + p.radius < 0) p.x = width + p.radius; if (p.x - p.radius > width) p.x = -p.radius; if (p.y + p.radius < 0) p.y = height + p.radius; if (p.y - p.radius > height) p.y = -p.radius;
+                    if (mouse.x !== null && mouse.y !== null) { const dx = p.x - mouse.x, dy = p.y - mouse.y, distance = Math.sqrt(dx * dx + dy * dy); if (distance < mouse.radius) { const forceDirectionX = dx / distance, forceDirectionY = dy / distance, force = (mouse.radius - distance) / mouse.radius; p.vx += forceDirectionX * force * mouseRepelStrength; p.vy += forceDirectionY * force * mouseRepelStrength; } }
+                    p.vx *= 0.98; p.vy *= 0.98;
+                    ctx.beginPath(); ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2); ctx.fillStyle = p.color; ctx.fill();
+                });
+                ctx.lineWidth = 0.4;
+                for (let i = 0; i < particles.length; i++) { for (let j = i + 1; j < particles.length; j++) { const p1 = particles[i], p2 = particles[j], dx = p1.x - p2.x, dy = p1.y - p2.y, distance = Math.sqrt(dx * dx + dy * dy); if (distance < connectionDistance) { ctx.beginPath(); ctx.moveTo(p1.x, p1.y); ctx.lineTo(p2.x, p2.y); const opacity = Math.min(0.5, 1 - (distance / connectionDistance)); ctx.strokeStyle = `rgba(${lineColorBase}, ${opacity})`; ctx.stroke(); } } }
+            }
+            window.addEventListener('mousemove', (event) => { const rect = canvas.getBoundingClientRect(); mouse.x = event.clientX - rect.left; mouse.y = event.clientY - rect.top; });
+            window.addEventListener('mouseout', () => { mouse.x = null; mouse.y = null; }); canvas.addEventListener('mouseleave', () => { mouse.x = null; mouse.y = null; });
+            let resizeTimeout; window.addEventListener('resize', () => { clearTimeout(resizeTimeout); resizeTimeout = setTimeout(init, 200); });
+            init(); animate();
         });
 
         // Hero Text Typing Animation
         document.addEventListener("DOMContentLoaded", function () {
-            const typingElement = document.getElementById("typing-animation");
-            if (!typingElement) return;
-            const texts = ["Full Stack Developer", "Front End Developer", "UI/UX Designer"];
-            let textIndex = 0;
-            let charIndex = 0;
-            let isDeleting = false;
-            const typingSpeed = 100;
-            const deleteSpeed = 50;
-            const pauseBetween = 2000;
-
+            const typingElement = document.getElementById("typing-animation"); if (!typingElement) return;
+            const texts = ["Full Stack Developer", "Front End Developer", "UI/UX Designer"]; let textIndex = 0, charIndex = 0, isDeleting = false; const typingSpeed = 100, deleteSpeed = 50, pauseBetween = 2000;
             function typeText() {
                 const currentText = texts[textIndex];
-                if (!isDeleting) {
-                    typingElement.textContent = currentText.substring(0, charIndex + 1);
-                    charIndex++;
-                    if (charIndex === currentText.length) {
-                        isDeleting = true;
-                        setTimeout(typeText, pauseBetween);
-                        return;
-                    }
-                } else {
-                    typingElement.textContent = currentText.substring(0, charIndex - 1);
-                    charIndex--;
-                    if (charIndex === 0) {
-                        isDeleting = false;
-                        textIndex = (textIndex + 1) % texts.length;
-                    }
-                }
+                if (!isDeleting) { typingElement.textContent = currentText.substring(0, charIndex + 1); charIndex++; if (charIndex === currentText.length) { isDeleting = true; setTimeout(typeText, pauseBetween); return; }
+                } else { typingElement.textContent = currentText.substring(0, charIndex - 1); charIndex--; if (charIndex === 0) { isDeleting = false; textIndex = (textIndex + 1) % texts.length; } }
                 setTimeout(typeText, isDeleting ? deleteSpeed : typingSpeed);
-            }
-            typeText();
+            } typeText();
         });
 
-        // About Section Scroll Reveal & Hover (Original - good for these specific cards)
+        // About Section Scroll Reveal & Hover
         document.addEventListener('DOMContentLoaded', () => {
-            const aboutSectionObservers = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('active');
-                    }
-                });
-            }, { threshold: 0.1 });
-
+            const aboutSectionObservers = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('active'); } }); }, { threshold: 0.1 });
             document.querySelectorAll('.about-section .reveal').forEach(el => aboutSectionObservers.observe(el));
-
             document.querySelectorAll('.about-skills .skill-card').forEach(card => {
-                card.addEventListener('mousemove', (e) => {
-                    const rect = card.getBoundingClientRect();
-                    const x = e.clientX - rect.left;
-                    const y = e.clientY - rect.top;
-                    card.style.transform = `perspective(1000px) rotateX(${(y - rect.height / 2) / 10}deg) rotateY(${-(x - rect.width / 2) / 10}deg) scale(1.05)`;
-                });
-                card.addEventListener('mouseleave', () => {
-                    card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale(1)';
-                });
+                card.addEventListener('mousemove', (e) => { const rect = card.getBoundingClientRect(), x = e.clientX - rect.left, y = e.clientY - rect.top; card.style.transform = `perspective(1000px) rotateX(${(y - rect.height / 2) / 10}deg) rotateY(${-(x - rect.width / 2) / 10}deg) scale(1.05)`; });
+                card.addEventListener('mouseleave', () => { card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale(1)'; });
             });
         });
-        
+
         // Education Particles
         function createEduParticles() {
-            const container = document.getElementById('edu-particles');
-            if (!container) return;
-            const particleCount = 80;
-            container.innerHTML = ''; 
-            for (let i = 0; i < particleCount; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'edu-particle';
-                // Make sure .edu-particle has base styles in newpro.css or here
-                // Example minimum styles for visibility:
-                // particle.style.background = '#64ffda';
-                // particle.style.position = 'absolute';
-                // particle.style.borderRadius = '50%';
-                particle.style.cssText = `
-                    width: ${Math.random() * 6}px;
-                    height: ${Math.random() * 6}px;
-                    left: ${Math.random() * 100}%;
-                    top: ${Math.random() * 100}%;
-                    animation-duration: ${12 + Math.random() * 8}s;
-                    animation-delay: ${Math.random() * 5}s;
-                    opacity: ${Math.random() * 0.3 + 0.2};
-                    background-color: #64ffda; /* Added for visibility if not in CSS */
-                    position: absolute; /* Added for positioning if not in CSS */
-                    border-radius: 50%; /* Added for visibility if not in CSS */
-                `;
-                // Your newpro.css should define .edu-particle animation, e.g., 'float'
-                container.appendChild(particle);
-            }
+            const container = document.getElementById('edu-particles'); if (!container) return;
+            const particleCount = 80; container.innerHTML = '';
+            for (let i = 0; i < particleCount; i++) { const particle = document.createElement('div'); particle.className = 'edu-particle'; particle.style.cssText = `width:${Math.random()*6}px;height:${Math.random()*6}px;left:${Math.random()*100}%;top:${Math.random()*100}%;animation-duration:${12+Math.random()*8}s;animation-delay:${Math.random()*5}s;opacity:${Math.random()*.3+.2};background-color:#64ffda;position:absolute;border-radius:50%;`; container.appendChild(particle); }
         }
-        window.addEventListener('resize', createEduParticles);
-        document.addEventListener('DOMContentLoaded', createEduParticles);
-
+        window.addEventListener('resize', createEduParticles); document.addEventListener('DOMContentLoaded', createEduParticles);
 
         // Skills Section Particles (Three.js)
         document.addEventListener('DOMContentLoaded', () => {
-            const skillsAnimationContainer = document.getElementById('skills-animation');
-            if (!skillsAnimationContainer) return;
-
-            const scene = new THREE.Scene();
-            const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-            const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-            renderer.setSize(window.innerWidth, window.innerHeight);
-            skillsAnimationContainer.appendChild(renderer.domElement);
-
-            const particlesGeometry = new THREE.BufferGeometry();
-            const particleCount = 2000;
-            const posArray = new Float32Array(particleCount * 3);
-            for (let i = 0; i < particleCount * 3; i++) {
-                posArray[i] = (Math.random() - 0.5) * 10;
-            }
-            particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
-            const particlesMaterial = new THREE.PointsMaterial({
-                size: 0.02, color: new THREE.Color(0x4a90e2), transparent: true, opacity: 0.8, blending: THREE.AdditiveBlending
-            });
-            const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
-            scene.add(particlesMesh);
-
-            const light = new THREE.PointLight(0x4a90e2, 1, 100);
-            light.position.set(0, 0, 10);
-            scene.add(light);
-            camera.position.z = 5;
-
-            function animateSkillsParticles() {
-                requestAnimationFrame(animateSkillsParticles);
-                const time = Date.now() * 0.001;
-                const positions = particlesGeometry.attributes.position.array;
-                for (let i = 0; i < positions.length; i += 3) {
-                    positions[i] += Math.sin(time + positions[i]) * 0.01;
-                    positions[i + 1] += Math.cos(time + positions[i + 1]) * 0.01;
-                    positions[i + 2] += Math.sin(time + positions[i + 2]) * 0.01;
-                }
-                particlesGeometry.attributes.position.needsUpdate = true;
-                light.position.x = Math.sin(time) * 5;
-                light.position.y = Math.cos(time * 0.5) * 5;
-                renderer.render(scene, camera);
-            }
-            window.addEventListener('resize', () => {
-                camera.aspect = window.innerWidth / window.innerHeight;
-                camera.updateProjectionMatrix();
-                renderer.setSize(window.innerWidth, window.innerHeight);
-            });
-            document.querySelectorAll('.skills-container .skill').forEach(skillEl => {
-                skillEl.addEventListener('mouseenter', () => {
-                    particlesMaterial.color.set(new THREE.Color(`hsl(${Math.random() * 360}, 70%, 60%)`));
-                });
-            });
+            const skillsAnimationContainer = document.getElementById('skills-animation'); if (!skillsAnimationContainer || !window.THREE) { console.warn('Skills animation container or Three.js not found.'); return; }
+            const scene = new THREE.Scene(), camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, .1, 1e3), renderer = new THREE.WebGLRenderer({alpha:!0,antialias:!0}); renderer.setSize(window.innerWidth,window.innerHeight); skillsAnimationContainer.appendChild(renderer.domElement);
+            const particlesGeometry = new THREE.BufferGeometry(), particleCount = 2e3, posArray = new Float32Array(3*particleCount); for(let i=0;i<3*particleCount;i++)posArray[i]=10*(Math.random()-.5); particlesGeometry.setAttribute('position',new THREE.BufferAttribute(posArray,3));
+            const particlesMaterial = new THREE.PointsMaterial({size:.02,color:new THREE.Color(0x4a90e2),transparent:!0,opacity:.8,blending:THREE.AdditiveBlending}), particlesMesh = new THREE.Points(particlesGeometry,particlesMaterial); scene.add(particlesMesh);
+            const light = new THREE.PointLight(0x4a90e2,1,100); light.position.set(0,0,10); scene.add(light); camera.position.z=5;
+            function animateSkillsParticles(){requestAnimationFrame(animateSkillsParticles);const t=.001*Date.now(),e=particlesGeometry.attributes.position.array;for(let o=0;o<e.length;o+=3)e[o]+=.01*Math.sin(t+e[o]),e[o+1]+=.01*Math.cos(t+e[o+1]),e[o+2]+=.01*Math.sin(t+e[o+2]);particlesGeometry.attributes.position.needsUpdate=!0,light.position.x=5*Math.sin(t),light.position.y=5*Math.cos(.5*t),renderer.render(scene,camera)}
+            window.addEventListener('resize',()=>{camera.aspect=window.innerWidth/window.innerHeight,camera.updateProjectionMatrix(),renderer.setSize(window.innerWidth,window.innerHeight)});
+            document.querySelectorAll('.skills-container .skill').forEach(e=>{e.addEventListener('mouseenter',()=>{particlesMaterial.color.set(new THREE.Color(`hsl(${360*Math.random()}, 70%, 60%)`))})});
             animateSkillsParticles();
         });
 
-        // Project Section Particles (Neural Network Canvas with Mouse Interaction)
+        // Project Section Particles & Filters
         document.addEventListener('DOMContentLoaded', () => {
-            const neuralCanvas = document.getElementById('proj-particle-canvas');
-            if (!neuralCanvas) return;
-            const ctxs = neuralCanvas.getContext('2d');
-            let nodes = [];
-            let mouse = { x: undefined, y: undefined, radius: 120 }; 
+            const neuralCanvas = document.getElementById('proj-particle-canvas'); if (!neuralCanvas) { console.warn("Project particle canvas not found"); return;}
+            const ctxs = neuralCanvas.getContext('2d'); let nodes = [], mouse = { x: undefined, y: undefined, radius: 120 };
+            class Node{constructor(t,e){this.x=t,this.y=e,this.connections=[],this.radius=2+2*Math.random(),this.baseColor=`hsla(${180+60*Math.random()}, 70%, 60%, 0.7)`,this.vx=.5*(Math.random()-.5),this.vy=.5*(Math.random()-.5)}draw(){ctxs.beginPath(),ctxs.arc(this.x,this.y,this.radius,0,2*Math.PI),ctxs.fillStyle=this.baseColor,ctxs.fill()}update(t){this.x<0||this.x>neuralCanvas.width?this.vx*=-1:void 0,this.y<0||this.y>neuralCanvas.height?this.vy*=-1:void 0,this.x+=this.vx,this.y+=this.vy,void 0!==t.x&&void 0!==t.y&&((e,o)=>{const i=this.x-e,s=this.y-o,a=Math.sqrt(i*i+s*s);if(a<t.radius){const n=(t.radius-a)/t.radius;this.x+=i/a*n*2.5,this.y+=s/a*n*2.5}})(t.x,t.y),this.connections.forEach(t=>{const e=t.node.x-this.x,o=t.node.y-this.y,i=Math.sqrt(e*e+o*o);i<150&&(ctxs.beginPath(),ctxs.moveTo(this.x,this.y),ctxs.lineTo(t.node.x,t.node.y),ctxs.strokeStyle=`hsla(${180+60*Math.random()}, 70%, 60%, ${.6-i/250})`,ctxs.lineWidth=.5+.5*Math.random(),ctxs.stroke())})}}
+            function initNeural(){neuralCanvas.width=window.innerWidth,neuralCanvas.height=neuralCanvas.offsetHeight || neuralCanvas.parentElement.offsetHeight || 500; nodes=[];const t=Math.min(50,Math.floor(neuralCanvas.width/30));for(let e=0;e<t;e++)nodes.push(new Node(Math.random()*neuralCanvas.width,Math.random()*neuralCanvas.height));nodes.forEach(t=>{t.connections=nodes.filter(e=>e!==t).map(t=>({node:t}))})}
+            neuralCanvas.addEventListener('mousemove',t=>{const e=neuralCanvas.getBoundingClientRect();mouse.x=t.clientX-e.left,mouse.y=t.clientY-e.top}),neuralCanvas.addEventListener('mouseleave',()=>{mouse.x=void 0,mouse.y=void 0});
+            let lastRenderTime=0;const targetFPS=30,frameInterval=1e3/targetFPS;
+            function animateNeural(t){requestAnimationFrame(animateNeural);const e=t-lastRenderTime;e>frameInterval&&(lastRenderTime=t-e%frameInterval,ctxs.clearRect(0,0,neuralCanvas.width,neuralCanvas.height),nodes.forEach(t=>{t.update(mouse),t.draw()}))}
+            window.addEventListener('resize',initNeural),initNeural(),requestAnimationFrame(animateNeural);
 
-            class Node {
-                constructor(x, y) {
-                    this.x = x; this.y = y;
-                    this.connections = [];
-                    this.radius = 2 + Math.random() * 2; 
-                    this.baseColor = `hsla(${180 + Math.random() * 60}, 70%, 60%, 0.7)`; 
-                    this.vx = (Math.random() - 0.5) * 0.5; 
-                    this.vy = (Math.random() - 0.5) * 0.5;
-                    this.originalX = x; this.originalY = y; 
-                }
-                draw() {
-                    ctxs.beginPath();
-                    ctxs.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-                    ctxs.fillStyle = this.baseColor;
-                    ctxs.fill();
-                }
-                update(mouseObj) {
-                    if (this.x < 0 || this.x > neuralCanvas.width) this.vx *= -1;
-                    if (this.y < 0 || this.y > neuralCanvas.height) this.vy *= -1;
-                    this.x += this.vx; this.y += this.vy;
+            // Filter projects function (ensure GSAP is loaded)
+            window.filterProjects=function(category){
+                const projectCards = document.querySelectorAll(".proj-grid .proj-card");
+                const filterButtons = document.querySelectorAll(".filters button");
 
-                    if (mouseObj.x !== undefined && mouseObj.y !== undefined) {
-                        const dxMouse = this.x - mouseObj.x;
-                        const dyMouse = this.y - mouseObj.y;
-                        const distMouse = Math.sqrt(dxMouse * dxMouse + dyMouse * dyMouse);
-                        if (distMouse < mouseObj.radius) {
-                            const force = (mouseObj.radius - distMouse) / mouseObj.radius;
-                            this.x += (dxMouse / distMouse) * force * 2.5; 
-                            this.y += (dyMouse / distMouse) * force * 2.5;
-                        }
-                    }
-                    this.connections.forEach(connection => {
-                        const dx = connection.node.x - this.x;
-                        const dy = connection.node.y - this.y;
-                        const dist = Math.sqrt(dx * dx + dy * dy);
-                        if (dist < 150) { 
-                            ctxs.beginPath();
-                            ctxs.moveTo(this.x, this.y);
-                            ctxs.lineTo(connection.node.x, connection.node.y);
-                            ctxs.strokeStyle = `hsla(${180 + Math.random() * 60}, 70%, 60%, ${0.6 - dist / 250})`; 
-                            ctxs.lineWidth = 0.5 + Math.random() * 0.5; 
-                            ctxs.stroke();
-                        }
-                    });
-                }
-            }
-
-            function initNeural() {
-                neuralCanvas.width = window.innerWidth;
-                neuralCanvas.height = neuralCanvas.offsetHeight; 
-                nodes = [];
-                const numNodes = Math.min(50, Math.floor(neuralCanvas.width / 30)); 
-                for (let i = 0; i < numNodes; i++) {
-                    nodes.push(new Node(Math.random() * neuralCanvas.width, Math.random() * neuralCanvas.height));
-                }
-                nodes.forEach(node => {
-                    node.connections = nodes.filter(n => n !== node).map(n => ({ node: n }));
-                });
-            }
-
-            neuralCanvas.addEventListener('mousemove', (event) => {
-                const rect = neuralCanvas.getBoundingClientRect();
-                mouse.x = event.clientX - rect.left;
-                mouse.y = event.clientY - rect.top;
-            });
-            neuralCanvas.addEventListener('mouseleave', () => {
-                mouse.x = undefined; mouse.y = undefined;
-            });
-            
-            let lastRenderTime = 0;
-            const targetFPS = 30; 
-            const frameInterval = 1000 / targetFPS;
-
-            function animateNeural(currentTime) {
-                requestAnimationFrame(animateNeural);
-                const elapsed = currentTime - lastRenderTime;
-
-                if (elapsed > frameInterval) {
-                    lastRenderTime = currentTime - (elapsed % frameInterval);
-                    ctxs.clearRect(0, 0, neuralCanvas.width, neuralCanvas.height);
-                    nodes.forEach(node => {
-                        node.update(mouse); node.draw();
-                    });
-                }
-            }
-            
-            window.addEventListener('resize', initNeural);
-            initNeural(); 
-            requestAnimationFrame(animateNeural);
-
-
-            window.filterProjects = function (category) { 
-                const cards = document.querySelectorAll('.proj-grid .proj-card');
-                cards.forEach(card => {
-                    const display = category === 'all' || card.classList.contains(category) ? 'block' : 'none';
-                    if (display === 'none' && card.style.display !== 'none') {
-                        gsap.to(card, { opacity: 0, scale: 0.9, duration: 0.3, onComplete: () => card.style.display = 'none' });
-                    } else if (display === 'block' && (card.style.display === 'none' || !card.style.display)) { // check for !card.style.display for initial load
-                        card.style.display = 'block'; 
-                        gsap.fromTo(card, { opacity: 0, scale: 0.9 }, { opacity: 1, scale: 1, duration: 0.3 });
-                    } else if (display === 'block') { 
-                         gsap.to(card, { opacity: 1, scale: 1, duration: 0.3 });
+                filterButtons.forEach(button => {
+                    if (button.getAttribute('onclick').includes(`'${category}'`)) {
+                        button.classList.add('active-filter');
+                    } else {
+                        button.classList.remove('active-filter');
                     }
                 });
+
+                projectCards.forEach(card => {
+                    const isVisible = category === 'all' || card.classList.contains(category);
+                    if (isVisible) {
+                        if (card.style.display === "none" || !card.style.display) { // If hidden or display not set, show it
+                            card.style.display = "block"; // Set display before animation
+                            gsap.fromTo(card, { opacity: 0, scale: 0.9 }, { opacity: 1, scale: 1, duration: 0.3 });
+                        }
+                    } else {
+                        if (card.style.display !== "none") { // If visible, hide it
+                            gsap.to(card, { opacity: 0, scale: 0.9, duration: 0.3, onComplete: () => card.style.display = "none" });
+                        }
+                    }
+                });
+            };
+            // Initialize with 'all' category selected
+            if(document.querySelector(".filters button")) {
+                 filterProjects('all');
             }
         });
 
-        // Contact Section Particles
+        // Contact Section Particles & Form
         document.addEventListener('DOMContentLoaded', () => {
-            class ContactParticleSystem {
-                constructor(canvas) {
-                    if (!canvas) return;
-                    this.canvas = canvas;
-                    this.ctx = canvas.getContext('2d');
-                    this.particles = [];
-                    this.mouse = { x: 0, y: 0, radius: 150 };
-                    this.initializeSystem();
-                    this.startAnimation();
-                    window.addEventListener('mousemove', e => {
-                        const rect = this.canvas.getBoundingClientRect(); // Get canvas position
-                        this.mouse.x = e.clientX - rect.left;
-                        this.mouse.y = e.clientY - rect.top;
-                    });
-                    window.addEventListener('resize', () => this.handleResize());
-                }
-                initializeSystem() {
-                    this.handleResize(); // This will set canvas width/height and clear particles
-                    const numParticles = Math.min(300, Math.floor(this.canvas.width / 5)); 
-                    for (let i = 0; i < numParticles; i++) {
-                        this.particles.push({
-                            x: Math.random() * this.canvas.width, y: Math.random() * this.canvas.height,
-                            size: Math.random() * 2.5 + 0.5, baseSize: Math.random() * 2.5 + 0.5,
-                            angle: Math.random() * Math.PI * 2, speed: Math.random() * 0.3 + 0.1, 
-                            color: `hsla(${160 + Math.random() * 40}, 100%, 70%, ${0.3 + Math.random() * 0.4})` 
-                        });
-                    }
-                }
-                handleResize() {
-                    this.canvas.width = window.innerWidth; // Use parent or window width
-                    this.canvas.height = this.canvas.offsetHeight; 
-                    this.particles = []; // Clear particles before repopulating if needed here
-                }
-                startAnimation() {
-                    const animateFrame = () => {
-                        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-                        this.particles.forEach(particle => {
-                            const dx = this.mouse.x - particle.x;
-                            const dy = this.mouse.y - particle.y;
-                            const distance = Math.sqrt(dx * dx + dy * dy);
-                            let forceX = 0, forceY = 0;
-                            if (distance < this.mouse.radius) { 
-                                const force = (this.mouse.radius - distance) / this.mouse.radius;
-                                forceX = (dx / distance) * force * 0.5; 
-                                forceY = (dy / distance) * force * 0.5;
-                            }
-                            particle.angle += 0.01;
-                            particle.x += Math.cos(particle.angle) * particle.speed + forceX;
-                            particle.y += Math.sin(particle.angle) * particle.speed + forceY;
-                            particle.size = particle.baseSize * (1 + Math.sin(Date.now() * 0.0015 + particle.angle) * 0.2);
-
-                            if (particle.x > this.canvas.width + particle.size) particle.x = -particle.size;
-                            else if (particle.x < -particle.size) particle.x = this.canvas.width + particle.size;
-                            if (particle.y > this.canvas.height + particle.size) particle.y = -particle.size;
-                            else if (particle.y < -particle.size) particle.y = this.canvas.height + particle.size;
-
-                            this.ctx.fillStyle = particle.color;
-                            this.ctx.beginPath();
-                            this.ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
-                            this.ctx.fill();
-                        });
-                        requestAnimationFrame(animateFrame);
-                    };
-                    animateFrame();
-                }
-            }
+            class ContactParticleSystem{constructor(t){if(!t){console.warn("Contact particle canvas not found");return;}this.canvas=t,this.ctx=t.getContext("2d"),this.particles=[],this.mouse={x:0,y:0,radius:150},this.initializeSystem(),this.startAnimation(),window.addEventListener("mousemove",t=>{const e=this.canvas.getBoundingClientRect();this.mouse.x=t.clientX-e.left,this.mouse.y=t.clientY-e.top}),window.addEventListener("resize",()=>this.handleResize())}initializeSystem(){this.handleResize();const t=Math.min(300,Math.floor(this.canvas.width/5));for(let e=0;e<t;e++)this.particles.push({x:Math.random()*this.canvas.width,y:Math.random()*this.canvas.height,size:2.5*Math.random()+.5,baseSize:2.5*Math.random()+.5,angle:2*Math.random()*Math.PI,speed:.3*Math.random()+.1,color:`hsla(${160+40*Math.random()}, 100%, 70%, ${.3+.4*Math.random()})`})}handleResize(){this.canvas.width=window.innerWidth,this.canvas.height=this.canvas.offsetHeight || this.canvas.parentElement.offsetHeight || 500,this.particles=[] /* Re-init particles on resize? Maybe not, just adjust bounds. For now, clear & re-init. */ }startAnimation(){const t=()=>{this.ctx.clearRect(0,0,this.canvas.width,this.canvas.height),this.particles.forEach(t=>{const e=this.mouse.x-t.x,o=this.mouse.y-t.y,i=Math.sqrt(e*e+o*o);let s=0,a=0;i<this.mouse.radius&&(n=(this.mouse.radius-i)/this.mouse.radius,s=e/i*n*.5,a=o/i*n*.5);var n;t.angle+=.01,t.x+=Math.cos(t.angle)*t.speed+s,t.y+=Math.sin(t.angle)*t.speed+a,t.size=t.baseSize*(1+.2*Math.sin(.0015*Date.now()+t.angle)),t.x>this.canvas.width+t.size?t.x=-t.size:t.x<-t.size&&(t.x=this.canvas.width+t.size),t.y>this.canvas.height+t.size?t.y=-t.size:t.y<-t.size&&(t.y=this.canvas.height+t.size),this.ctx.fillStyle=t.color,this.ctx.beginPath(),this.ctx.arc(t.x,t.y,t.size,0,2*Math.PI),this.ctx.fill()}),requestAnimationFrame(t)};t()}}
             new ContactParticleSystem(document.getElementById('cnt-particle-canvas'));
-            const contactForm = document.getElementById('cnt-contact-form');
-            if(contactForm) {
-                contactForm.addEventListener('submit', (e) => {
-                    e.preventDefault();
-                    const statusElement = document.getElementById('cnt-status-message');
-                    statusElement.textContent = "✓ Message successfully sent!";
-                    statusElement.style.color = "#64ffda"; // Make it visible
-                    statusElement.style.display = 'block';
-                    gsap.fromTo(statusElement, {opacity: 0, y: 10}, {opacity: 1, y: 0, duration: 0.5});
-                    setTimeout(() => {
-                         gsap.to(statusElement, {opacity: 0, y: -10, duration: 0.5, onComplete: () => statusElement.style.display = 'none'});
-                    }, 4000);
-                    e.target.reset();
-                });
-            }
+
+            const contactForm = document.getElementById('cnt-contact-form'); if(contactForm){contactForm.addEventListener('submit',t=>{t.preventDefault();const e=document.getElementById("cnt-status-message");e.textContent="✓ Message successfully sent!",e.style.color="#64ffda",e.style.display="block",gsap.fromTo(e,{opacity:0,y:10},{opacity:1,y:0,duration:.5}),setTimeout(()=>{gsap.to(e,{opacity:0,y:-10,duration:.5,onComplete:()=>e.style.display="none"})},4e3),t.target.reset()})}
         });
 
         // Swiper JS for Certificates
-        var swiper = new Swiper(".mySwiper", {
-            effect: "cards",
-            grabCursor: true,
-            loop: true, 
-            cardsEffect: {
-                perSlideOffset: 8, 
-                perSlideRotate: 2, 
-                slideShadows: true,
-            },
-            autoplay: { 
-                delay: 4000,
-                disableOnInteraction: false,
-            },
-             pagination: { 
-                el: '.swiper-pagination',
-                clickable: true,
-            },
-            navigation: { 
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
+        document.addEventListener('DOMContentLoaded', () => {
+            if (typeof Swiper !== 'undefined') {
+                var swiper = new Swiper(".mySwiper", {
+                    effect: "cards",
+                    grabCursor: true,
+                    loop: true,
+                    cardsEffect: {
+                        perSlideOffset: 8,
+                        perSlideRotate: 2,
+                        slideShadows: true
+                    },
+                    autoplay: {
+                        delay: 4000,
+                        disableOnInteraction: false
+                    },
+                    pagination: {
+                        el: '.swiper-pagination',
+                        clickable: true
+                    },
+                    navigation: {
+                        nextEl: '.swiper-button-next',
+                        prevEl: '.swiper-button-prev'
+                    }
+                });
+            } else {
+                console.error("Swiper library is not loaded.");
+            }
         });
 
-        // Generic Scroll Reveal (for elements not handled by GSAP)
+
+        // Generic Scroll Reveal
         document.addEventListener('DOMContentLoaded', () => {
             const generalRevealFunction = () => {
-                var reveals = document.querySelectorAll('.reveal'); 
-                var windowHeight = window.innerHeight;
+                var reveals = document.querySelectorAll('.reveal'), windowHeight = window.innerHeight;
                 reveals.forEach(function (rev) {
-                    if (rev.closest('.edu-timeline') || rev.closest('.exp') || rev.closest('.skills-container') || rev.closest('.proj-grid')) {
-                        // Skip if children are handled by GSAP's staggerAnimation
-                        // This check might need refinement if .reveal is on the parent container itself that GSAP also targets.
-                        // For now, assuming .reveal is on individual items that might also be children of GSAP targets.
-                        if(rev.classList.contains('edu-timeline-item') || 
-                           rev.classList.contains('card') || 
-                           rev.classList.contains('skill') || 
-                           rev.classList.contains('proj-card')) {
-                           return; 
-                        }
+                    // Exclude model viewers from this specific generic reveal if they have their own logic
+                    if (rev.classList.contains('hero-model-viewer-container') ||
+                        rev.classList.contains('about-model-wrapper') ||
+                        rev.classList.contains('education-model-wrapper') ||
+                        rev.classList.contains('experience-model-wrapper') ||
+                        rev.classList.contains('certificates-model-wrapper') ||
+                        rev.classList.contains('projects-model-wrapper') ||
+                        rev.classList.contains('contact-model-wrapper')
+                        ) {
+                        // Potentially let GSAP handle these if more complex reveal is needed
                     }
-                    var revealTop = rev.getBoundingClientRect().top;
-                    var revealPoint = 100; 
+                    // Prevent re-triggering for elements handled by GSAP stagger
+                    if (rev.closest('.edu-timeline') || rev.closest('.exp') || rev.closest('.skills-container') || rev.closest('.proj-grid')) {
+                        if(rev.classList.contains('edu-timeline-item') || rev.classList.contains('card') || rev.classList.contains('skill') || rev.classList.contains('proj-card')) { return; }
+                    }
+
+                    var revealTop = rev.getBoundingClientRect().top, revealPoint = 100;
                     if (revealTop < windowHeight - revealPoint) {
                         rev.classList.add('active');
-                    } else {
-                        // Optional: remove active if it scrolls out of view from the top
-                        // rev.classList.remove('active'); 
                     }
                 });
             };
             window.addEventListener('scroll', generalRevealFunction);
-            generalRevealFunction(); 
+            generalRevealFunction(); // Initial check
         });
+
 
         // GSAP Animations
         document.addEventListener('DOMContentLoaded', () => {
-            gsap.registerPlugin(ScrollTrigger, ScrollToPlugin); // Register ScrollToPlugin
+            if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined' && typeof ScrollToPlugin !== 'undefined') {
+                gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
-            function staggerAnimation(selector, triggerSelector, vars) {
-                const elements = gsap.utils.toArray(selector);
-                if (elements.length > 0) {
-                    gsap.from(elements, {
+                function staggerAnimation(selector, triggerSelector, vars) {
+                    const elements = gsap.utils.toArray(selector);
+                    if (elements.length > 0) {
+                        gsap.from(elements, {
+                            scrollTrigger: {
+                                trigger: triggerSelector || elements[0].parentNode,
+                                start: 'top 85%',
+                                end: 'bottom 20%', // Optional: define end point
+                                toggleActions: 'play none none none', // Play animation once when it enters viewport
+                            },
+                            opacity: 0,
+                            y: 60,
+                            scale: 0.95,
+                            duration: 0.7,
+                            ease: 'power2.out',
+                            stagger: {
+                                amount: 0.5,
+                                from: "start",
+                            },
+                            ...vars
+                        });
+                    }
+                }
+                staggerAnimation('.edu-timeline-item', '.edu-timeline');
+                document.querySelectorAll('.exp').forEach((expContainer) => {
+                    staggerAnimation(expContainer.querySelectorAll('.card'), expContainer);
+                });
+                staggerAnimation('.skills-container .skill', '.skills-container');
+                // Project card stagger is handled by filterProjects for initial load,
+                // but could be added here if not using filterProjects initially.
+
+                gsap.utils.toArray('.reveal-title').forEach(title => {
+                    gsap.from(title, {
                         scrollTrigger: {
-                            trigger: triggerSelector || elements[0].parentNode, 
-                            start: 'top 85%', 
-                            end: 'bottom 20%',
-                            toggleActions: 'play none none none', 
+                            trigger: title,
+                            start: 'top 90%',
+                            toggleActions: 'play none none none',
                         },
                         opacity: 0,
-                        y: 60,
-                        scale: 0.95,
-                        duration: 0.7,
-                        ease: 'power2.out',
-                        stagger: {
-                            amount: 0.5, 
-                            from: "start", 
-                        },
-                        ...vars 
+                        y: 30,
+                        duration: 0.8,
+                        ease: 'power2.out'
                     });
-                }
-            }
-            
-            staggerAnimation('.edu-timeline-item', '.edu-timeline');
-            
-            document.querySelectorAll('.exp').forEach((expContainer) => {
-                staggerAnimation(expContainer.querySelectorAll('.card'), expContainer);
-            });
-
-            staggerAnimation('.skills-container .skill', '.skills-container');
-            staggerAnimation('.proj-grid .proj-card', '.proj-grid');
-
-            gsap.utils.toArray('.reveal-title').forEach(title => { // Assuming you have a .reveal-title class
-                gsap.from(title, {
-                    scrollTrigger: {
-                        trigger: title,
-                        start: 'top 90%',
-                        toggleActions: 'play none none none',
-                    },
-                    opacity: 0,
-                    y: 30,
-                    duration: 0.8,
-                    ease: 'power2.out'
                 });
-            });
 
-             // Smooth scroll for navbar links
-            document.querySelectorAll('.nav-links a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const targetId = this.getAttribute('href');
-                    const targetElement = document.querySelector(targetId);
-                    if (targetElement) {
-                        gsap.to(window, {
-                            duration: 1, 
-                            scrollTo: {
-                                y: targetElement,
-                                offsetY: 70 // Match navbar height
-                            },
-                            ease: "power2.inOut"
-                        });
-                        const menuToggle = document.querySelector('.menu-toggle');
-                        const navLinks = document.querySelector('.nav-links');
-                        if (menuToggle && navLinks && menuToggle.classList.contains('active')) {
-                            menuToggle.classList.remove('active');
-                            navLinks.classList.remove('active');
+                // Smooth scroll for nav links
+                document.querySelectorAll('.nav-links a[href^="#"]').forEach(anchor => {
+                    anchor.addEventListener('click', function (e) {
+                        e.preventDefault();
+                        const targetId = this.getAttribute('href');
+                        const targetElement = document.querySelector(targetId);
+                        if (targetElement) {
+                            gsap.to(window, {
+                                duration: 1,
+                                scrollTo: { y: targetElement, offsetY: 70 }, // offsetY for fixed navbar
+                                ease: "power2.inOut"
+                            });
+                            // Close mobile menu if open
+                            const menuToggle = document.querySelector('.menu-toggle');
+                            const navLinks = document.querySelector('.nav-links');
+                            if (menuToggle && navLinks && menuToggle.classList.contains('active')) {
+                                menuToggle.classList.remove('active');
+                                navLinks.classList.remove('active');
+                            }
                         }
-                    }
+                    });
                 });
-            });
+            } else {
+                console.error("GSAP or its plugins are not loaded.");
+            }
         });
 
-        document.addEventListener('contextmenu', event => event.preventDefault());
 
-  // Disable key shortcuts
-  document.onkeydown = function (e) {
-    // Disable F12
-    if (e.keyCode === 123) return false;
-
-    // Disable Ctrl+Shift+I/J/C
-    if (e.ctrlKey && e.shiftKey && ['I', 'J', 'C'].includes(e.key.toUpperCase())) {
-      return false;
-    }
-
-    // Disable Ctrl+U
-    if (e.ctrlKey && e.key.toUpperCase() === 'U') {
-      return false;
-    }
-
-    // Disable Ctrl+S (Save), Ctrl+P (Print)
-    if (e.ctrlKey && ['S', 'P'].includes(e.key.toUpperCase())) {
-      e.preventDefault();
-      return false;
-    }
-  };
-
-  // Prevent drag (e.g., dragging images)
-  document.addEventListener('dragstart', function (e) {
-    e.preventDefault();
-  });
-
-  // Try to detect opening of dev tools (console)
-  setInterval(function () {
-    const before = new Date().getTime();
-    debugger;
-    const after = new Date().getTime();
-    if (after - before > 100) {
-      document.body.innerHTML = '<h1 style="color:red;text-align:center;">Dev Tools Blocked</h1>';
-    }
-  }, 1000);
-
-  // Prevent printing the page (Ctrl+P or Print Dialog)
-  window.onbeforeprint = () => {
-    alert("Printing is disabled on this page.");
-    return false;
-  };
+        // Disable key shortcuts 
+        document.onkeydown = function (e) {
+            if (e.keyCode === 123) return false; 
+             if (e.ctrlKey && e.shiftKey && ['I', 'J', 'C'].includes(e.key.toUpperCase())) 
+             { return false; } // Disable Ctrl+U 
+            if (e.ctrlKey && e.key.toUpperCase() === 'U') { return false; } 
+            // Disable Ctrl+S (Save), Ctrl+P (Print)
+            if (e.ctrlKey && ['S', 'P'].includes(e.key.toUpperCase())) { e.preventDefault(); return false; } }; 
+        // Prevent drag (e.g., dragging images) 
+        document.addEventListener('dragstart', function (e) { e.preventDefault(); }); // Try to detect opening of dev tools (console)
+        setInterval(function () { const before = new Date().getTime(); debugger; const after = new Date().getTime(); 
+        if (after - before > 100) { document.body.innerHTML = '<h1 style="color:red;text-align:center;">Dev Tools Blocked</h1>'; } }, 1000); // Prevent printing the page (Ctrl+P or Print Dialog) 
+        window.onbeforeprint = () => { alert("Printing is disabled on this page."); return false; };
     </script>
 </body>
 </html>
