@@ -600,18 +600,44 @@
 
 
         // Disable key shortcuts 
-        document.onkeydown = function (e) {
-            if (e.keyCode === 123) return false; 
-             if (e.ctrlKey && e.shiftKey && ['I', 'J', 'C'].includes(e.key.toUpperCase())) 
-             { return false; } // Disable Ctrl+U 
-            if (e.ctrlKey && e.key.toUpperCase() === 'U') { return false; } 
-            // Disable Ctrl+S (Save), Ctrl+P (Print)
-            if (e.ctrlKey && ['S', 'P'].includes(e.key.toUpperCase())) { e.preventDefault(); return false; } }; 
-        // Prevent drag (e.g., dragging images) 
-        document.addEventListener('dragstart', function (e) { e.preventDefault(); }); // Try to detect opening of dev tools (console)
-        setInterval(function () { const before = new Date().getTime(); debugger; const after = new Date().getTime(); 
-        if (after - before > 100) { document.body.innerHTML = '<h1 style="color:red;text-align:center;">Dev Tools Blocked</h1>'; } }, 1000); // Prevent printing the page (Ctrl+P or Print Dialog) 
-        window.onbeforeprint = () => { alert("Printing is disabled on this page."); return false; };
+     <script>
+  // Disable right-click
+  document.addEventListener('contextmenu', event => event.preventDefault());
+
+  // Disable key combinations
+  document.addEventListener('keydown', function (e) {
+    // F12
+    if (e.key === 'F12' || e.keyCode === 123) {
+      e.preventDefault();
+      return false;
+    }
+
+    // Ctrl+Shift+I/J/C
+    if (e.ctrlKey && e.shiftKey && ['I', 'J', 'C'].includes(e.key.toUpperCase())) {
+      e.preventDefault();
+      return false;
+    }
+
+    // Ctrl+U
+    if (e.ctrlKey && e.key.toUpperCase() === 'U') {
+      e.preventDefault();
+      return false;
+    }
+
+    // Ctrl+S (to block save page)
+    if (e.ctrlKey && e.key.toUpperCase() === 'S') {
+      e.preventDefault();
+      return false;
+    }
+
+    // Ctrl+P (to block print)
+    if (e.ctrlKey && e.key.toUpperCase() === 'P') {
+      e.preventDefault();
+      return false;
+    }
+  });
+</script>
+
     </script>
 </body>
 </html>
