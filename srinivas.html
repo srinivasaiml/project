@@ -21,7 +21,6 @@
 
 <body>
 <style>
-
 </style>
 
     <!-- Preloader -->
@@ -65,18 +64,11 @@
                 <div id="typing-animation" class="typing-animation"></div>
             </div>
             <div class="hero-model-viewer-container reveal">
-                <model-viewer
-                    src="https://modelviewer.dev/shared-assets/models/Astronaut.glb"
-                    alt="A 3D model of an astronaut"
-                    auto-rotate
-                    camera-controls
-                    disable-zoom
-                    interaction-prompt="auto"
-                    shadow-intensity="1"
-                    camera-orbit="15deg 75deg 1.3em"
-                    environment-image="neutral"
-                    style="background-color: transparent;">
-                </model-viewer>
+              
+          <model-viewer id="paused-change-demo" 
+          camera-controls touch-action="pan-y" autoplay animation-name="Running" ar ar-modes="webxr scene-viewer" scale="0.2 0.2 0.2" shadow-intensity="1" 
+          src="https://modelviewer.dev/shared-assets/models/RobotExpressive.glb" alt="An animated 3D model of a robot"></model-viewer>
+          
             </div>
         </section>
     </section>
@@ -91,16 +83,7 @@
                 <p>Currently, I’m on an exciting journey to master the MERN stack (MongoDB, Express.js, React, Node.js) to build full-stack applications. I believe in the power of continuous learning and am committed to staying updated with the latest industry trends. My goal is to contribute to innovative projects that make a meaningful impact.</p>
                 <button class="resume-btn">Download Resume</button>
             </div>
-            <div class="about-model-wrapper reveal">
-                <model-viewer
-                    src="https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/Suzanne/glTF-Binary/Suzanne.glb"
-                    alt="A 3D model of a stylized monkey head representing creativity"
-                    auto-rotate
-                    camera-controls
-                    shadow-intensity="1"
-                    environment-image="neutral">
-                </model-viewer>
-            </div>
+           
             <div class="about-skills">
                 <div class="skill-card reveal"><h3>Clean Code</h3><p>Writing maintainable, scalable, and efficient code following best practices.</p></div>
                 <div class="skill-card reveal"><h3>Modern Design</h3><p>Creating beautiful user interfaces with attention to detail and aesthetics.</p></div>
@@ -134,15 +117,14 @@
             <div class="proj-header">
                 <h2 class="proj-title reveal">My Projects</h2>
                 <p class="proj-subtitle reveal">A showcase of my technical creations</p>
-                <div class="projects-model-wrapper reveal">
-                    <model-viewer
-                        src="https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/ToyCar/glTF-Binary/ToyCar.glb"
-                        alt="A 3D model of a toy car, representing projects"
-                        auto-rotate
-                        camera-controls
-                        shadow-intensity="1"
-                        environment-image="neutral">
-                    </model-viewer>
+                <div class="about-model-wrapper reveal">
+                  <model-viewer camera-orbit="45deg 115deg auto" camera-controls touch-action="pan-y" autoplay src="https://modelviewer.dev/shared-assets/models/RocketShip.glb" ar alt="A 3D model of a Rocket Ship">
+                    <effect-composer id="selectiveComposer" render-mode="quality">
+                      <selective-bloom-effect strength="5" radius="0.7" threshold="0"></selective-bloom-effect>
+                      <color-grade-effect></color-grade-effect>
+                    </effect-composer>
+                  </model-viewer>
+                
                 </div>
             </div>
             <div class="filters reveal">
@@ -152,18 +134,104 @@
                 <button onclick="filterProjects('dynamic')">2023</button>
             </div>
             <div class="proj-grid">
-                <div class="proj-card static"><img src="flames.png" alt="Flames Calculator"><h3>Flames Calculator</h3><p>Flames Calculator for Lovers <a href="https://srinivasaiml.github.io/project/flames.html" target="_blank">view</a></p></div>
-                <div class="proj-card static"><img src="8queen.png" alt="8 Queen Game"><h3>8 Queen Game</h3><p>Create a 8 queen game for Students <a href="https://srinivasaiml.github.io/project/queen.html" target="_blank">view</a></p></div>
-                <div class="proj-card static"><img src="love.png" alt="Love Calculator"><h3>Love Calculator Percentage</h3><p>Love Calculator Percentage for Lovers <a href="https://srinivasaiml.github.io/Codesoft/love2.html" target="_blank">view</a></p></div>
-                <div class="proj-card static"><img src="bookingappoint.webp" alt="ChatWithAI"><h3>ChatWithAI</h3><p>Book the Doctor Appointment Using AI <a href="https://srinivasaiml.github.io/Codesoft/hospitalpage.html" target="_blank">view</a></p></div>
-                <div class="proj-card static"><img src="library.jpeg" alt="Library Management"><h3>Library Management System</h3><p>Library Management System for Students <a href="#">view</a></p></div>
-                <div class="proj-card static"><img src="calimg.jpg" alt="Calculator"><h3>Calculator</h3><p>A calculator for arithmetic operations <a href="">view</a></p></div>
-                <div class="proj-card responsive"><img src="TEMP.avif" alt="Temperature"><h3>Temperature</h3><p>Temperature measurement converter <a href="">view</a></p></div>
-                <div class="proj-card dynamic"><img src="atmcard.jpg" alt="ATM Card"><h3>ATM Card</h3><p>ATM interface simulation <a href="">view</a></p></div>
-                <div class="proj-card responsive"><img src="ageimg.jpg" alt="Age Calculator"><h3>Age Calculator</h3><p>Calculate age based on birth date <a href="https://srinivasaiml.github.io/Codesoft/age.html" target="_blank">view</a></p></div>
-                <div class="proj-card dynamic"><img src="ageimg.jpg" alt="Date Calculator"><h3>Date of Birth Calculator</h3><p>Calculate date of birth from age <a href="https://srinivasaiml.github.io/Codesoft/yearcal.html" target="_blank">view</a></p></div>
-                <div class="proj-card dynamic"><img src="buds.jpg" alt="Ear Buds"><h3>Ear Buds</h3><p>Ear buds product page <a href="https://srinivasaiml.github.io/Codesoft/buds.html" target="_blank">view</a></p></div>
-            </div>
+              <div class="proj-card static">
+                <img src="bookingappoint.webp" alt="ChatWithAI">
+                <h3>ChatWithAI</h3>
+                <p>Book the Doctor Appointment Using AI <a href="https://srinivasaiml.github.io/Codesoft/hospitalpage.html" target="_blank">view</a></p>
+              </div>
+              
+              <div class="proj-card static">
+                <img src="libraryy.jpg" alt="Library Management">
+                <h3>Library Management System</h3>
+                <p>Library Management System for Students <a href="#">view</a></p>
+              </div>
+              
+              <div class="proj-card static">
+                <img src="flames.png" alt="Flames Calculator">
+                <h3>Flames Calculator</h3>
+                <p>Flames Calculator for Lovers <a href="https://srinivasaiml.github.io/project/flames.html" target="_blank">view</a></p>
+              </div>
+              
+              <div class="proj-card static">
+                <img src="8queen.png" alt="8 Queen Game">
+                <h3>8 Queen Game</h3>
+                <p>Create a 8 queen game for Students <a href="https://srinivasaiml.github.io/project/queen.html" target="_blank">view</a></p>
+              </div>
+              
+              <div class="proj-card static">
+                <img src="love.png" alt="Love Calculator">
+                <h3>Love Calculator Percentage</h3>
+                <p>Love Calculator Percentage for Lovers <a href="https://srinivasaiml.github.io/Codesoft/love2.html" target="_blank">view</a></p>
+              </div>
+              
+              <div class="proj-card static">
+                <img src="calimg.jpg" alt="Calculator">
+                <h3>Calculator</h3>
+                <p>A calculator for arithmetic operations <a href="#">view</a></p>
+              </div>
+              
+              <div class="proj-card responsive">
+                <img src="TEMP.avif" alt="Temperature">
+                <h3>Temperature</h3>
+                <p>Temperature measurement converter <a href="#">view</a></p>
+              </div>
+              
+              <div class="proj-card dynamic">
+                <img src="atmcard.jpg" alt="ATM Card">
+                <h3>ATM Card</h3>
+                <p>ATM interface simulation <a href="#">view</a></p>
+              </div>
+              
+              <div class="proj-card responsive">
+                <img src="ageimg.jpg" alt="Age Calculator">
+                <h3>Age Calculator</h3>
+                <p>Calculate age based on birth date <a href="https://srinivasaiml.github.io/Codesoft/age.html" target="_blank">view</a></p>
+              </div>
+              
+              <div class="proj-card dynamic">
+                <img src="ageimg.jpg" alt="Date Calculator">
+                <h3>Date of Birth Calculator</h3>
+                <p>Calculate date of birth from age <a href="https://srinivasaiml.github.io/Codesoft/yearcal.html" target="_blank">view</a></p>
+              </div>
+              
+              <!-- New Projects Below -->
+              
+              <div class="proj-card static">
+                <img src="resumeanalyzer.jpg" alt="Resume Analyzer Pro">
+                <h3>Resume Analyzer Pro</h3>
+                <p>Analyze your resume and get ATS-friendly feedback <a href="https://srinivasaiml.github.io/project/Resumescore.html">view</a></p>
+              </div>
+              
+              <div class="proj-card responsive">
+                <img src="speedtracker.jpg" alt="Real-Time Speed Tracker">
+                <h3>Real-Time Speed Tracker</h3>
+                <p>Track vehicle speed in real time using Python <a href="https://srinivasaiml.github.io/Codesoft/success.html">view</a></p>
+              </div>
+              
+              <div class="proj-card dynamic">
+                <img src="cyberlock.jpg" alt="Cyber Lock System">
+                <h3>Cyber Lock System</h3>
+                <p>Secure locker system with virtual keypad and password <a href="https://srinivasaiml.github.io/project/lockergame.html">view</a></p>
+              </div>
+              
+              <div class="proj-card responsive">
+                <img src="typinggame.jpg" alt="Cosmic Typing Game">
+                <h3>Cosmic Typing Game</h3>
+                <p>Typing game to test your speed and accuracy <a href="https://srinivasaiml.github.io/project/typinggame.html">view</a></p>
+              </div>
+              
+              <div class="proj-card static">
+                <img src="signaturegen.jpg" alt="Signature Generator">
+                <h3>Premium Signature Generator</h3>
+                <p>Create digital stylish signatures <a href="https://srinivasaiml.github.io/project/uiux.html">view</a></p>
+              </div>
+              
+              <div class="proj-card static">
+                <img src="tictactoe.jpg" alt="Tic Tac Toe Game">
+                <h3>Tic Tac Toe Game</h3>
+                <p>Classic Tic Tac Toe with interactive UI <a href="https://srinivasaiml.github.io/project/tictak.html">view</a></p>
+              </div>
+               </div>
         </div>
     </section>
     <hr>
@@ -174,16 +242,20 @@
             <img src="vision.png" alt="visionimg" class="animate__animated animate__fadeInLeft">
             <p>Respect for ourselves guides our morals, respect for others guides our manners.</p>
         </div>
-        <h2 style="color: rgb(24, 211, 211); margin-bottom:1rem;" class="reveal">Experience</h2>
+        <h2 style="color: rgb(24, 211, 211); margin-bottom:1rem;" class="reveal">Experience</h2> <br>
         <div class="experience-model-wrapper reveal">
-            <model-viewer
-                src="https://modelviewer.dev/shared-assets/models/RobotExpressive.glb"
-                alt="A 3D model of an expressive robot, representing technology and experience"
-                auto-rotate
-                camera-controls
-                shadow-intensity="1"
-                environment-image="neutral">
-            </model-viewer>
+          <model-viewer
+                    src="https://modelviewer.dev/shared-assets/models/Astronaut.glb"
+                    alt="A 3D model of an astronaut"
+                    auto-rotate
+                    camera-controls
+                    disable-zoom
+                    interaction-prompt="auto"
+                    shadow-intensity="1"
+                    camera-orbit="15deg 75deg 1.3em"  
+                    environment-image="neutral"
+                    style="background-color: transparent;">
+                </model-viewer>
         </div>
         <div class="exp">
             <div class="card">
@@ -215,16 +287,7 @@
     <!-- SECTION 6: EDUCATION -->
     <section id="edu-section">
         <h2 style="text-align: center; margin-bottom: 1rem; color: #ccd6f6;" class="reveal">Education</h2>
-        <div class="education-model-wrapper reveal">
-            <model-viewer
-                src="https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/BrainStem/glTF-Binary/BrainStem.glb"
-                alt="A 3D model of a brain stem, symbolizing learning"
-                auto-rotate
-                camera-controls
-                shadow-intensity="1"
-                environment-image="neutral">
-            </model-viewer>
-        </div>
+        
         <div class="edu-particles" id="edu-particles"></div>
         <div class="edu-timeline">
             <div class="edu-timeline-item"><div class="edu-timeline-marker"></div><div class="edu-timeline-card" style="margin-left: 55%;"><h3>B.E in Computer Science</h3><p>Aditya Engineering College • 2022-2026</p><p>Current CGPA: 8.0</p></div></div>
@@ -232,19 +295,31 @@
             <div class="edu-timeline-item"><div class="edu-timeline-marker"></div><div class="edu-timeline-card" style="margin-left: 55%;"><h3>Class 10th</h3><p>State Board • 2019-2020</p><p>CGPA: 9.7</p></div></div>
         </div>
     </section> <br><br>
-
+    
     <!-- SECTION 7: CERTIFICATES -->
     <section id="slidecard">
         <h1 class="reveal">Certificates</h1>
         <div class="certificates-model-wrapper reveal">
-            <model-viewer
-                src="https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/Lantern/glTF-Binary/Lantern.glb"
-                alt="A 3D model of a lantern, symbolizing achievement"
-                auto-rotate
-                camera-controls
-                shadow-intensity="1"
-                environment-image="neutral">
-            </model-viewer>
+          <model-viewer id="animation-demo" autoplay ar ar-modes="webxr" scale="0.01 0.01 0.01" camera-orbit="90deg auto auto" shadow-intensity="1" camera-controls touch-action="pan-y" src="https://modelviewer.dev/shared-assets/models/Horse.glb" alt="A 3D model of a horse galloping.">
+            <div slot="hotspot-nose" class="anchor" data-surface="0 0 228 113 111 0.217 0.341 0.442"></div>
+            <div slot="hotspot-hoof" class="anchor" data-surface="0 0 752 733 735 0.132 0.379 0.489"></div>
+            <div slot="hotspot-tail" class="anchor" data-surface="0 0 220 221 222 0.405 0.061 0.534"></div>
+            <svg id="lines" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" class="lineContainer">
+              <line class="line"></line>
+              <line class="line"></line>
+              <line class="line"></line>
+            </svg>
+
+            <div id="container">
+              <button id="nose" class="label">Nose</button>
+              <button id="hoof" class="label">Hoof</button>
+              <button id="tail" class="label">Tail</button>
+            </div>
+          </model-viewer>
+
+          
+          
+            
         </div>
         <div class="swiper mySwiper">
             <div class="swiper-wrapper">
@@ -256,10 +331,6 @@
                 <div class="swiper-slide"><img src="spolen.jpeg" alt="Spoken Tutorial"><div class="boxx"><center><h3>Spoken</h3></center><p>I earned a certificate...<br><a href="https://drive.google.com/file/d/16QDXWL7AHcyteuGSy_VfiMF3GtRjU-fw/view?usp=sharing" target="_blank">Visit</a></p></div></div>
                 <div class="swiper-slide"><img src="nptellogo.png" alt="NPTEL"><div class="boxx"><center><h3>Nptel</h3></center><p>I earned a certificate...<br><a href=" " target="_blank">Visit</a></p></div></div>
             </div>
-            <!-- Add Pagination and Navigation elements -->
-            <div class="swiper-pagination"></div>
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
         </div>
     </section>
 
@@ -275,17 +346,7 @@
                     <a href="https://www.linkedin.com/in/patchipala-srinivas-524902256/" target="_blank" class="cnt-social-link"><ion-icon name="logo-linkedin"></ion-icon></a>
                     <a href="https://wa.me/qr/FIUCYWFM6DGNL1" target="_blank" class="cnt-social-link"><ion-icon name="logo-whatsapp"></ion-icon></a>
                 </div>
-                <div class="contact-model-wrapper reveal">
-                    <model-viewer
-                        src="https://modelviewer.dev/shared-assets/models/Shishkebab.glb"
-                        alt="A 3D model of a shishkebab, for a distinct visual touch"
-                        auto-rotate
-                        camera-controls
-                        shadow-intensity="1"
-                        environment-image="neutral">
-                    </model-viewer>
-                </div>
-            </div>
+               
             <div class="cnt-form-wrapper reveal">
                 <form id="cnt-contact-form">
                     <div class="cnt-form-group"><label class="cnt-input-label" for="cnt-user-name">Your Name:</label><input class="cnt-form-field" type="text" id="cnt-user-name" required></div>
@@ -297,12 +358,86 @@
             </div>
         </div>
     </section>
+    
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+
+
+    <script type="module">
+      const modelViewer1 = document.querySelector('#animation-demo');
+      const lines = modelViewer1.querySelectorAll('line');
+      let baseRect;
+      let noseRect;
+      let hoofRect;
+      let tailRect;
+
+      function onResize() {
+        const arStatus = modelViewer1.getAttribute('ar-status');
+        baseRect = (arStatus == "not-presenting" || arStatus == "failed") ?
+          modelViewer1.getBoundingClientRect() : new DOMRect();
+        noseRect = document.querySelector('#nose').getBoundingClientRect();
+        hoofRect = document.querySelector('#hoof').getBoundingClientRect();
+        tailRect = document.querySelector('#tail').getBoundingClientRect();
+      }
+
+      window.addEventListener("resize", onResize);
+
+      modelViewer1.addEventListener('ar-status', (event) => {
+        lines.forEach((element) => {
+          if (event.detail.status !== 'session-started') {
+            element.classList.remove('hide');
+          } else {
+            element.classList.add('hide');
+          }
+        });
+        onResize();
+      });
+
+      modelViewer1.addEventListener('load', () => {
+        onResize();
+        function drawLine(svgLine, name, rect) {
+          const hotspot = modelViewer1.queryHotspot('hotspot-' + name);
+          svgLine.setAttribute('x1', hotspot.canvasPosition.x);
+          svgLine.setAttribute('y1', hotspot.canvasPosition.y);
+          svgLine.setAttribute('x2', (rect.left + rect.right) / 2 - baseRect.left);
+          svgLine.setAttribute('y2', rect.top - baseRect.top);
+        }
+
+        // use requestAnimationFrame to update with renderer
+        const startSVGRenderLoop = () => {
+          drawLine(lines[0], 'nose', noseRect);
+          drawLine(lines[1], 'hoof', hoofRect);
+          drawLine(lines[2], 'tail', tailRect);
+          requestAnimationFrame(startSVGRenderLoop);
+        };
+
+        startSVGRenderLoop();
+      });
+    </script> 
+    <!-- end horse ki code -->
+
+    <!-- roceket ki  -->
+    <script type="module">
+      const selectiveComposer= document.querySelector("effect-composer#selectiveComposer");
+      const selectiveBloom = selectiveComposer.querySelector("selective-bloom-effect");
+
+      selectiveComposer.addEventListener('updated-selection', () => {
+        const selection = [];
+        selectiveComposer.selection.forEach((obj) =>
+          (obj.material.emissive.r > 0
+            || obj.material.emissive.g > 0
+            || obj.material.emissive.b > 0) &&
+          selection.push(obj)
+        );
+        selectiveBloom.selection = selection;
+      });
+    </script>
+
 
     <script>
         // Preloader Script
@@ -315,8 +450,8 @@
                        if (preloader.parentNode) {
                            preloader.parentNode.removeChild(preloader);
                        }
-                    }, 5000); // Ensure this duration matches or exceeds preloader transition
-                }, 5000); // Initial delay for preloader
+                    }, 1000);
+                }, 5000);
             }
         });
 
@@ -336,7 +471,7 @@
         // New Hero 2D Network Animation
         document.addEventListener('DOMContentLoaded', () => {
             const canvas = document.querySelector('.hero .particles-canvas');
-            if (!canvas) { console.warn("Hero particles canvas not found"); return; }
+            if (!canvas) { return; }
             const ctx = canvas.getContext('2d');
             let width, height, particles, mouse;
             const particleColor = '#64ffda', lineColorBase = '100, 255, 218', numParticlesDensity = 18000, particleBaseRadius = 0.5, particleRandomRadius = 1.5, particleVelocity = 0.3, connectionDistance = 120, mouseRepelRadius = 100, mouseRepelStrength = 0.8;
@@ -406,201 +541,87 @@
             animateSkillsParticles();
         });
 
-        // Project Section Particles & Filters
+        // Project Section Particles
         document.addEventListener('DOMContentLoaded', () => {
-            const neuralCanvas = document.getElementById('proj-particle-canvas'); if (!neuralCanvas) { console.warn("Project particle canvas not found"); return;}
+            const neuralCanvas = document.getElementById('proj-particle-canvas'); if (!neuralCanvas) return;
             const ctxs = neuralCanvas.getContext('2d'); let nodes = [], mouse = { x: undefined, y: undefined, radius: 120 };
             class Node{constructor(t,e){this.x=t,this.y=e,this.connections=[],this.radius=2+2*Math.random(),this.baseColor=`hsla(${180+60*Math.random()}, 70%, 60%, 0.7)`,this.vx=.5*(Math.random()-.5),this.vy=.5*(Math.random()-.5)}draw(){ctxs.beginPath(),ctxs.arc(this.x,this.y,this.radius,0,2*Math.PI),ctxs.fillStyle=this.baseColor,ctxs.fill()}update(t){this.x<0||this.x>neuralCanvas.width?this.vx*=-1:void 0,this.y<0||this.y>neuralCanvas.height?this.vy*=-1:void 0,this.x+=this.vx,this.y+=this.vy,void 0!==t.x&&void 0!==t.y&&((e,o)=>{const i=this.x-e,s=this.y-o,a=Math.sqrt(i*i+s*s);if(a<t.radius){const n=(t.radius-a)/t.radius;this.x+=i/a*n*2.5,this.y+=s/a*n*2.5}})(t.x,t.y),this.connections.forEach(t=>{const e=t.node.x-this.x,o=t.node.y-this.y,i=Math.sqrt(e*e+o*o);i<150&&(ctxs.beginPath(),ctxs.moveTo(this.x,this.y),ctxs.lineTo(t.node.x,t.node.y),ctxs.strokeStyle=`hsla(${180+60*Math.random()}, 70%, 60%, ${.6-i/250})`,ctxs.lineWidth=.5+.5*Math.random(),ctxs.stroke())})}}
-            function initNeural(){neuralCanvas.width=window.innerWidth,neuralCanvas.height=neuralCanvas.offsetHeight || neuralCanvas.parentElement.offsetHeight || 500; nodes=[];const t=Math.min(50,Math.floor(neuralCanvas.width/30));for(let e=0;e<t;e++)nodes.push(new Node(Math.random()*neuralCanvas.width,Math.random()*neuralCanvas.height));nodes.forEach(t=>{t.connections=nodes.filter(e=>e!==t).map(t=>({node:t}))})}
+            function initNeural(){neuralCanvas.width=window.innerWidth,neuralCanvas.height=neuralCanvas.offsetHeight,nodes=[];const t=Math.min(50,Math.floor(neuralCanvas.width/30));for(let e=0;e<t;e++)nodes.push(new Node(Math.random()*neuralCanvas.width,Math.random()*neuralCanvas.height));nodes.forEach(t=>{t.connections=nodes.filter(e=>e!==t).map(t=>({node:t}))})}
             neuralCanvas.addEventListener('mousemove',t=>{const e=neuralCanvas.getBoundingClientRect();mouse.x=t.clientX-e.left,mouse.y=t.clientY-e.top}),neuralCanvas.addEventListener('mouseleave',()=>{mouse.x=void 0,mouse.y=void 0});
             let lastRenderTime=0;const targetFPS=30,frameInterval=1e3/targetFPS;
             function animateNeural(t){requestAnimationFrame(animateNeural);const e=t-lastRenderTime;e>frameInterval&&(lastRenderTime=t-e%frameInterval,ctxs.clearRect(0,0,neuralCanvas.width,neuralCanvas.height),nodes.forEach(t=>{t.update(mouse),t.draw()}))}
             window.addEventListener('resize',initNeural),initNeural(),requestAnimationFrame(animateNeural);
-
-            // Filter projects function (ensure GSAP is loaded)
-            window.filterProjects=function(category){
-                const projectCards = document.querySelectorAll(".proj-grid .proj-card");
-                const filterButtons = document.querySelectorAll(".filters button");
-
-                filterButtons.forEach(button => {
-                    if (button.getAttribute('onclick').includes(`'${category}'`)) {
-                        button.classList.add('active-filter');
-                    } else {
-                        button.classList.remove('active-filter');
-                    }
-                });
-
-                projectCards.forEach(card => {
-                    const isVisible = category === 'all' || card.classList.contains(category);
-                    if (isVisible) {
-                        if (card.style.display === "none" || !card.style.display) { // If hidden or display not set, show it
-                            card.style.display = "block"; // Set display before animation
-                            gsap.fromTo(card, { opacity: 0, scale: 0.9 }, { opacity: 1, scale: 1, duration: 0.3 });
-                        }
-                    } else {
-                        if (card.style.display !== "none") { // If visible, hide it
-                            gsap.to(card, { opacity: 0, scale: 0.9, duration: 0.3, onComplete: () => card.style.display = "none" });
-                        }
-                    }
-                });
-            };
-            // Initialize with 'all' category selected
-            if(document.querySelector(".filters button")) {
-                 filterProjects('all');
-            }
+            window.filterProjects=function(t){const e=document.querySelectorAll(".proj-grid .proj-card");e.forEach(e=>{const o="all"===t||e.classList.contains(t)?"block":"none";"none"===o&&"none"!==e.style.display?gsap.to(e,{opacity:0,scale:.9,duration:.3,onComplete:()=>e.style.display="none"}):"block"!==o||"none"!==e.style.display&&e.style.display? "block"===o && gsap.to(e,{opacity:1,scale:1,duration:.3}):(e.style.display="block",gsap.fromTo(e,{opacity:0,scale:.9},{opacity:1,scale:1,duration:.3}))})}
         });
 
-        // Contact Section Particles & Form
+        // Contact Section Particles
         document.addEventListener('DOMContentLoaded', () => {
-            class ContactParticleSystem{constructor(t){if(!t){console.warn("Contact particle canvas not found");return;}this.canvas=t,this.ctx=t.getContext("2d"),this.particles=[],this.mouse={x:0,y:0,radius:150},this.initializeSystem(),this.startAnimation(),window.addEventListener("mousemove",t=>{const e=this.canvas.getBoundingClientRect();this.mouse.x=t.clientX-e.left,this.mouse.y=t.clientY-e.top}),window.addEventListener("resize",()=>this.handleResize())}initializeSystem(){this.handleResize();const t=Math.min(300,Math.floor(this.canvas.width/5));for(let e=0;e<t;e++)this.particles.push({x:Math.random()*this.canvas.width,y:Math.random()*this.canvas.height,size:2.5*Math.random()+.5,baseSize:2.5*Math.random()+.5,angle:2*Math.random()*Math.PI,speed:.3*Math.random()+.1,color:`hsla(${160+40*Math.random()}, 100%, 70%, ${.3+.4*Math.random()})`})}handleResize(){this.canvas.width=window.innerWidth,this.canvas.height=this.canvas.offsetHeight || this.canvas.parentElement.offsetHeight || 500,this.particles=[] /* Re-init particles on resize? Maybe not, just adjust bounds. For now, clear & re-init. */ }startAnimation(){const t=()=>{this.ctx.clearRect(0,0,this.canvas.width,this.canvas.height),this.particles.forEach(t=>{const e=this.mouse.x-t.x,o=this.mouse.y-t.y,i=Math.sqrt(e*e+o*o);let s=0,a=0;i<this.mouse.radius&&(n=(this.mouse.radius-i)/this.mouse.radius,s=e/i*n*.5,a=o/i*n*.5);var n;t.angle+=.01,t.x+=Math.cos(t.angle)*t.speed+s,t.y+=Math.sin(t.angle)*t.speed+a,t.size=t.baseSize*(1+.2*Math.sin(.0015*Date.now()+t.angle)),t.x>this.canvas.width+t.size?t.x=-t.size:t.x<-t.size&&(t.x=this.canvas.width+t.size),t.y>this.canvas.height+t.size?t.y=-t.size:t.y<-t.size&&(t.y=this.canvas.height+t.size),this.ctx.fillStyle=t.color,this.ctx.beginPath(),this.ctx.arc(t.x,t.y,t.size,0,2*Math.PI),this.ctx.fill()}),requestAnimationFrame(t)};t()}}
+            class ContactParticleSystem{constructor(t){if(!t)return;this.canvas=t,this.ctx=t.getContext("2d"),this.particles=[],this.mouse={x:0,y:0,radius:150},this.initializeSystem(),this.startAnimation(),window.addEventListener("mousemove",t=>{const e=this.canvas.getBoundingClientRect();this.mouse.x=t.clientX-e.left,this.mouse.y=t.clientY-e.top}),window.addEventListener("resize",()=>this.handleResize())}initializeSystem(){this.handleResize();const t=Math.min(300,Math.floor(this.canvas.width/5));for(let e=0;e<t;e++)this.particles.push({x:Math.random()*this.canvas.width,y:Math.random()*this.canvas.height,size:2.5*Math.random()+.5,baseSize:2.5*Math.random()+.5,angle:2*Math.random()*Math.PI,speed:.3*Math.random()+.1,color:`hsla(${160+40*Math.random()}, 100%, 70%, ${.3+.4*Math.random()})`})}handleResize(){this.canvas.width=window.innerWidth,this.canvas.height=this.canvas.offsetHeight,this.particles=[]}startAnimation(){const t=()=>{this.ctx.clearRect(0,0,this.canvas.width,this.canvas.height),this.particles.forEach(t=>{const e=this.mouse.x-t.x,o=this.mouse.y-t.y,i=Math.sqrt(e*e+o*o);let s=0,a=0;i<this.mouse.radius&&(n=(this.mouse.radius-i)/this.mouse.radius,s=e/i*n*.5,a=o/i*n*.5);var n;t.angle+=.01,t.x+=Math.cos(t.angle)*t.speed+s,t.y+=Math.sin(t.angle)*t.speed+a,t.size=t.baseSize*(1+.2*Math.sin(.0015*Date.now()+t.angle)),t.x>this.canvas.width+t.size?t.x=-t.size:t.x<-t.size&&(t.x=this.canvas.width+t.size),t.y>this.canvas.height+t.size?t.y=-t.size:t.y<-t.size&&(t.y=this.canvas.height+t.size),this.ctx.fillStyle=t.color,this.ctx.beginPath(),this.ctx.arc(t.x,t.y,t.size,0,2*Math.PI),this.ctx.fill()}),requestAnimationFrame(t)};t()}}
             new ContactParticleSystem(document.getElementById('cnt-particle-canvas'));
-
             const contactForm = document.getElementById('cnt-contact-form'); if(contactForm){contactForm.addEventListener('submit',t=>{t.preventDefault();const e=document.getElementById("cnt-status-message");e.textContent="✓ Message successfully sent!",e.style.color="#64ffda",e.style.display="block",gsap.fromTo(e,{opacity:0,y:10},{opacity:1,y:0,duration:.5}),setTimeout(()=>{gsap.to(e,{opacity:0,y:-10,duration:.5,onComplete:()=>e.style.display="none"})},4e3),t.target.reset()})}
         });
 
         // Swiper JS for Certificates
-        document.addEventListener('DOMContentLoaded', () => {
-            if (typeof Swiper !== 'undefined') {
-                var swiper = new Swiper(".mySwiper", {
-                    effect: "cards",
-                    grabCursor: true,
-                    loop: true,
-                    cardsEffect: {
-                        perSlideOffset: 8,
-                        perSlideRotate: 2,
-                        slideShadows: true
-                    },
-                    autoplay: {
-                        delay: 4000,
-                        disableOnInteraction: false
-                    },
-                    pagination: {
-                        el: '.swiper-pagination',
-                        clickable: true
-                    },
-                    navigation: {
-                        nextEl: '.swiper-button-next',
-                        prevEl: '.swiper-button-prev'
-                    }
-                });
-            } else {
-                console.error("Swiper library is not loaded.");
-            }
-        });
-
+        var swiper = new Swiper(".mySwiper", { effect: "cards", grabCursor: !0, loop: !0, cardsEffect: { perSlideOffset: 8, perSlideRotate: 2, slideShadows: !0 }, autoplay: { delay: 4e3, disableOnInteraction: !1 }, pagination: { el: '.swiper-pagination', clickable: !0 }, navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' }});
 
         // Generic Scroll Reveal
         document.addEventListener('DOMContentLoaded', () => {
             const generalRevealFunction = () => {
                 var reveals = document.querySelectorAll('.reveal'), windowHeight = window.innerHeight;
                 reveals.forEach(function (rev) {
-                    // Exclude model viewers from this specific generic reveal if they have their own logic
-                    if (rev.classList.contains('hero-model-viewer-container') ||
-                        rev.classList.contains('about-model-wrapper') ||
-                        rev.classList.contains('education-model-wrapper') ||
-                        rev.classList.contains('experience-model-wrapper') ||
-                        rev.classList.contains('certificates-model-wrapper') ||
-                        rev.classList.contains('projects-model-wrapper') ||
-                        rev.classList.contains('contact-model-wrapper')
+                    if (!rev.classList.contains('hero-model-viewer-container') &&
+                        !rev.classList.contains('about-model-wrapper') &&
+                        !rev.classList.contains('education-model-wrapper') &&
+                        !rev.classList.contains('experience-model-wrapper') &&
+                        !rev.classList.contains('certificates-model-wrapper') &&
+                        !rev.classList.contains('projects-model-wrapper') &&
+                        !rev.classList.contains('contact-model-wrapper')
                         ) {
-                        // Potentially let GSAP handle these if more complex reveal is needed
+                        if (rev.closest('.edu-timeline') || rev.closest('.exp') || rev.closest('.skills-container') || rev.closest('.proj-grid')) {
+                            if(rev.classList.contains('edu-timeline-item') || rev.classList.contains('card') || rev.classList.contains('skill') || rev.classList.contains('proj-card')) { return; }
+                        }
                     }
-                    // Prevent re-triggering for elements handled by GSAP stagger
-                    if (rev.closest('.edu-timeline') || rev.closest('.exp') || rev.closest('.skills-container') || rev.closest('.proj-grid')) {
-                        if(rev.classList.contains('edu-timeline-item') || rev.classList.contains('card') || rev.classList.contains('skill') || rev.classList.contains('proj-card')) { return; }
-                    }
-
                     var revealTop = rev.getBoundingClientRect().top, revealPoint = 100;
-                    if (revealTop < windowHeight - revealPoint) {
-                        rev.classList.add('active');
-                    }
+                    if (revealTop < windowHeight - revealPoint) { rev.classList.add('active'); }
                 });
             };
-            window.addEventListener('scroll', generalRevealFunction);
-            generalRevealFunction(); // Initial check
+            window.addEventListener('scroll', generalRevealFunction); generalRevealFunction();
         });
 
 
         // GSAP Animations
         document.addEventListener('DOMContentLoaded', () => {
-            if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined' && typeof ScrollToPlugin !== 'undefined') {
-                gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
-
-                function staggerAnimation(selector, triggerSelector, vars) {
-                    const elements = gsap.utils.toArray(selector);
-                    if (elements.length > 0) {
-                        gsap.from(elements, {
-                            scrollTrigger: {
-                                trigger: triggerSelector || elements[0].parentNode,
-                                start: 'top 85%',
-                                end: 'bottom 20%', // Optional: define end point
-                                toggleActions: 'play none none none', // Play animation once when it enters viewport
-                            },
-                            opacity: 0,
-                            y: 60,
-                            scale: 0.95,
-                            duration: 0.7,
-                            ease: 'power2.out',
-                            stagger: {
-                                amount: 0.5,
-                                from: "start",
-                            },
-                            ...vars
-                        });
-                    }
-                }
-                staggerAnimation('.edu-timeline-item', '.edu-timeline');
-                document.querySelectorAll('.exp').forEach((expContainer) => {
-                    staggerAnimation(expContainer.querySelectorAll('.card'), expContainer);
-                });
-                staggerAnimation('.skills-container .skill', '.skills-container');
-                // Project card stagger is handled by filterProjects for initial load,
-                // but could be added here if not using filterProjects initially.
-
-                gsap.utils.toArray('.reveal-title').forEach(title => {
-                    gsap.from(title, {
-                        scrollTrigger: {
-                            trigger: title,
-                            start: 'top 90%',
-                            toggleActions: 'play none none none',
-                        },
-                        opacity: 0,
-                        y: 30,
-                        duration: 0.8,
-                        ease: 'power2.out'
-                    });
-                });
-
-                // Smooth scroll for nav links
-                document.querySelectorAll('.nav-links a[href^="#"]').forEach(anchor => {
-                    anchor.addEventListener('click', function (e) {
-                        e.preventDefault();
-                        const targetId = this.getAttribute('href');
-                        const targetElement = document.querySelector(targetId);
-                        if (targetElement) {
-                            gsap.to(window, {
-                                duration: 1,
-                                scrollTo: { y: targetElement, offsetY: 70 }, // offsetY for fixed navbar
-                                ease: "power2.inOut"
-                            });
-                            // Close mobile menu if open
-                            const menuToggle = document.querySelector('.menu-toggle');
-                            const navLinks = document.querySelector('.nav-links');
-                            if (menuToggle && navLinks && menuToggle.classList.contains('active')) {
-                                menuToggle.classList.remove('active');
-                                navLinks.classList.remove('active');
-                            }
-                        }
-                    });
-                });
-            } else {
-                console.error("GSAP or its plugins are not loaded.");
+            gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+            function staggerAnimation(selector, triggerSelector, vars) {
+                const elements = gsap.utils.toArray(selector);
+                if (elements.length > 0) { gsap.from(elements, { scrollTrigger: { trigger: triggerSelector || elements[0].parentNode, start: 'top 85%', end: 'bottom 20%', toggleActions: 'play none none none', }, opacity: 0, y: 60, scale: 0.95, duration: 0.7, ease: 'power2.out', stagger: { amount: 0.5, from: "start", }, ...vars }); }
             }
+            staggerAnimation('.edu-timeline-item', '.edu-timeline');
+            document.querySelectorAll('.exp').forEach((expContainer) => { staggerAnimation(expContainer.querySelectorAll('.card'), expContainer); });
+            staggerAnimation('.skills-container .skill', '.skills-container');
+            window.filterProjects('all');
+
+
+            gsap.utils.toArray('.reveal-title').forEach(title => { gsap.from(title, { scrollTrigger: { trigger: title, start: 'top 90%', toggleActions: 'play none none none', }, opacity: 0, y: 30, duration: 0.8, ease: 'power2.out' }); });
+            document.querySelectorAll('.nav-links a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault(); const targetId = this.getAttribute('href'), targetElement = document.querySelector(targetId);
+                    if (targetElement) { gsap.to(window, { duration: 1, scrollTo: { y: targetElement, offsetY: 70 }, ease: "power2.inOut" }); const menuToggle = document.querySelector('.menu-toggle'), navLinks = document.querySelector('.nav-links'); if (menuToggle && navLinks && menuToggle.classList.contains('active')) { menuToggle.classList.remove('active'); navLinks.classList.remove('active'); } }
+                });
+            });
         });
 
+        //experince ki
+            (() => {
+              const modelViewer = document.querySelector('#paused-change-demo');
 
-        // Disable key shortcuts 
-  // Disable right-click
+              self.setInterval(() => {
+                modelViewer.animationName = modelViewer.animationName === 'Running' ?
+                  'Wave' : 'Running';
+              }, 1500.0);
+            })();
+
+             // Disable right-click
   document.addEventListener('contextmenu', event => event.preventDefault());
 
   // Disable key combinations
@@ -635,8 +656,11 @@
       return false;
     }
   });
-
-
+ 
+                
+            
     </script>
 </body>
 </html>
+
+        // Disable key shortcuts 
