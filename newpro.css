@@ -1,3 +1,4 @@
+
 /* Preloader Styles */
 #preloader {
   position: fixed;
@@ -293,11 +294,11 @@ canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index
 @keyframes blink-caret { from, to { border-color: transparent } 50% { border-color: #64ffda } } /* Adjusted for new hero bg */
 
 .hero-model-viewer-container {
-    flex-basis: 40%;
-    max-width: 360px;
+    flex-basis: 40%; 
+    max-width: 360px; 
     width: 100%;
-    height: 55vh;
-    max-height: 400px;
+    height: 55vh;   
+    max-height: 400px; 
     position: relative;
     z-index: 1;
     display: flex;
@@ -315,15 +316,15 @@ canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index
   .hero-model-viewer-container {
     margin-right: 0;
     margin-top: 1rem;
-    max-width: 320px;
-    height: 48vh;
+    max-width: 320px; 
+    height: 48vh;   
     flex-basis: auto;
   }
 }
 @media (max-width: 767px) {
     .hero-model-viewer-container {
-        max-width: 280px;
-        height: 42vh;
+        max-width: 280px; 
+        height: 42vh;   
     }
 }
 
@@ -342,7 +343,7 @@ canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index
 .skill-card:hover { transform: perspective(1000px) rotateX(2deg) rotateY(2deg) translateY(-5px); box-shadow: 0 8px 15px rgba(0,0,0,0.15); }
 .skill-card h3 { color: #1d5dbf; margin: 0 0 10px 0; font-size: 1.3rem; }
 @keyframes moveBG { from { transform: translate(0, 0) } to { transform: translate(-100px, -100px) } }
-@media (max-width: 992px) { .about-content { flex-direction: column; align-items: center; } .about-text, .about-skills, .about-model-wrapper { max-width: 600px; width:100%; margin-bottom: 20px;} .about-model-wrapper { max-width: 300px; height: 300px; margin-left: auto; margin-right: auto; margin-top: 2rem; order:3;}}
+@media (max-width: 992px) { .about-content { flex-direction: column; align-items: center; } .about-text, .about-skills, .about-model-wrapper { max-width: 600px; width:100%; margin-bottom: 20px;} .about-model-wrapper { max-width: 300px; height: 300px; margin-left: auto; margin-right: auto; margin-top: 2rem; order:3;}} 
 @media (max-width: 768px) { .about-section::before { animation-duration: 60s; } .about-model-wrapper { max-width: 280px; height:280px;}}
 
 /* Education Section */
@@ -423,13 +424,7 @@ canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index
 /* Certificates Section */
 #slidecard { min-height: 100vh; width: 100%; background: radial-gradient(125% 125% at 50% 10%, #fff 40%, rgb(107, 61, 235) 100%); display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 4rem 1rem; color: #333; }
 #slidecard h1 { font-size: 2.5rem; text-decoration: underline; text-align: center; color: #333; margin-bottom: 1rem; }
-.swiper.mySwiper {
-    margin: 20px auto;
-    width: 90%;
-    max-width: 320px; /* Consider if this is too small for cards effect to shine */
-    height: auto; /* For cards effect, a fixed height or aspect-ratio might be better if auto causes issues. e.g., height: 450px; */
-    position: relative; /* Added for positioning context of nav buttons if needed */
-}
+.swiper.mySwiper { margin: 20px auto; width: 90%; max-width: 320px; height: auto; }
 .swiper-slide { background: #e9eef0; border: 1px solid #bdcdd0; box-shadow: 0 5px 15px rgba(0,0,0,0.1), inset 0 0 10px rgba(0,0,0,0.05); border-radius: 10px; overflow: hidden; display: flex; flex-direction: column; align-items: center; }
 .swiper-slide img { width: 100%; height: 180px; object-fit: cover; }
 .boxx { text-align: center; padding: 15px; width: 100%; background-color: #f8f9fa; }
@@ -437,17 +432,6 @@ canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index
 .boxx p { font-size: 0.9rem; letter-spacing: 0.5px; line-height: 1.5; color: #555; margin-bottom: 1rem; }
 .boxx a { display: inline-block; margin-top: 10px; padding: 8px 15px; background: #e02424; color: white; text-decoration: none; border-radius: 5px; font-weight: bold; transition: background-color 0.3s ease; }
 .boxx a:hover { background-color: #c01212; }
-
-/* Swiper Navigation/Pagination default colors might need adjustment for visibility */
-/* Example:
-.swiper-button-next, .swiper-button-prev {
-    color: #e02424; --swiper-navigation-size: 30px;
-}
-.swiper-pagination-bullet-active {
-    background: #e02424;
-}
-*/
-
 
 /* Project Section */
 .proj-section { position: relative; min-height: 100vh; padding: 4rem 2rem; background: #1a1a1a; overflow: hidden; color: #ffffff; text-align: center; }
@@ -557,3 +541,55 @@ h1.get-in-touch-title { color: #ff4d4d; text-align: center; padding: 3rem 0 2rem
 
 /* Horizontal Rule */
 hr { border: 0; height: 1px; background-image: linear-gradient(to right, rgba(100, 255, 218, 0), rgba(100, 255, 218, 0.5), rgba(100, 255, 218, 0)); margin: 4rem auto; width: 80%; max-width: 800px; }
+
+/* horse ki*/
+.anchor {
+              display: none;
+            }
+
+            .lineContainer {
+              pointer-events: none;
+              display: block;
+            }
+
+            .line {
+              stroke: #16a5e6;
+              stroke-width: 2;
+              stroke-dasharray: 2
+            }
+
+            #container {
+              position: absolute;
+              display: flex;
+              justify-content: space-evenly;
+              bottom: 8px;
+              left: 8px;
+              width: 100%;
+            }
+
+            .label {
+              background: #fff;
+              border-radius: 4px;
+              border: none;
+              box-sizing: border-box;
+              box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+              color: rgba(0, 0, 0, 0.8);
+              display: block;
+              font-family: Futura, Helvetica Neue, sans-serif;
+              font-size: 18px;
+              font-weight: 700;
+              max-width: 128px;
+              padding: 0.5em 1em;
+              bottom: 10px;
+              pointer-events: none;
+            }
+
+            #animation-demo::part(default-ar-button) {
+              bottom: 64px;
+            }
+
+            /* This keeps child nodes hidden while the element loads */
+            :not(:defined)>* {
+              display: none;
+            }
+          
